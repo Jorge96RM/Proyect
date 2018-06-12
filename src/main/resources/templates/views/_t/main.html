@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<meta charset="utf-8" />
+
+<title>MI WEB</title>
+
+</head>
+
+<body>
+	<div class="container">
+		<div th:replace="views/_t/header"></div>
+		<div th:replace="views/_t/nav"></div>
+		<div th:replace="${'views/'+view}"></div>
+	</div>
+</body>
+
+</html>

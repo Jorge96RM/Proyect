@@ -1,0 +1,15 @@
+<header class="row">
+	<div class="col-xl-4"></div>
+	<div class="col-xl-4">
+
+	</div>
+	<div class="col-xl-4">
+	
+				<div th:switch="${session.user}">
+					<p th:case="null">Hola DESCONOCIDO. (<a href="/login">LOGIN</a>)<br/>
+					<a href="/registrarse">Registrarse</a></p>
+					<p th:case="'admin'">Hola ADMIN. (<a href="logout">Logout</a>)</p>
+				</div>
+		
+	</div>
+</header>
