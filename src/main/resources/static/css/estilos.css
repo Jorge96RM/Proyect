@@ -1,0 +1,35 @@
+.bienvenidos{
+	background: #FFF8DC;
+	background-size: cover;
+	height: 100vh; 
+}
+
+#menuprincipal{
+  clear: both; 
+}
+
+.color{
+	background: #696969;
+}
+                   
+td{
+	margin-left: 20px;
+	display: flex;
+}
+
+table th{
+	height: 50px;
+}
+
+.titulo{
+	display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.footer{
+	background: black;
+}
+
+/*# sourceMappingURL=estilos.css.map */

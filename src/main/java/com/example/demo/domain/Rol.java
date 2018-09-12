@@ -28,6 +28,9 @@ public class Rol {
 	@OneToMany(mappedBy="nombre_rol")
 	private Collection<Usuario> Roles;
 	
+	public Rol() {
+		// TODO Auto-generated constructor stub
+	}
 	public Rol(String nombre_rol) {
 		super();
 		this.nombre_rol = nombre_rol;

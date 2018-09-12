@@ -44,6 +44,10 @@ public class Usuario {
 		nombre_rol.getRol().add(this);
 	}
 
+	public Usuario(String alias, String contrasena2, Usuario login) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}

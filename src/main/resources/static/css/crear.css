@@ -1,0 +1,150 @@
+body{
+    font-family: Arial;
+    color: black;
+    line-height: 1.5;
+}
+
+label{
+    font-size: 0.7em;
+}
+
+input{
+	display: block;
+	margin-top: 10px;
+}
+
+input:hover{
+    border: 2px solid #E6B700;
+}
+
+.titulo{
+    font-size: 1em;
+    font-weight: bold;
+    float: left;
+    width: 13%;
+    height: 100%;
+	display: block;
+}
+
+.titulo>span{
+    color: red;
+    font-size: 1.3em;
+}
+
+div{
+	width: 50%;
+	display: block;
+	float:left;
+}
+
+#contenedor{
+    width: 750px;
+	height: 800px;
+    margin-left: 10%;
+}
+
+#contenedor ul li{
+    list-style: none;
+}
+
+#contenedor li:hover {
+    background-color: #FF9;
+}
+
+
+p{
+	width: 27%;
+	float: right;
+    color: transparent;
+}
+
+p:hover{
+    color: black;
+}
+
+li{
+	display: block;
+	position: relative;
+	width: 100%;
+	float: left;
+}
+
+#contenedor ul li:hover .ayuda{
+    display: block;
+}
+
+#direccionEntera{
+    float: left;
+}
+
+hr {
+    background-color: lightgrey;
+    height: 2px;
+    width: 100%;
+}
+
+#alta{
+	float: right;
+	font-size: 20px;
+}
+
+hr {
+    background-color: lightgrey;
+    height: 1px;
+    width: 100%;
+}
+
+#apellido1, #apellido2, #direccion, #email{
+    width: 250px;
+}
+
+#comprobarContrasena{
+    width: 150px;
+}
+
+#contrasena{
+    width: 150px;
+}
+
+#direccionEntera{
+	display: block;
+}
+
+#emailUsuario{
+	height: 80px;
+}
+
+#telefonoUsuario{
+	height: 90px;
+}
+
+.direc{
+	width: 100%;
+	display: block;
+}
+
+.izquierda{
+	width: 50%;
+	float: left;
+}
+
+.derecha{
+	width: 45%;
+	float: right;
+}
+
+#codigopostal, .izquierda>label, #provincia{
+	display: block;	
+}
+
+#pais, .derecha>label, #municipio{
+	display: block;	
+}
+
+#municipio, #pais{
+	width: 150px;
+}
+
+#codigopostal, #provincia{
+	width: 100px;
+}

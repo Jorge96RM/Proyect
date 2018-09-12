@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAY;EACX,UAAU,EAAE,OAAO;EACnB,eAAe,EAAE,KAAK;EACtB,MAAM,EAAE,KAAK;;AAGd,cAAc;EACb,KAAK,EAAE,IAAI",
+"sources": ["../scss/estilos.scss"],
+"names": [],
+"file": "estilos.css"
+}

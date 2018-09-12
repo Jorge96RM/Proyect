@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.domain.Rol;
-import com.example.demo.domain.Usuario;
 
 public class RolRepositoryImpl implements RolRepositoryCustom {
 
@@ -22,14 +21,12 @@ public class RolRepositoryImpl implements RolRepositoryCustom {
 	
 	@Override
 	public Rol getDefaultRol() {
-		Query query = entityManager.createNativeQuery("SELECT r.* FROM proyecto.rol as r" +
-				"WHERE r.nombre_rol LIKE 'Usuario'", Rol.class);
-	        //        "WHERE r.nombre_rol LIKE ?", Rol.class);
-		//query.setParameter(1, "%Usuario%");
-		Rol rol = new Rol ((String)query.getResultList().get(1));
-		//List<Rol> roles = query.getResultList();
-		//return (Rol)(roles.get(1));
-		return rol;
+		Query query = entityManager.createNativeQuery("SELECT r.* FROM proyecto.rol as r " +
+				"WHERE r.nombre_rol like ?", Rol.class);
+		query.setParameter(1, "Usuario");
+		//Rol rol = new Rol ((String)query.getResultList().get(1));
+		List<Rol> roles = query.getResultList();
+		return (Rol)(roles.get(0));
 	}
 	
 }
