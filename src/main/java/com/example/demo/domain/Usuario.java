@@ -22,23 +22,47 @@ public class Usuario {
 	private String alias;
 	
 	private String contrasena;
+	private String confirmarContrasena;
 	private String nombre;
-	private String apellidos;
+	private String primerApellido;
+	private String segundoApellido;
+	private String telefono;
+	private String email;
 	private String sexo;
 	
 	@OneToMany(mappedBy="PostSuyo")
 	private Collection<Post> Post;
 	
+	public String getPrimerApellido() {
+		return primerApellido;
+	}
+
+	public void setPrimerApellido(String primerApellido) {
+		this.primerApellido = primerApellido;
+	}
+
+	public String getSegundoApellido() {
+		return segundoApellido;
+	}
+
+	public void setSegundoApellido(String segundoApellido) {
+		this.segundoApellido = segundoApellido;
+	}
+
 	@ManyToOne
 	private Rol nombre_rol;
 	
 	
-	public Usuario(String alias, String contrasena, String nombre, String apellidos, String sexo, Rol nombre_rol) {
+	public Usuario(String alias, String contrasena, String confirmarContrasena, String nombre, String primerApellido, String segundoApellido, String telefono, String email, String sexo, Rol nombre_rol) {
 		super();
 		this.alias = alias;
 		this.contrasena = contrasena;
+		this.confirmarContrasena = confirmarContrasena;
 		this.nombre = nombre;
-		this.apellidos = apellidos;
+		this.primerApellido = primerApellido;
+		this.segundoApellido = segundoApellido;
+		this.telefono = telefono;
+		this.email = email;
 		this.sexo = sexo;
 		this.nombre_rol = nombre_rol;
 		nombre_rol.getRol().add(this);
@@ -80,14 +104,6 @@ public class Usuario {
 		nombre = nombre;
 	}
 	
-	public String getApellidos() {
-		return apellidos;
-	}
-	
-	public void setApellidos(String apellidos) {
-		apellidos = apellidos;
-	}
-	
 	public String getSexo() {
 		return sexo;
 	}
@@ -110,6 +126,30 @@ public class Usuario {
 
 	public void setNombreRol(Rol nombre_rol) {
 		this.nombre_rol = nombre_rol;
+	}
+
+	public String getConfirmarContrasena() {
+		return confirmarContrasena;
+	}
+
+	public void setConfirmarContrasena(String confirmarContrasena) {
+		this.confirmarContrasena = confirmarContrasena;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 	
 

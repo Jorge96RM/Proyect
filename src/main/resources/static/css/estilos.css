@@ -28,6 +28,21 @@ table th{
     flex-direction: column;
 }
 
+li{
+	list-style: none;
+}
+
+#invisible li{
+    float: left;
+	margin-top: 3px;
+}
+
+#invisible i{
+    float: right;	
+	margin-left: 15px;
+	margin-right: 20px;
+}
+
 .footer{
 	background: black;
 }

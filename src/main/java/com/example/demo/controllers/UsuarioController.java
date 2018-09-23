@@ -25,28 +25,32 @@ public class UsuarioController {
 	private RolRepository repoRol;
 	
 	
-	@GetMapping("/usuario/registrarse")
+	/*@GetMapping("/usuario/registrarse")
 	public String registrarse(ModelMap m){
 		m.put("view","usuario/crear");
 		return("views/_t/main");
-	}
+	}*/
 	
-	@RequestMapping(value = "/usuario/crear", method = RequestMethod.GET)
-	public String crear(ModelMap m){ 
+	@RequestMapping(value = "/home/", method = RequestMethod.GET)
+	public String registroo(ModelMap m){ 
 		m.put("listaRoles", repoRol.findAll());
-		m.put("view","/usuario/crear");
+		m.put("view","/");
 		return "views/_t/main";
 	}
 	
-	@RequestMapping(value = "/usuario/crear", method = RequestMethod.POST)
-	public String crearPost(@RequestParam("alias") String alias,
+	@RequestMapping(value = "/home/", method = RequestMethod.POST)
+	public String registrooPost(@RequestParam("alias") String alias,
 			@RequestParam("contrasena") String contrasena,
+			@RequestParam("confirmarContrasena") String confirmarContrasena,
 			@RequestParam("nombre") String nombre,
-			@RequestParam("apellidos") String apellidos,
+			@RequestParam("primerApellido") String primerApellido,
+			@RequestParam("segundoApellido") String segundoApellido,
+			@RequestParam("telefono") String telefono,
+			@RequestParam("email") String email,
 			@RequestParam("sexo") String sexo,
 			ModelMap m){
 		Rol rolPorDefecto = (Rol) repoRol.getDefaultRol();
-		Usuario u = new Usuario(alias, contrasena, nombre, apellidos, sexo, rolPorDefecto);
+		Usuario u = new Usuario(alias, contrasena, confirmarContrasena, nombre, primerApellido, segundoApellido, telefono, email, sexo, rolPorDefecto);
 		repoUsuario.save(u);
 		m.put("alias", alias);
 		m.put("view","/usuario/crearPost");
@@ -74,14 +78,14 @@ public class UsuarioController {
 		return "views/_t/main";
 	}*/
 	
-	@RequestMapping(value = "/usuario/login", method = RequestMethod.GET)
-	public String login(ModelMap m){ 
-		m.put("view","/usuario/login");
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home(ModelMap m){ 
+		m.put("view","/");
 		return "views/_t/main";
 	}
 	
-	@RequestMapping(value = "/usuario/login", method = RequestMethod.POST)
-	public String loginOK(@RequestParam("alias") String alias,
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	public String homeOK(@RequestParam("alias") String alias,
 			@RequestParam("contrasena") String contrasena,
 			ModelMap m,
 			HttpSession s){
@@ -91,8 +95,8 @@ public class UsuarioController {
 		}
 		else {
 			s.setAttribute("user", alias);
-			// inicializar sesión. Aadir nombre usuario o rl id a alguna variable de sesion
-			m.put("view", "usuario/loginOK");
+			// inicializar sesión. Añadir nombre usuario o rl id a alguna variable de sesion
+			m.put("view", "/home/index");
 		}
 		/*
 		Usuario u = new Usuario(alias, contrasena, login);
