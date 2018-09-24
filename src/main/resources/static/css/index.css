@@ -1,0 +1,35 @@
+.table td{
+ border: 0px;
+ padding: 0px;
+}
+
+.table th{
+ border: 0px;
+}
+
+.tema th {
+ border: 0px;
+ height: 300px;
+}
+
+th{
+	text-align: center;
+}
+
+tr{
+	height: 20px;
+}
+
+.tema {
+	width: 70%;
+	text-align: left;
+	height: 15px;
+}
+
+.apartado {
+	text-align: left;
+}
+
+.color{
+	background: #696969;
+}

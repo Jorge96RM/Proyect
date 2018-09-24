@@ -1,5 +1,18 @@
 package com.example.demo.controllers;
 
-public class PostController {
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 
+@Controller
+public class PostController {
+	
+	@GetMapping("/post/redacciones")
+	public String redacciones(ModelMap m){
+		m.put("view","post/redacciones");
+		return("views/_t/main");
+	}
+	
+	
+	
 }

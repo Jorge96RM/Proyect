@@ -116,4 +116,11 @@ public class UsuarioController {
 		m.put("view","home/index");
 		return "redirect:/";
 	}
+
+
+	@GetMapping("/usuario/perfil")
+	public String perfil(ModelMap m){
+		m.put("view","usuario/perfil");
+		return("views/_t/main");
+	}
 }

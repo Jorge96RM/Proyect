@@ -7,40 +7,14 @@
 #menuprincipal{
   clear: both; 
 }
-
-.color{
-	background: #696969;
-}
                    
 td{
 	margin-left: 20px;
 	display: flex;
 }
 
-table th{
-	height: 50px;
-}
-
-.titulo{
-	display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-}
-
 li{
 	list-style: none;
-}
-
-#invisible li{
-    float: left;
-	margin-top: 3px;
-}
-
-#invisible i{
-    float: right;	
-	margin-left: 15px;
-	margin-right: 20px;
 }
 
 .footer{
