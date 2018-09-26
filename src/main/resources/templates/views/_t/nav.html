@@ -17,31 +17,32 @@
 	
     <title>Hello, world!2</title>	
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					  <a class="navbar-brand" href="/">Correct English</a>
-					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuprincipal" aria-controls="menuprincipal" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					  </button>
 
-					  <div class="collapse navbar-collapse" id="menuprincipal">
-							<ul class="navbar-nav mr-auto mt-2 mt-md-0">
-								<li class="nav-item active">
-									<a class="nav-link" href="#!">Foro</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#!">Buscador</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#!">Normas</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#!">Ranking</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#!">Portal de empleo</a>
-								</li>
-							</ul>
-					  </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="/">Correct English</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuprincipal" aria-controls="menuprincipal" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="menuprincipal">
+			<ul class="navbar-nav mr-auto mt-2 mt-md-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="#!">Foro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#!">Buscador</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#!">Normas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#!">Ranking</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#!">Portal de empleo</a>
+				</li>
+			</ul>
+		</div>
 
 					
 					
@@ -56,8 +57,8 @@
 		<i class="fas fa-sign-in-alt" data-toggle="modal" data-target="#myModal"></i>	
 
 	  <!-- Modal -->
-			<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog">
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
     
 	
 
@@ -78,7 +79,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="nav-inicio-sesion" role="tabpanel">
                                 <!--Formulario de login-->
-                                <form action="home" method="POST">
+                                <form action="/home" method="POST">
                                     <div class="form-group">
                                         <label for="">Alias</label>
                                         <input type="text" class="form-control" id="aliasLogin" name="alias" placeholder="Alias"/>
@@ -97,28 +98,41 @@
                                     <div class="form-group">
                                         <label for="">Alias*</label>
 										<input type="text" class="form-control" id="alias" name="alias" placeholder="Alias"/>
+										
                                         <label for="">Contraseña*</label>
-                                        <input type="password" class="form-control" id="password" name="contrasena" placeholder="Contraseña"/>
+                                        <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña"/>
+										
                                         <label for="">Confirmar contraseña*</label>
-                                        <input type="password" class="form-control" id="password2" name="confirmarContrasena" placeholder="Confirmar contraseña"/>
+                                        <input type="password" class="form-control" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña"/>
+										
                                         <label for="">Nombre*</label>
                                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre"/>
+										
                                         <label for="">Primer apellido*</label>
 										<input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Primer apellido"/>
+										
                                         <label for="">Segundo apellido</label>
 										<input type="text" class="form-control" id="segundoApellido" name="segundoApellido" placeholder="Segundo apellido"/>
+										
                                         <label for="">Teléfono</label>
 										<input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono"/>
+										
                                         <label for="">Email*</label>
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Email"/>
+										
                                         <label for="">Sexo*</label><br/>
 										<input type="radio" name="sexo" id="selSexo" value="Hombre" checked="checked"/>Hombre
 										<input type="radio" name="sexo" id="selSexo" value="Mujer"/>Mujer
-										<br/><br/><p><strong>*</strong> Campos obligatorios</p><br/>
+										
+										<br/><br/>
+										<p><strong>*</strong> Campos obligatorios</p>
+										<br/>
+										
 										<div id="error"></div>
+										
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-											<button type="submit" class="btn btn-info" value="Validar Persona" onsubmit="return validarPersona()">Confirmar</button>
+											<button type="submit" class="btn btn-info" id="confimar" value="Validar Persona" onclick="return validarPersona()">Confirmar</button>
 										</div>
                                     </div>
                                 </form>
@@ -128,7 +142,8 @@
                 </div>
 			</div>
 		</div>
-		</li></div>
+		</li>
+		</div>
 		<li th:case="'admin'">Hola ADMIN. (<a href="/usuario/logout">Logout</a>)</li>
 		<li th:case="*"><span class="hola" th:text="'Hola ' +  ${session.user}"></span> <a class="cerrarsesion" href="/usuario/logout">Cerrar sesión</a>
 		
@@ -136,3 +151,173 @@
 		</li>
 	</div>
 </nav>
+
+<script>
+	function validarAlias(){
+		var esValido = true;
+		var alias = (document.getElementById("alias").value).toLowerCase();
+		var aliasBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,30})$");
+		var comprobarAlias = aliasBien.test(alias);
+		if(comprobarAlias == false){
+			esValido = false;
+			document.getElementById("alias").focus();
+			document.registro.alias.style.color="red";
+			document.getElementById("error").innerHTML="El alias no es válido";
+		}else{
+			esValido = true;
+			document.registro.alias.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarContrasena(){
+		var esValido = true;
+		var contrasena = document.getElementById("contrasena").value;
+		var contrasenaBien = new RegExp (/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/);
+		var comprobarContrasena = contrasenaBien.test(contrasena);
+		if(comprobarContrasena == false){
+			esValido = false;
+			document.getElementById("contrasena").focus();
+			document.registro.contrasena.style.color="red";
+			document.getElementById("error").innerHTML="La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula";
+		}else{
+			esValido = true;
+			document.registro.contrasena.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarComprobarContrasenas(){
+		var esValido = true;
+		contrasena1 = document.getElementById("contrasena").value;
+		contrasena2 = document.getElementById("confirmarContrasena").value;
+
+		if (contrasena1 != contrasena2){
+			esValido = false;
+			document.getElementById("confirmarContrasena").focus();
+			document.registro.confirmarContrasena.style.color="red";
+			document.getElementById("error").innerHTML="Las contraseñas no son iguales";
+		}else{
+			esValido = true;
+			document.registro.confirmarContrasena.style.color="";
+		}
+		return esValido;
+	} 
+
+	function validarNombre(){
+		var esValido = true;
+		var nombre = (document.getElementById("nombre").value).toLowerCase();
+		var nombreBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,30})$");
+		var comprobarNombre = nombreBien.test(nombre);
+		if(comprobarNombre == false){
+			esValido = false;
+			document.getElementById("nombre").focus();
+			document.registro.nombre.style.color="red";
+			document.getElementById("error").innerHTML="El nombre no es válido";
+		}else{
+			esValido = true;
+			document.registro.nombre.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarPrimerApellido(){
+		var esValido = true;
+		var primerApellido = (document.getElementById("primerApellido").value).toLowerCase();
+		var primerApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}(\s[a-záéíóúçA-ZÁÉÍÓÚ]{2,40})*$/;
+		var comprobarPrimerApellido = primerApellidoBien.test(primerApellido);
+		if(comprobarPrimerApellido == false){
+			esValido = false;
+			document.getElementById("primerApellido").focus();
+			document.registro.primerApellido.style.color="red";
+			document.getElementById("error").innerHTML="El primer apellido no es válido";
+		}else{
+			esValido = true;
+			document.registro.primerApellido.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarSegundoApellido(){
+		var esValido = true;
+		var segundoApellido = (document.getElementById("segundoApellido").value).toLowerCase();
+		var segundoApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}(\s[a-záéíóúçA-ZÁÉÍÓÚ]{2,40})*$/;
+		var comprobarSegundoApellido = segundoApellidoBien.test(segundoApellido);
+		if(comprobarSegundoApellido == false){
+			esValido = false;
+			document.getElementById("segundoApellido").focus();
+			document.registro.segundoApellido.style.color="red";
+			document.getElementById("error").innerHTML="El segundo apellido no es válido";
+		}else{
+			esValido = true;
+			document.registro.segundoApellido.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarTelefono(){
+		var esValido = true;
+		var telefono = document.getElementById("telefono").value;
+		var telefonoBien = new RegExp (/^[0-9]{9}$/);
+		var comprobarTelefono = telefonoBien.test(telefono);
+		if(comprobarTelefono == false){
+			esValido = false;
+			document.getElementById("telefono").focus();
+			document.registro.telefono.style.color="red";
+			document.getElementById("error").innerHTML="El telefono no es válido, debe tener 9 números";
+		}else{
+			esValido = true;
+			document.registro.telefono.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarEmail(){
+		var esValido = true;
+		var email = (document.getElementById("email").value).toLowerCase();
+		var emailBien = new RegExp ("^[a-z0-9]{1}[a-z0-9.-_]+@[a-z]+(\\.[a-z]{2,4})+$");
+		var comprobarEmail = emailBien.test(email);
+		if(comprobarEmail == false){
+			esValido = false;
+			document.getElementById("email").focus();
+			document.registro.email.style.color="red";
+			document.getElementById("error").innerHTML="El email no es válido";
+		}else{
+			esValido = true;
+			document.registro.email.style.color="";
+		} 
+		return esValido;
+	}
+	
+	function validarPersona(){
+		var alias = document.getElementById("alias").value;
+		var contrasena = document.getElementById("contrasena").value;
+		var confirmarContrasena = document.getElementById("confirmarContrasena").value;
+		var nombre = document.getElementById("nombre").value;
+		var primerApellido = document.getElementById("primerApellido").value;
+		var segundoApellido = document.getElementById("segundoApellido").value;
+		var telefono = document.getElementById("telefono").value;
+		var email = document.getElementById("email").value;
+		
+		if(validarAlias() != true){
+			return false;
+		}else if(validarContrasena() != true){
+				return false;
+		}else if(validarComprobarContrasenas() != true){
+				return false;
+		}else if(validarNombre() != true){
+				return false;	
+		}else if(validarPrimerApellido() != true){
+				return false;
+		}else if(validarSegundoApellido() != true){
+				return false;
+		}else if(validarTelefono() != true){
+			return false;	
+		}else if(validarEmail() != true){
+				return false;
+		}
+		else{
+			return true;
+		}	
+	}
+</script>

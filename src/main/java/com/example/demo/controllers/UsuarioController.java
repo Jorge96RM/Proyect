@@ -32,14 +32,14 @@ public class UsuarioController {
 	}*/
 	
 	@RequestMapping(value = "/home/", method = RequestMethod.GET)
-	public String registroo(ModelMap m){ 
+	public String registro(ModelMap m){ 
 		m.put("listaRoles", repoRol.findAll());
 		m.put("view","/");
 		return "views/_t/main";
 	}
 	
 	@RequestMapping(value = "/home/", method = RequestMethod.POST)
-	public String registrooPost(@RequestParam("alias") String alias,
+	public String registroPost(@RequestParam("alias") String alias,
 			@RequestParam("contrasena") String contrasena,
 			@RequestParam("confirmarContrasena") String confirmarContrasena,
 			@RequestParam("nombre") String nombre,
