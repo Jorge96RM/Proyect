@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="/css/index.css"/>
+<!-- CSS para la página del perfil-->
+<link rel="stylesheet" href="/css/perfil.css"/>
+</head>
+<body>
+	<div>
+		<div>
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Datos del usuario</h4>
+		                </div>
+		            </div>
+		            <div>
+		                <div class="col-md-12">
+		                    <form>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Alias</label> 
+                                <div class="col-8">
+                                  <input type="text" th:value="${session.user}"/>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Constraseña</label> 
+                                <div class="col-8">
+                                  <input type="text" value="contraseña"/>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Nombre</label> 
+                                <div class="col-8">
+                                  <input type="text" value="Juan"/>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Primer apellido</label> 
+                                <div class="col-8">
+                                  <input type="text" value="Ramirez"/>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Segundo apellido</label> 
+                                <div class="col-8">
+                                  <input type="text" value="Fernandez"/>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Email</label> 
+                                <div class="col-8">
+                                  <input type="text" value="juan123@hotmail.com"/>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Sexo</label> 
+                                <div class="col-8">
+                                  <label>Masculino</label>
+                                </div>
+                              </div>                                                    
+                             <div class="form-group row">
+                                 <div class="offset-4 col-8">
+                                  <button name="submit" type="submit" class="btn btn-info">Actualizar perfil</button>
+                                </div>
+                              </div>
+                            </form>
+		                </div>
+		            </div>
+		            
+		        </div>	    
+		</div>
+	</div>
+	<hr/>
+		<div>
+		<div>
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Estadísticas</h4>
+		                </div>
+		            </div>
+		            <div>
+		                <div class="col-md-12">
+		                    <form>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Total post realizados</label> 
+                                <div class="col-8">
+                                  <label>34</label>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-4 bold">Puntos totales</label> 
+                                <div class="col-8">
+                                  <label>200</label>
+                                </div>
+                              </div>
+                          </form>
+		                </div>
+		            </div>
+		            
+		        </div>
+		</div>
+	</div>
+</body>
+</html>

@@ -19,7 +19,6 @@ th{
 tr{
 	height: 20px;
 }
-
 .tema {
 	width: 70%;
 	text-align: left;
@@ -27,6 +26,7 @@ tr{
 }
 
 .apartado {
+	background-color: #cbf1f5;
 	text-align: left;
 }
 

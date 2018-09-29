@@ -1,5 +1,12 @@
+body {
+	background-color: #e3fdfd;
+}
+.bg-light {
+	background-color: #71c9ce !important;
+
+}
 .bienvenidos{
-	background: #FFF8DC;
+	background: #a6e3e9;
 	background-size: cover;
 	height: 100vh; 
 }
@@ -18,7 +25,7 @@ li{
 }
 
 .footer{
-	background: black;
+	background-color: #71c9ce;
 }
 
 /*# sourceMappingURL=estilos.css.map */

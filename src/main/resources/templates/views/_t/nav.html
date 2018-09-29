@@ -1,19 +1,19 @@
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css"></link>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
 	<!-- Carga de fuentes de Font Awesome -->
-	<link rel="stylesheet" href="/css/fontawesome.min.css"></link>
+	<link rel="stylesheet" href="/css/fontawesome.min.css"/>
 	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"></link>-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"></link>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
 	
 	<!-- Carga de estilos css personalizados -->
-	<link rel="stylesheet" href="/css/estilos.css"></link>
-	<link rel="stylesheet" href="/css/nav.css"></link>
+	<link rel="stylesheet" href="/css/estilos.css"/>
+	<link rel="stylesheet" href="/css/nav.css"/>
 	
     <title>Hello, world!2</title>	
 </head>
@@ -147,7 +147,7 @@
 		<li th:case="'admin'">Hola ADMIN. (<a href="/usuario/logout">Logout</a>)</li>
 		<li th:case="*"><span class="hola" th:text="'Hola ' +  ${session.user}"></span> <a class="cerrarsesion" href="/usuario/logout">Cerrar sesión</a>
 		
-		<a href="/usuario/perfil" style="text-decoration:none;color:black;"><i class="fas fa-user fa-2x"><p>Perfil</p></i></a>
+		<a href="/usuario/perfil" style="text-decoration:none;color:black;"><i class="fas fa-user fa-2x"><!--<p>Perfil</p>--></i></a>
 		</li>
 	</div>
 </nav>
