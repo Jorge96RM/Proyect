@@ -14,5 +14,9 @@ public class PostController {
 	}
 	
 	
-	
+	@GetMapping("/post/curriculums")
+	public String curriculums(ModelMap m){
+		m.put("view","post/curriculums");
+		return("views/_t/main");
+	}
 }

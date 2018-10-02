@@ -207,7 +207,7 @@
 	function validarNombre(){
 		var esValido = true;
 		var nombre = (document.getElementById("nombre").value).toLowerCase();
-		var nombreBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,30})$");
+		var nombreBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,20})$");
 		var comprobarNombre = nombreBien.test(nombre);
 		if(comprobarNombre == false){
 			esValido = false;
@@ -224,7 +224,7 @@
 	function validarPrimerApellido(){
 		var esValido = true;
 		var primerApellido = (document.getElementById("primerApellido").value).toLowerCase();
-		var primerApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}(\s[a-záéíóúçA-ZÁÉÍÓÚ]{2,40})*$/;
+		var primerApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}$/;
 		var comprobarPrimerApellido = primerApellidoBien.test(primerApellido);
 		if(comprobarPrimerApellido == false){
 			esValido = false;
@@ -241,7 +241,7 @@
 	function validarSegundoApellido(){
 		var esValido = true;
 		var segundoApellido = (document.getElementById("segundoApellido").value).toLowerCase();
-		var segundoApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}(\s[a-záéíóúçA-ZÁÉÍÓÚ]{2,40})*$/;
+		var segundoApellidoBien = /^([a-záéíóúçA-ZÁÉÍÓÚ]{2,40})?$/;
 		var comprobarSegundoApellido = segundoApellidoBien.test(segundoApellido);
 		if(comprobarSegundoApellido == false){
 			esValido = false;
@@ -258,7 +258,7 @@
 	function validarTelefono(){
 		var esValido = true;
 		var telefono = document.getElementById("telefono").value;
-		var telefonoBien = new RegExp (/^[0-9]{9}$/);
+		var telefonoBien = new RegExp (/^([0-9]{9})?$/);
 		var comprobarTelefono = telefonoBien.test(telefono);
 		if(comprobarTelefono == false){
 			esValido = false;
