@@ -5,6 +5,17 @@
 <link rel="stylesheet" href="/css/index.css"/>
 <!-- CSS para la página del perfil-->
 <link rel="stylesheet" href="/css/perfil.css"/>
+
+<script>
+		var alias = document.getElementById("alias").value;
+		var contrasena = document.getElementById("contrasena").value;
+		var confirmarContrasena = document.getElementById("confirmarContrasena").value;
+		var nombre = document.getElementById("nombre").value;
+		var primerApellido = document.getElementById("primerApellido").value;
+		var segundoApellido = document.getElementById("segundoApellido").value;
+		var telefono = document.getElementById("telefono").value;
+		var email = document.getElementById("email").value;
+</script>
 </head>
 <body>
 	<div>
@@ -27,7 +38,7 @@
                               <div class="form-group row">
                                 <label class="col-4 bold">Nombre</label> 
                                 <div class="col-8">
-                                  <input type="text" value="nombre"/>
+                                  <input type="text" name="nombre" th:value="${model.alias}"/>
                                 </div>
                               </div>
                               <div class="form-group row">

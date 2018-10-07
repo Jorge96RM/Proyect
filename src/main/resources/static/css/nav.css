@@ -8,6 +8,10 @@
 	margin-left: 15px;
 }
 
+#error{
+	color: red;
+}
+
 i{
 	font-size: 30px;
 	margin-top: 3px;

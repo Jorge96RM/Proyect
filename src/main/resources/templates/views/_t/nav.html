@@ -156,13 +156,13 @@
 	function validarAlias(){
 		var esValido = true;
 		var alias = (document.getElementById("alias").value).toLowerCase();
-		var aliasBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,30})$");
+		var aliasBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç0-9]{2,20})$");
 		var comprobarAlias = aliasBien.test(alias);
 		if(comprobarAlias == false){
 			esValido = false;
 			document.getElementById("alias").focus();
 			document.registro.alias.style.color="red";
-			document.getElementById("error").innerHTML="El alias no es válido";
+			document.getElementById("error").innerHTML="El alias debe tener entre 2 y 20 caracteres alfanuméricos";
 		}else{
 			esValido = true;
 			document.registro.alias.style.color="";
@@ -206,14 +206,14 @@
 
 	function validarNombre(){
 		var esValido = true;
-		var nombre = (document.getElementById("nombre").value).toLowerCase();
+		var nombre = document.getElementById("nombre").value;
 		var nombreBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,20})$");
 		var comprobarNombre = nombreBien.test(nombre);
 		if(comprobarNombre == false){
 			esValido = false;
 			document.getElementById("nombre").focus();
 			document.registro.nombre.style.color="red";
-			document.getElementById("error").innerHTML="El nombre no es válido";
+			document.getElementById("error").innerHTML="El nombre debe contener de 2 a 20 letras";
 		}else{
 			esValido = true;
 			document.registro.nombre.style.color="";
@@ -223,7 +223,7 @@
 	
 	function validarPrimerApellido(){
 		var esValido = true;
-		var primerApellido = (document.getElementById("primerApellido").value).toLowerCase();
+		var primerApellido = document.getElementById("primerApellido").value;
 		var primerApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}$/;
 		var comprobarPrimerApellido = primerApellidoBien.test(primerApellido);
 		if(comprobarPrimerApellido == false){
@@ -240,7 +240,7 @@
 	
 	function validarSegundoApellido(){
 		var esValido = true;
-		var segundoApellido = (document.getElementById("segundoApellido").value).toLowerCase();
+		var segundoApellido = document.getElementById("segundoApellido").value;
 		var segundoApellidoBien = /^([a-záéíóúçA-ZÁÉÍÓÚ]{2,40})?$/;
 		var comprobarSegundoApellido = segundoApellidoBien.test(segundoApellido);
 		if(comprobarSegundoApellido == false){
@@ -264,7 +264,7 @@
 			esValido = false;
 			document.getElementById("telefono").focus();
 			document.registro.telefono.style.color="red";
-			document.getElementById("error").innerHTML="El telefono no es válido, debe tener 9 números";
+			document.getElementById("error").innerHTML="El telefono debe tener 9 números";
 		}else{
 			esValido = true;
 			document.registro.telefono.style.color="";
