@@ -132,7 +132,7 @@
 										
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-											<button type="submit" class="btn btn-info" id="confimar" value="Validar Persona" onclick="return validarPersona()">Confirmar</button>
+											<button type="submit" class="btn btn-info" id="confirmar" value="Validar Persona" onclick="return validarPersona()">Confirmar</button>
 										</div>
                                     </div>
                                 </form>
@@ -299,6 +299,8 @@
 		var telefono = document.getElementById("telefono").value;
 		var email = document.getElementById("email").value;
 		
+
+		
 		if(validarAlias() != true){
 			return false;
 		}else if(validarContrasena() != true){
@@ -318,6 +320,7 @@
 		}
 		else{
 			return true;
-		}	
+		}	        
+		//var palabra_codificada = btoa(contrasena);
 	}
 </script>

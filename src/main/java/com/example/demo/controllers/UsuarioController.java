@@ -41,7 +41,6 @@ public class UsuarioController {
 	@RequestMapping(value = "/home/", method = RequestMethod.POST)
 	public String registroPost(@RequestParam("alias") String alias,
 			@RequestParam("contrasena") String contrasena,
-			@RequestParam("confirmarContrasena") String confirmarContrasena,
 			@RequestParam("nombre") String nombre,
 			@RequestParam("primerApellido") String primerApellido,
 			@RequestParam("segundoApellido") String segundoApellido,
@@ -50,7 +49,7 @@ public class UsuarioController {
 			@RequestParam("sexo") String sexo,
 			ModelMap m){
 		Rol rolPorDefecto = (Rol) repoRol.getDefaultRol();
-		Usuario u = new Usuario(alias, contrasena, confirmarContrasena, nombre, primerApellido, segundoApellido, telefono, email, sexo, rolPorDefecto);
+		Usuario u = new Usuario(alias, contrasena, nombre, primerApellido, segundoApellido, telefono, email, sexo, rolPorDefecto);
 		repoUsuario.save(u);
 		m.put("alias", alias);
 		m.put("view","/usuario/crearPost");
@@ -95,8 +94,10 @@ public class UsuarioController {
 		}
 		else {
 			s.setAttribute("user", alias);
+			s.setAttribute("userData", repoUsuario.datosPerfil(alias));
 			// inicializar sesión. Añadir nombre usuario o rl id a alguna variable de sesion
 			m.put("view", "/home/index");
+			//System.out.println(repoUsuario.datosPerfil(alias).getNombre());
 		}
 		/*
 		Usuario u = new Usuario(alias, contrasena, login);

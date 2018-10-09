@@ -22,7 +22,6 @@ public class Usuario {
 	private String alias;
 	
 	private String contrasena;
-	private String confirmarContrasena;
 	private String nombre;
 	private String primerApellido;
 	private String segundoApellido;
@@ -52,12 +51,14 @@ public class Usuario {
 	@ManyToOne
 	private Rol nombre_rol;
 	
+	public Usuario(){
+		super();
+	}
 	
-	public Usuario(String alias, String contrasena, String confirmarContrasena, String nombre, String primerApellido, String segundoApellido, String telefono, String email, String sexo, Rol nombre_rol) {
+	public Usuario(String alias, String contrasena, String nombre, String primerApellido, String segundoApellido, String telefono, String email, String sexo, Rol nombre_rol) {
 		super();
 		this.alias = alias;
 		this.contrasena = contrasena;
-		this.confirmarContrasena = confirmarContrasena;
 		this.nombre = nombre;
 		this.primerApellido = primerApellido;
 		this.segundoApellido = segundoApellido;
@@ -66,10 +67,6 @@ public class Usuario {
 		this.sexo = sexo;
 		this.nombre_rol = nombre_rol;
 		nombre_rol.getRol().add(this);
-	}
-
-	public Usuario(String alias, String contrasena2, Usuario login) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {
@@ -93,7 +90,7 @@ public class Usuario {
 	}
 	
 	public void setContrasena(String contrasena) {
-		contrasena = contrasena;
+		this.contrasena = contrasena;
 	}
 	
 	public String getNombre() {
@@ -101,7 +98,7 @@ public class Usuario {
 	}
 	
 	public void setNombre(String nombre) {
-		nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	public String getSexo() {
@@ -109,7 +106,7 @@ public class Usuario {
 	}
 
 	public void setSexo(String sexo) {
-		sexo = sexo;
+		this.sexo = sexo;
 	}
 	
 	public Collection<Post> getPost() {
@@ -126,14 +123,6 @@ public class Usuario {
 
 	public void setNombreRol(Rol nombre_rol) {
 		this.nombre_rol = nombre_rol;
-	}
-
-	public String getConfirmarContrasena() {
-		return confirmarContrasena;
-	}
-
-	public void setConfirmarContrasena(String confirmarContrasena) {
-		this.confirmarContrasena = confirmarContrasena;
 	}
 
 	public String getEmail() {

@@ -10,3 +10,18 @@ th{
 .redacciones {
 	text-align: left;
 }
+
+.nuevotema{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.paginas{
+	float: right;
+	line-height: normal;
+}
+
+.temaypagina{
+
+}

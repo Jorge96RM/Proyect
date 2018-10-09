@@ -5,17 +5,6 @@
 <link rel="stylesheet" href="/css/index.css"/>
 <!-- CSS para la página del perfil-->
 <link rel="stylesheet" href="/css/perfil.css"/>
-
-<script>
-		var alias = document.getElementById("alias").value;
-		var contrasena = document.getElementById("contrasena").value;
-		var confirmarContrasena = document.getElementById("confirmarContrasena").value;
-		var nombre = document.getElementById("nombre").value;
-		var primerApellido = document.getElementById("primerApellido").value;
-		var segundoApellido = document.getElementById("segundoApellido").value;
-		var telefono = document.getElementById("telefono").value;
-		var email = document.getElementById("email").value;
-</script>
 </head>
 <body>
 	<div>
@@ -32,43 +21,44 @@
                               <div class="form-group row">
                                 <label class="col-4 bold">Alias</label> 
                                 <div class="col-8">
-                                  <input type="text" th:value="${session.user}"/>
+                                  <input type="text" th:value="${session.userData.alias}"/>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-4 bold">Nombre</label> 
                                 <div class="col-8">
-                                  <input type="text" name="nombre" th:value="${model.alias}"/>
+                                  <input type="text" name="nombre" th:value="${session.userData.nombre}"/>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-4 bold">Primer apellido</label> 
                                 <div class="col-8">
-                                  <input type="text" value="Ramirez"/>
+                                  <input type="text" th:value="${session.userData.primerApellido}"/>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-4 bold">Segundo apellido</label> 
                                 <div class="col-8">
-                                  <input type="text" value="Fernandez"/>
+                                  <input type="text" th:value="${session.userData.segundoApellido}"/>
                                 </div>
                               </div>
 							  <div class="form-group row">
                                 <label class="col-4 bold">Teléfono</label> 
                                 <div class="col-8">
-                                  <input type="text" value="Telefono"/>
+                                  <input type="text" th:value="${session.userData.telefono}"/>
                               </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-4 bold">Email</label> 
                                 <div class="col-8">
-                                  <input type="text" value="juan123@hotmail.com"/>
+                                  <input type="text" th:value="${session.userData.email}"/>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-4 bold">Sexo</label> 
                                 <div class="col-8">
-                                  <label>Masculino</label>
+									<input type="radio" name="sexo" id="selSexo" value="Hombre"/>Hombre
+									<input type="radio" name="sexo" id="selSexo" value="Mujer"/>Mujer
                                 </div>
                               </div>                                                    
                              <div class="form-group row">
