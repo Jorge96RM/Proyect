@@ -1,3 +1,7 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
 .table td{
  border: 0px;
  padding: 0px;
