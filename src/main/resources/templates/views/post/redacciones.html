@@ -2,44 +2,56 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="/css/post.css"></link>
 </head>
-<div class="temaypagina">
-<button type="button" class="btn btn-primary nuevotema">Nuevo tema</button>
-<div class="paginas">Pagina 1</div>
-</div>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th class="redacciones" colspan="4" style="font-size: 18px;font-weight: 700">Redacciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table-secondary">
-      <th class="tema" style="font-size: 15px;font-weight: 650;">Tema</th>
-      <th style="font-size: 15px;font-weight: 650;">Último mensaje</th>
-      <th style="font-size: 15px;font-weight: 650;">Respuestas</th>
-      <th style="font-size: 15px;font-weight: 650;">Visitas</th>
-    </tr>
-    <tr>
-      <th class="tema" style="font-size: 15px;font-weight: 500;">Nombre tema</th>
-      <th style="font-size: 15px;font-weight: 500;">mensaje</th>
-      <th style="font-size: 15px;font-weight: 500;">n resp</th>
-      <th style="font-size: 15px;font-weight: 500;">n visit</th>
-    </tr>
-    <tr>
-      <th class="tema" style="font-size: 15px;font-weight: 500;">Nombre tema</th>
-      <th style="font-size: 15px;font-weight: 500;">mensaje</th>
-      <th style="font-size: 15px;font-weight: 500;">n resp</th>
-      <th style="font-size: 15px;font-weight: 500;">n visit</th>
-    </tr>
-    <tr>
-      <th class="tema" style="font-size: 15px;font-weight: 500;">Nombre tema</th>
-      <th style="font-size: 15px;font-weight: 500;">mensaje</th>
-      <th style="font-size: 15px;font-weight: 500;">n resp</th>
-      <th style="font-size: 15px;font-weight: 500;">n visit</th>
-    </tr>
-  </tbody>
-</table>
-<div>
-<button type="button" class="btn btn-primary nuevotema">Nuevo tema</button>
-<span class="paginas">Pagina 1</span>
-</div>
+
+	<div class="temaypagina">
+	<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
+	<div class="paginas">Pagina 1</div>
+	</div>
+
+		<table class="table">
+		  <thead class="thead-dark">
+			<tr>
+			  <th class="redacciones" colspan="4" style="font-size: 18px;font-weight: 700">Redacciones</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr class="table-secondary">
+			  <th class="tema" style="font-size: 15px;font-weight: 650;">Tema</th>
+			  <th style="font-size: 15px;font-weight: 650;">Último mensaje</th>
+			  <th style="font-size: 15px;font-weight: 650;">Respuestas</th>
+			  <th style="font-size: 15px;font-weight: 650;">Visitas</th>
+			</tr>
+			<tr>
+			  <th class="tema" style="font-size: 15px;font-weight: 500;">Nombre tema</th>
+			  <th style="font-size: 15px;font-weight: 500;">mensaje</th>
+			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
+			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
+			</tr>
+			<tr>
+			  <th class="tema" style="font-size: 15px;font-weight: 500;">Nombre tema</th>
+			  <th style="font-size: 15px;font-weight: 500;">mensaje</th>
+			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
+			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
+			</tr>
+			<tr>
+			  <th class="tema" style="font-size: 15px;font-weight: 500;">Nombre tema</th>
+			  <th style="font-size: 15px;font-weight: 500;">mensaje</th>
+			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
+			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
+			</tr>
+		  </tbody>
+		</table>
+		
+	<div class="temaypagina">
+	<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
+	<div class="paginas">Pagina 1</div>
+	</div>
+	
+<script>
+
+	if(
+	function crearTema(){
+		alert("Para crar un tema antes debes registrarte");
+	}
+	
+</script>

@@ -14,10 +14,9 @@
 	<!-- Carga de estilos css personalizados -->
 	<link rel="stylesheet" href="/css/estilos.css"/>
 	<link rel="stylesheet" href="/css/nav.css"/>
-
+	
 	<!-- Tipo de fuente -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-
 	
     <title>Hello, world!2</title>	
 </head>
@@ -92,7 +91,7 @@
                                     </div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-										<button type="submit" class="btn btn-info">Confirmar</button>
+										<button type="submit" class="btn btn-info" onclick="changePassword()">Confirmar</button>
 									</div>
                                 </form>
                             </div>
@@ -125,8 +124,8 @@
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Email"/>
 										
                                         <label for="">Sexo*</label><br/>
-										<input type="radio" name="sexo" id="selSexo" value="Hombre" checked="checked"/>Hombre
-										<input type="radio" name="sexo" id="selSexo" value="Mujer"/>Mujer
+										<input type="radio" name="sexo" id="selSexoH" value="Hombre" checked="checked"/>Hombre
+										<input type="radio" name="sexo" id="selSexoM" value="Mujer"/>Mujer
 										
 										<br/><br/>
 										<p><strong>*</strong> Campos obligatorios</p>
@@ -157,6 +156,16 @@
 </nav>
 
 <script>
+	function hashearPassword(plainPassword){
+		return md5(plainPassword);
+	}
+	
+	function changePassword(){
+		document.getElementById("contrasena").value = hashearPassword(document.getElementById("contrasena").value);
+		document.getElementById("confirmarContrasena").value = hashearPassword(document.getElementById("confirmarContrasena").value);
+		document.getElementById("passwordLogin").value = hashearPassword(document.getElementById("passwordLogin").value);
+	}
+	
 	function validarAlias(){
 		var esValido = true;
 		var alias = (document.getElementById("alias").value).toLowerCase();
@@ -323,8 +332,8 @@
 				return false;
 		}
 		else{
+			changePassword();
 			return true;
 		}	        
-		//var palabra_codificada = btoa(contrasena);
 	}
 </script>

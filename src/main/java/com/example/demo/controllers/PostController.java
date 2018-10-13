@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PostController {
 	
+	@GetMapping("/post/crearPost")
+	public String crearPost(ModelMap m){
+		m.put("view","post/crearPost");
+		return("views/_t/main");
+	}
+	
 	@GetMapping("/post/redacciones")
 	public String redacciones(ModelMap m){
 		m.put("view","post/redacciones");
