@@ -39,5 +39,9 @@ tr{
 }
 
 #fila{
-		height: 20px;
+	height: 20px;
+}
+
+#foro{
+	color: black;
 }

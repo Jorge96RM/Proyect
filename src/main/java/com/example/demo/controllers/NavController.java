@@ -12,4 +12,10 @@ public class NavController {
 		m.put("view","nav/ranking");
 		return("views/_t/main");
 	}
+	
+	@GetMapping("/nav/portal")
+	public String portal(ModelMap m){
+		m.put("view","nav/portal");
+		return("views/_t/main");
+	}
 }
