@@ -18,4 +18,9 @@ public class NavController {
 		m.put("view","nav/portal");
 		return("views/_t/main");
 	}
+	@GetMapping("/nav/normas")
+	public String normas(ModelMap m){
+		m.put("view","nav/normas");
+		return("views/_t/main");
+	}
 }

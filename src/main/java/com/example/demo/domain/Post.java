@@ -37,7 +37,7 @@ public class Post {
 	}
 
 	public void setTitulo(String titulo) {
-		titulo = titulo;
+		this.titulo = titulo;
 	}
 	
 	public Usuario getPostSuyo() {
