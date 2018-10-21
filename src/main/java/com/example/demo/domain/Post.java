@@ -14,16 +14,42 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
+	private String contenido;
+	private Long nRespuestas;
+	private Long nVisitas;
 	
+	public Long getnRespuestas() {
+		return nRespuestas;
+	}
+
+	public void setnRespuestas(Long nRespuestas) {
+		this.nRespuestas = nRespuestas;
+	}
+
+	public Long getnVisitas() {
+		return nVisitas;
+	}
+
+	public void setnVisitas(Long nVisitas) {
+		this.nVisitas = nVisitas;
+	}
+
 	@ManyToOne
 	private Usuario PostSuyo;
 	
-	public Post(String titulo, Usuario postSuyo) {
+	public Post(String titulo, String contenido, Usuario postSuyo) {
 		super();
 		this.titulo = titulo;
+		this.contenido = contenido;
+		this.nRespuestas = 0L;
+		this.nVisitas = 0L;
 		PostSuyo = postSuyo;
 	}
 	
+	public Post() {
+		super();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -46,5 +72,13 @@ public class Post {
 
 	public void setPostSuyo(Usuario postSuyo) {
 		PostSuyo = postSuyo;
+	}
+
+	public String getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
 	}
 }

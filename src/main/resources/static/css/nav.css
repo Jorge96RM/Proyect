@@ -33,9 +33,17 @@ i{
 	margin-top: 4px;
 }
 
-p{
+.campos{
 	position: absolute;
 	font-size: 12px;
 	margin-top: 2px;
 	margin-left: -1px;
+}
+
+#redes ul li{
+	display: inline-block;
+}
+
+#redes ul li a{
+	display: block;
 }

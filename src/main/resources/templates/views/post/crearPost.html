@@ -1,23 +1,23 @@
 <div class="col-md-9 personal-info">
     <h3>Crear Post</h3>
     
-    <form class="form-horizontal align-content-center" role="form">
+    <form action="/post/crea" method="POST" name="crea" id="crea" class="form-horizontal align-content-center" role="form">
       <div class="form-group">
         <label class="col-lg-3 control-label">Título:</label>
         <div class="col-lg-8">
-          <input class="form-control" type="text"/>
+          <input class="form-control" type="text" name="titulo" id="titulo" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-3 control-label">Mensaje:</label>
         <div class="col-lg-8">
-          <textarea name="" id="" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+          <textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
         </div>
     </div>
       <div class="form-group">
         <label class="col-md-3 control-label"></label>
         <div class="col-md-8">
-          <input type="button" class="btn btn-info" value="Publicar nuevo tema"/>
+          <input type="submit" class="btn btn-info" value="Publicar nuevo tema"/>
           <input type="reset" class="btn btn-default" value="Cancelar"/>
         </div>
       </div>

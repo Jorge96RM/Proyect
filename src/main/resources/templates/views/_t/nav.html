@@ -32,11 +32,11 @@
 				<li class="nav-item">
 					<a class="nav-link" id="foro" href="/">Foro</a>
 				</li>
-				<!--<li class="nav-item">
-					<a class="nav-link" href="#!">Buscador</a>
-				</li>-->
 				<li class="nav-item">
-					<a class="nav-link" href="/nav/normas">Normas</a>
+					<a class="nav-link" href="#!">Buscador</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="normas" href="/nav/normas">Normas</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" id="rank" href="/nav/ranking">Ranking</a>
@@ -82,7 +82,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="nav-inicio-sesion" role="tabpanel">
                                 <!--Formulario de login-->
-                                <form action="/home" method="POST">
+                                <form action="/login" method="POST">
                                     <div class="form-group">
                                         <label for="">Alias</label>
                                         <input type="text" class="form-control" id="aliasLogin" name="alias" placeholder="Alias"/>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="tab-pane fade" id="nav-registro" role="tabpanel">
                                 <!--Formulario de registro-->
-                                <form action="/home/" method="POST" name="registro" id="registro">
+                                <form action="/registro" method="POST" name="registro" id="registro">
                                     <div class="form-group">
                                         <label for="">Alias*</label>
 										<input type="text" class="form-control" id="alias" name="alias" placeholder="Alias"/>
@@ -128,7 +128,7 @@
 										<input type="radio" name="sexo" id="selSexoM" value="Mujer"/>Mujer
 										
 										<br/><br/>
-										<p><strong>*</strong> Campos obligatorios</p>
+										<p class=""><strong>*</strong> Campos obligatorios</p>
 										<br/>
 										
 										<div id="error"></div>

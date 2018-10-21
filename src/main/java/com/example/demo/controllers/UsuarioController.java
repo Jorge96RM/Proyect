@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.domain.Post;
 import com.example.demo.domain.Rol;
 import com.example.demo.domain.Usuario;
 import com.example.demo.repositories.RolRepository;
 import com.example.demo.repositories.UsuarioRepository;
+import com.example.demo.repositories.PostRepository;
 
 @Controller
 public class UsuarioController {
@@ -23,22 +25,17 @@ public class UsuarioController {
 	private UsuarioRepository repoUsuario;
 	@Autowired
 	private RolRepository repoRol;
+	@Autowired
+	private RolRepository repoPost;
 	
-	
-	/*@GetMapping("/usuario/registrarse")
-	public String registrarse(ModelMap m){
-		m.put("view","usuario/crear");
-		return("views/_t/main");
-	}*/
-	
-	@RequestMapping(value = "/home/", method = RequestMethod.GET)
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public String registro(ModelMap m){ 
 		m.put("listaRoles", repoRol.findAll());
 		m.put("view","/");
 		return "views/_t/main";
 	}
 	
-	@RequestMapping(value = "/home/", method = RequestMethod.POST)
+	@RequestMapping(value = "/registro", method = RequestMethod.POST)
 	public String registroPost(@RequestParam("alias") String alias,
 			@RequestParam("contrasena") String contrasena,
 			@RequestParam("nombre") String nombre,
@@ -56,34 +53,13 @@ public class UsuarioController {
 		return "views/_t/main";
 	}
 	
-	/*@GetMapping("/login")
-	public String login(ModelMap m){
-		m.put("view","login/login");
-		return("views/_t/main");
-	}*/
-	
-	/*@PostMapping("/login")
-	public String login(@RequestParam("nombre") String nombre, 
-			@RequestParam("pwd") String pwd, 
-			ModelMap m, 
-			HttpSession s){
-		if(nombre.equals("admin") && pwd.equals("admin")){
-			m.put("view", "login/loginOK");
-			s.setAttribute("user", "admin");
-		}else{
-			s.setAttribute("user", "anonymous");
-			m.put("view", "login/loginError");
-		}
-		return "views/_t/main";
-	}*/
-	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(ModelMap m){ 
 		m.put("view","/");
 		return "views/_t/main";
 	}
 	
-	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String homeOK(@RequestParam("alias") String alias,
 			@RequestParam("contrasena") String contrasena,
 			ModelMap m,
@@ -96,7 +72,8 @@ public class UsuarioController {
 			s.setAttribute("user", alias);
 			s.setAttribute("userData", repoUsuario.datosPerfil(alias));
 			// inicializar sesión. Añadir nombre usuario o rl id a alguna variable de sesion
-			m.put("view", "/home/index");
+			//m.put("view", "/home/index");
+			return "redirect:/";
 			//System.out.println(repoUsuario.datosPerfil(alias).getNombre());
 		}
 		/*
@@ -124,4 +101,42 @@ public class UsuarioController {
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}
+	
+	/*@GetMapping("/post/redacciones")
+	public String crea(ModelMap m){ 
+		m.put("listaPost", repoPost.findAll());
+		m.put("view","/");
+		return "views/_t/main";
+	}
+	
+	@PostMapping("/post/redacciones")
+	public String creaPost(@RequestParam("titulo") String titulo,
+			@RequestParam("contenido") String contenido,
+			ModelMap m){
+		Usuario nombrePorDefecto = (Usuario) repoUsuario.crearUnPost();
+		Post p = new Post(titulo, contenido, nombrePorDefecto);
+		repoPost.save(p);
+		m.put("view","/");
+		return "views/_t/main";
+	}*/
+	
+	/*@RequestMapping(value = "/post/crear", method = RequestMethod.GET)
+	public String crea(ModelMap m){ 
+		m.put("listaPost", repoPost.findAll());
+		m.put("view","/");
+		return "views/_t/main";
+	}*/
+	
+	/*@RequestMapping(value = "/post/crear", method = RequestMethod.POST)
+	public String crearPost(@RequestParam("titulo") String titulo,
+			@RequestParam("contenido") String contenido,
+			@RequestParam("alias") String alias,
+			ModelMap m){
+		//Rol rolPorDefecto = (Rol) repoRol.getDefaultRol();
+		Usuario nombrePorDefecto = (Usuario) repoUsuario.crearUnPost();
+		Post p = new Post(titulo, contenido, nombrePorDefecto);
+		repoPost.save(p);
+		m.put("view","./");
+		return "views/_t/main";
+	}*/
 }

@@ -2,7 +2,9 @@ package com.example.demo.repositories;
 
 import com.example.demo.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PostRepository extends JpaRepository<Post, Long>{
+@Repository
+public interface PostRepository extends JpaRepository<Post, Long>, PostRepositoryCustom{
 	
 }
