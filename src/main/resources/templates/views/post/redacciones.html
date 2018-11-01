@@ -1,6 +1,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="/css/post.css"></link>
+	<link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
+	<script th:src="@{/js/jquery.dataTables.js}"></script>
+	
 </head>
 
 <div th:switch="${session.user}">
@@ -8,42 +11,26 @@
 		<li th:case="*">
 			<div class="temaypagina">
 			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
-				<div class="paginacion">
-					<ul>
-						<li><a href="pagina1.html" class="active">1</a></li>
-						<li><a href="pagina2.html">2</a></li>
-						<li><a href="pagina3.html">3</a></li>
-						<li><a href="pagina4.html">4</a></li>
-						<li><a href="pagina5.html">5</a></li>
-					</ul>
-				</div>
 			</div>
 		</li>
 </div>
-	
-		<table class="table">
-		  <thead class="thead-dark">
+<table id="reda" class="display" style="width:100%">
+		<thead>
 			<tr>
-			  <th class="redacciones" colspan="3" style="font-size: 18px;font-weight: 700">Redacciones</th>
+			  <th class="apartado" colspan="4" style="font-size: 18px;font-weight: 700;background-color: #cbf1f5;">Redacciones</th>
 			</tr>
-		  </thead>
-		  <tbody>
-			<tr class="table-secondary">
-			  <th class="tema" style="font-size: 15px;font-weight: 650;">Tema</th>
+            <tr>
+              <th class="tema" style="font-size: 15px;font-weight: 650;">Tema</th>
 			  <th style="font-size: 15px;font-weight: 650;">Respuestas</th>
 			  <th style="font-size: 15px;font-weight: 650;">Visitas</th>
-			</tr>
-		    <tr th:each = "post: ${session.posts}">
-		      <th class="tema" style="font-size: 15px;font-weight: 500;" th:text="${post.titulo}"></th>
+            </tr>
+        </thead>
+            <tr th:each = "post: ${session.posts}">
+			  <th class="tema" style="font-size: 15px;font-weight: 500;" th:text="${post.titulo}"></th>
 			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
 			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
-		       <!-- <td th:text="${post.ultimoPost}"></td>
-		        <td th:text="${post.nRespuestas}"></td>
-		        <td th:text="${post.nVisitas}"></td> -->
-		    </tr>
-
-		  </tbody>
-		</table>
+            </tr>
+    </table>
 	<hr/>
 	
 <div th:switch="${session.user}">
@@ -51,25 +38,13 @@
 		<li th:case="*">
 			<div class="temaypagina">
 			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
-				<div class="paginacion">
-					<ul>
-						<li><a href="pagina1.html" class="active">1</a></li>
-						<li><a href="pagina2.html">2</a></li>
-						<li><a href="pagina3.html">3</a></li>
-						<li><a href="pagina4.html">4</a></li>
-						<li><a href="pagina5.html">5</a></li>
-					</ul>
-				</div>
 			</div>
 		</li>
 </div>
-
-	
 <script>
+$('#reda').DataTable( {
+    responsive: true,
+	ordering: false
+} );
 
-	if(
-	function crearTema(){
-		alert("Para crar un tema antes debes registrarte");
-	}
-	
 </script>
