@@ -49,7 +49,7 @@ public class Rol {
 	}
 
 	public void setNombreRol(String nombreRol) {
-		nombre_rol = nombre_rol;
+		this.nombre_rol = nombreRol;
 	}
 
 	public Collection<Usuario> getRol() {

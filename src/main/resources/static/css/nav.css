@@ -22,15 +22,11 @@ i{
 }
 
 .hola{
-	position: absolute;
-	margin-left: -300px;
-	margin-top: 4px;
+	float: right;
 }
 
 .cerrarsesion{
-	position: absolute;
-	margin-left: -120px;
-	margin-top: 4px;
+	float: right;
 }
 
 .campos{

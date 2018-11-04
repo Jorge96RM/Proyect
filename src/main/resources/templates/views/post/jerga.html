@@ -1,0 +1,50 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="/css/post.css"></link>
+	<link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
+	<script th:src="@{/js/jquery.dataTables.js}"></script>
+	
+</head>
+
+<div th:switch="${session.user}">
+		<li th:case="null"></li>
+		<li th:case="*">
+			<div class="temaypagina">
+			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
+			</div>
+		</li>
+</div>
+<table id="jer" class="display" style="width:100%">
+		<thead>
+			<tr>
+			  <th class="apartado" colspan="4" style="font-size: 18px;font-weight: 700;background-color: #cbf1f5;">Jerga</th>
+			</tr>
+            <tr>
+              <th class="tema" style="font-size: 15px;font-weight: 650;">Tema</th>
+			  <th style="font-size: 15px;font-weight: 650;">Respuestas</th>
+			  <th style="font-size: 15px;font-weight: 650;">Visitas</th>
+            </tr>
+        </thead>
+            <tr th:each = "post: ${session.posts}">
+			  <th class="tema" style="font-size: 15px;font-weight: 500;" th:text="${post.titulo}"></th>
+			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
+			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
+            </tr>
+    </table>
+	<hr/>
+	
+<div th:switch="${session.user}">
+		<li th:case="null"></li>
+		<li th:case="*">
+			<div class="temaypagina">
+			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
+			</div>
+		</li>
+</div>
+<script>
+$('#jer').DataTable( {
+    responsive: true,
+	ordering: false
+} );
+
+</script>

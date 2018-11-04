@@ -23,10 +23,16 @@ th{
 tr{
 	height: 20px;
 }
+
 .tema {
 	width: 70%;
 	text-align: left;
 	height: 15px;
+}
+
+.tema a{
+	text-decoration: none;
+	color: black !important;
 }
 
 .apartado {

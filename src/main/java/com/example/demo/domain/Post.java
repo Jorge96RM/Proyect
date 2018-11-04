@@ -18,6 +18,9 @@ public class Post {
 	private Long nRespuestas;
 	private Long nVisitas;
 	
+	@ManyToOne
+	private Categoria nombre_categoria;
+	
 	public Long getnRespuestas() {
 		return nRespuestas;
 	}
@@ -37,12 +40,13 @@ public class Post {
 	@ManyToOne
 	private Usuario PostSuyo;
 	
-	public Post(String titulo, String contenido, Usuario postSuyo) {
+	public Post(String titulo, String contenido, Usuario postSuyo, Categoria categoria) {
 		super();
 		this.titulo = titulo;
 		this.contenido = contenido;
 		this.nRespuestas = 0L;
 		this.nVisitas = 0L;
+		this.nombre_categoria = categoria;
 		PostSuyo = postSuyo;
 	}
 	

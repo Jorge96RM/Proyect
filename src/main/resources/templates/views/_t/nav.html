@@ -146,9 +146,18 @@
 		</li>
 		</div>
 		<li th:case="'admin'">Hola ADMIN. (<a href="/usuario/logout">Logout</a>)</li>
-		<li th:case="*"><span class="hola" th:text="'Hola ' +  ${session.user}"></span> <a class="cerrarsesion" href="/usuario/logout">Cerrar sesión</a>
-		
-		<a href="/usuario/perfil" style="text-decoration:none;color:black;"><i class="fas fa-user fa-2x"><!--<p>Perfil</p>--></i></a>
+		<li th:case="*">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="nav-item">
+					<span th:text="'Hola ' +  ${session.user}"></span> 
+				</li>
+				<li>
+					<a href="/usuario/logout" style="margin-left: 15px;margin-right: 15px;">Cerrar sesión</a>
+				</li>
+				<li>
+					<a href="/usuario/perfil" style="text-decoration:none;color:black;"><i class="fas fa-user fa-2x"><!--<p>Perfil</p>--></i></a>
+				</li>
+			</ul>
 		</li>
 	</div>
 </nav>
