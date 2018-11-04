@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#buscador").hover(function () {
+    $("#buscador").click(function () {
         $("#barra").slideToggle();
     });
 });
