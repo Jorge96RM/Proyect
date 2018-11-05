@@ -33,6 +33,12 @@ public class PostController {
 		return("views/_t/main");
 	}
 	
+	@GetMapping("/post/respuesta")
+	public String respuesta(ModelMap m){
+		m.put("view","post/respuesta");
+		return("views/_t/main");
+	}
+	
 	@GetMapping("/post/redacciones")
 	public String redacciones(ModelMap m,
 		HttpSession s){
@@ -124,6 +130,6 @@ public class PostController {
 		Post p = new Post(titulo, contenido, user, categoria);
 		System.out.println(user.getAlias());
 		repoPost.save(p);
-		return "redirect:/";
+		return "redirect:/post/respuesta";
 	}
 }

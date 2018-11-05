@@ -10,14 +10,34 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
 </head>
 
+<script>
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script>
+
 <body>
   <div class="card-body">
     <div class="row">
 
       <div class="col-md-3">
         <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" alt="avatar" />
-          <input type="file" class="form-control" />
+          <!--<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" alt="avatar" /> -->
+          <!-- <input type="file" class="form-control" /> -->
+		  <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
+		  <input type="file" style="width: 175px;" onchange="previewFile()"></input>
         </div>
       </div>
 

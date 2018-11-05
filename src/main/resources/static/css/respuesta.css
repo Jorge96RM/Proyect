@@ -1,0 +1,14 @@
+.card {
+    background-color: #e4e2e2de;
+    border-radius: 5px;
+    height: 120px;
+}
+.iconos {
+    float: right;
+}
+img {
+    padding: 3px 0 3px 0;
+}
+a {
+    color: black;
+}
