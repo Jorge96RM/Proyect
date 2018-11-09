@@ -3,7 +3,6 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="/css/index.css" />
   <!-- CSS para la página del perfil-->
   <link rel="stylesheet" href="/css/perfil.css" />
   <!-- Fuente -->
@@ -11,21 +10,23 @@
 </head>
 
 <script>
-function previewFile() {
-  var preview = document.querySelector('img');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
+	function previewFile() {
+	  var preview = document.querySelector('img');
+	  var file    = document.querySelector('input[type=file]').files[0];
+	  var reader  = new FileReader();
 
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
+	  reader.onloadend = function () {
+		preview.src = reader.result;
+		document.getElementById("imgString").value = reader.result;
+		console.log(document.getElementById("imgString").value);
+	  }
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
-}
+	  if (file) {
+		reader.readAsDataURL(file);
+	  } else {
+		preview.src = "";
+	  }
+	}
 </script>
 
 <body>
@@ -36,7 +37,8 @@ function previewFile() {
         <div class="text-center">
           <!--<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" alt="avatar" /> -->
           <!-- <input type="file" class="form-control" /> -->
-		  <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
+		  <img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" alt="Image preview..." />
+		  <img th:unless="${session.userData.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
 		  <input type="file" style="width: 175px;" onchange="previewFile()"></input>
         </div>
       </div>
@@ -44,7 +46,7 @@ function previewFile() {
       <div class="col-md-9 personal-info">
         <h3>Datos de usuario</h3>
 
-        <form class="form-horizontal" role="form">
+        <form action="/perfil" method="POST" name="perfil" id="perfil" class="form-horizontal">
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Alias:</strong></label>
             <div class="col-lg-8">
@@ -54,31 +56,31 @@ function previewFile() {
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Nombre:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" th:value="${session.userData.nombre}" />
+              <input class="form-control" id="nombre" name="nombre" type="text" th:value="${session.userData.nombre}" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Primer apellido:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" th:value="${session.userData.primerApellido}" />
+              <input class="form-control" id="primerApellido" name="primerApellido" type="text" th:value="${session.userData.primerApellido}" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Segundo Apellido:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" th:value="${session.userData.segundoApellido}" />
+              <input class="form-control" id="segundoApellido" name="segundoApellido" type="text" th:value="${session.userData.segundoApellido}" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Email:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" th:value="${session.userData.email}" />
+              <input class="form-control" id="email" name="email" type="text" th:value="${session.userData.email}" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label"><strong>Telefono:</strong></label>
             <div class="col-md-8">
-              <input class="form-control" type="text" th:value="${session.userData.telefono}" />
+              <input class="form-control" id="telefono" name="telefono" type="text" th:value="${session.userData.telefono}" />
             </div>
           </div>
           <div class="form-group">
@@ -87,11 +89,12 @@ function previewFile() {
               <td th:text="${session.userData.sexo}"></td>
             </div>
           </div>
+		  <input type="hidden" id="imgString" name="imgString" value="" />
 
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="button" class="btn btn-info" value="Guardar cambios" />
+              <input type="submit" class="btn btn-info" id="guardarCambios" value="Guardar cambios" />
               <input type="reset" class="btn btn-default" value="Cancelar" />
             </div>
           </div>

@@ -128,7 +128,6 @@ public class PostController {
 		Usuario user = (Usuario) s.getAttribute("userData");
 		Categoria categoria = repoCategoria.getByName(categoriaName);
 		Post p = new Post(titulo, contenido, user, categoria);
-		System.out.println(user.getAlias());
 		repoPost.save(p);
 		return "redirect:/post/respuesta";
 	}
