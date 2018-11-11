@@ -3,22 +3,46 @@
 	<link rel="stylesheet" href="/css/respuesta.css"></link>	
 </head>
 <body> 
-    <div class="card col-md-12">
-        <div class="row ">
-            <div class="col-md-2">
-                <img src="https://picsum.photos/200/300/?random" class="rounded-circle" width="100" height="100"></img>
-            </div>
-            <div class="col-md-10">
-                <div class="card-block">
-                    <h6 class="card-title">Nombre de usuario</h6>
-                    <p class="card-text text-justify">Mensaje de respuesta.</p>
-                    <div class="iconos">
-                            <a href=""><i class="far fa-thumbs-up"></i></a>
-                            <a href=""><i class="far fa-thumbs-down"></i></a>
-                            <a href=""><i class="fas fa-reply"></i></a>
+        <div th:switch="${session.user}">
+                <li th:case="null"></li>
+                <li th:case="*">
+                    <div class="temaypagina">
+                    <a href="/post/respuesta"><button type="button" class="btn btn-primary nueva-respuesta" onclick="crearElemento()">Responder</button></a>
                     </div>
-                </div>
+                </li>
+        </div>
+
+        <div class="row" id="recuadro">
+            <div class="col-lg-2">
+                <img src="https://picsum.photos/200/300/?random" class="rounded-circle" width="100" height="100"/>
+            </div>
+            <div class="col-lg-10">
+                    <div class="card-title"><strong>Nombre de usuario</strong></div>
+                    <div class="card-text text-justify ">Mensaje de respuesta.</div>
+                    <div class="iconos">
+                            <a href=""><i class="far fa-thumbs-up fa-lg"></i></a>
+                            <a href=""><i class="far fa-thumbs-down fa-lg"></i></a>
+                            <a href=""><i class="fas fa-reply fa-lg"></i></a>
+                    </div>     
             </div>
         </div>
+
+<div th:switch="${session.user}">
+		<li th:case="null"></li>
+		<li th:case="*">
+			<div class="temaypagina">
+			<a href="/post/respuesta"><button type="button" class="btn btn-primary nueva-respuesta" onclick="">Responder</button></a>
+			</div>
+		</li>
 </div>
+
+<script>
+        function crearElemento(){
+                console.log("ok");
+                var c = document.getElementById("recuadro");
+                var clon = c.cloneNode("recuadro");
+                document.body.appendChild(clon);
+        }
+
+</script>
 </body>

@@ -1,37 +1,63 @@
 <head>
-  <link rel="stylesheet" href="/css/trumbowyg.css"></link>
+  <link rel="stylesheet" href="/css/trumbowyg.css">
+  </link>
   <script src="/js/trumbowyg.js"></script>
 
-    <script>
-      $(document).ready(function(){
+  <script>
+    $(document).ready(function(){
         $('textarea').trumbowyg();
       });
     
     </script>
 </head>
 <div class="col-md-9 personal-info">
-    <h3>Crear Post</h3>
-    
-    <form action="/post/crea" method="POST" name="crea" id="crea" class="form-horizontal align-content-center" role="form">
-      <div class="form-group">
-        <label class="col-lg-3 control-label">Título:</label>
-        <div class="col-lg-8">
-          <input class="form-control" type="text" name="titulo" id="titulo" />
-        </div>
+  <h3 style="margin-top:10px;">Crear Post</h3>
+
+  <form action="/post/crea" method="POST" name="crea" id="crea" class="form-horizontal align-content-center" role="form">
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Título:</label>
+      <div class="col-lg-8">
+        <input class="form-control" type="text" name="titulo" id="titulo" />
+        <div id="tituloPost"></div>
+      </div>
     </div>
     <div class="form-group">
-        <label class="col-lg-3 control-label">Mensaje:</label>
-        <div class="col-lg-8">
-          <textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
-        </div>
-    </div>
-      <div class="form-group">
-        <label class="col-md-3 control-label"></label>
-        <div class="col-md-8">
-          <input type="submit" class="btn btn-info" value="Publicar nuevo tema"/>
-          <input type="reset" class="btn btn-default" value="Cancelar"/>
-        </div>
+      <label class="col-lg-3 control-label">Mensaje:</label>
+      <div class="col-lg-8" style="min-width: 110%;">
+        <textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+        <div id="mensaje"></div>
       </div>
-	  <input type="hidden" id="categoria" name="categoria" th:value="${session.categoria}" />
-    </form>
-  </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label"></label>
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-info" value="Validar campos" onclick="return validarCampos()">Publicar nuevo tema</button>
+        <input type="reset" class="btn btn-default" value="Cancelar" />
+      </div>
+    </div>
+    <input type="hidden" id="categoria" name="categoria" th:value="${session.categoria}" />
+  </form>
+</div>
+
+<script>
+  function validarCampos(){
+    //console.log("OK");
+    var titulo = document.getElementById("titulo").value;
+    var testTitulo = /^[\W\s\w]{1,50}$/i;
+
+    var mensaje = document.getElementById("contenido").value;
+    var testMensaje = /^[\W\s\w]{1,200}$/i;
+
+    if (testTitulo.test(titulo)) {
+      document.getElementById("tituloPost").innerHTML = "Correcto";
+    } else {
+      document.getElementById("tituloPost").innerHTML = "No es correcto";
+    }
+
+     if (testMensaje.test(mensaje)) {
+      document.getElementById("mensaje").innerHTML = "Correcto";
+    } else {
+      document.getElementById("mensaje").innerHTML = "No es correcto";
+    }
+  }
+</script>

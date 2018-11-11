@@ -1,14 +1,22 @@
-.card {
-    background-color: #e4e2e2de;
+.caja {
+    background-color: #d3d0d0de;
     border-radius: 5px;
     height: 120px;
 }
+
 .iconos {
     float: right;
 }
+
 img {
     padding: 3px 0 3px 0;
 }
+
 a {
     color: black;
+}
+
+.nueva-respuesta {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

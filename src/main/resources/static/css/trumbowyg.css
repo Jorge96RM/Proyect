@@ -38,7 +38,9 @@
   margin: 17px auto; }
 
 .trumbowyg-box .trumbowyg-editor {
-  margin: 0 auto; }
+  margin: 0 auto; 
+  background-color: white;
+}
 
 .trumbowyg-box.trumbowyg-fullscreen {
   background: #FEFEFE;

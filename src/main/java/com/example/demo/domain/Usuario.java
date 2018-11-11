@@ -28,6 +28,8 @@ public class Usuario {
 	private String telefono;
 	private String email;
 	private String sexo;
+	@Column(length=5000)
+	private String foto;
 	
 	@OneToMany(mappedBy="PostSuyo")
 	private Collection<Post> Post;
@@ -139,6 +141,18 @@ public class Usuario {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		if("".equals(foto)){
+			this.foto = null;
+		}else{
+			this.foto = foto;
+		}
 	}
 	
 

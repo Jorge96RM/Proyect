@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.sql.Blob;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.Post;
 import com.example.demo.domain.Rol;
@@ -102,41 +105,25 @@ public class UsuarioController {
 		return("views/_t/main");
 	}
 	
-	/*@GetMapping("/post/redacciones")
-	public String crea(ModelMap m){ 
-		m.put("listaPost", repoPost.findAll());
-		m.put("view","/");
+	@RequestMapping(value = "/perfil", method = RequestMethod.POST)
+	public String actualizarPerfil(@RequestParam("nombre") String nombre,
+			@RequestParam("primerApellido") String primerApellido,
+			@RequestParam("segundoApellido") String segundoApellido,
+			@RequestParam("telefono") String telefono,
+			@RequestParam("email") String email,
+			@RequestParam("imgString") String imgString,
+			ModelMap m,
+			HttpSession s){
+		Usuario u = (Usuario) s.getAttribute("userData");
+		u.setNombre(nombre);
+		u.setPrimerApellido(primerApellido);
+		u.setSegundoApellido(segundoApellido);
+		u.setTelefono(telefono);
+		u.setEmail(email);
+		u.setFoto(imgString);
+		repoUsuario.save(u);
+		System.out.println(imgString);
+		m.put("view","usuario/perfil");
 		return "views/_t/main";
 	}
-	
-	@PostMapping("/post/redacciones")
-	public String creaPost(@RequestParam("titulo") String titulo,
-			@RequestParam("contenido") String contenido,
-			ModelMap m){
-		Usuario nombrePorDefecto = (Usuario) repoUsuario.crearUnPost();
-		Post p = new Post(titulo, contenido, nombrePorDefecto);
-		repoPost.save(p);
-		m.put("view","/");
-		return "views/_t/main";
-	}*/
-	
-	/*@RequestMapping(value = "/post/crear", method = RequestMethod.GET)
-	public String crea(ModelMap m){ 
-		m.put("listaPost", repoPost.findAll());
-		m.put("view","/");
-		return "views/_t/main";
-	}*/
-	
-	/*@RequestMapping(value = "/post/crear", method = RequestMethod.POST)
-	public String crearPost(@RequestParam("titulo") String titulo,
-			@RequestParam("contenido") String contenido,
-			@RequestParam("alias") String alias,
-			ModelMap m){
-		//Rol rolPorDefecto = (Rol) repoRol.getDefaultRol();
-		Usuario nombrePorDefecto = (Usuario) repoUsuario.crearUnPost();
-		Post p = new Post(titulo, contenido, nombrePorDefecto);
-		repoPost.save(p);
-		m.put("view","./");
-		return "views/_t/main";
-	}*/
 }
