@@ -37,8 +37,9 @@
         <div class="text-center">
           <!--<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" alt="avatar" /> -->
           <!-- <input type="file" class="form-control" /> -->
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br />
-          <input type="file" style="width: 175px;" onchange="previewFile()"></input>
+		  <img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" alt="Image preview..." />
+		  <img th:unless="${session.userData.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
+		  <input type="file" style="width: 175px;" onchange="previewFile()"></input>
         </div>
       </div>
 
