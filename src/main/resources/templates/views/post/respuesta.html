@@ -7,7 +7,7 @@
                 <li th:case="null"></li>
                 <li th:case="*">
                     <div class="temaypagina">
-                    <a href="/post/respuesta"><button type="button" class="btn btn-primary nueva-respuesta" onclick="crearElemento()">Responder</button></a>
+                    <!--<a href="/post/respuesta">--><button type="button" class="btn btn-primary nueva-respuesta" onclick="crearElemento()">Responder</button><!--</a>-->
                     </div>
                 </li>
         </div>
@@ -26,22 +26,23 @@
                     </div>     
             </div>
         </div>
+        <span id="spanner"></span>
 
 <div th:switch="${session.user}">
 		<li th:case="null"></li>
 		<li th:case="*">
 			<div class="temaypagina">
-			<a href="/post/respuesta"><button type="button" class="btn btn-primary nueva-respuesta" onclick="">Responder</button></a>
+			<!--<a href="/post/respuesta">--><button type="button" class="btn btn-primary nueva-respuesta" onclick="crearElemento()">Responder</button><!--</a>-->
 			</div>
 		</li>
 </div>
 
 <script>
         function crearElemento(){
-                console.log("ok");
                 var c = document.getElementById("recuadro");
                 var clon = c.cloneNode("recuadro");
-                document.body.appendChild(clon);
+                var s = document.getElementById("spanner");
+                s.appendChild(clon);
         }
 
 </script>
