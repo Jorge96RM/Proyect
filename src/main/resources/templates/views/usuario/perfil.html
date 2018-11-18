@@ -27,6 +27,111 @@
 		preview.src = "";
 	  }
 	}
+	
+	function validarNombre(){
+		var esValido = true;
+		var nombre = document.getElementById("nombre").value;
+		var nombreBien = new RegExp ("^([a-záéíóúçA-ZÁÉÍÓÚç]{2,20})$");
+		var comprobarNombre = nombreBien.test(nombre);
+		if(comprobarNombre == false){
+			esValido = false;
+			document.getElementById("nombre").focus();
+			document.perfil.nombre.style.color="red";
+		}else{
+			esValido = true;
+			document.perfil.nombre.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarPrimerApellido(){
+		var esValido = true;
+		var primerApellido = document.getElementById("primerApellido").value;
+		var primerApellidoBien = /^[a-záéíóúçA-ZÁÉÍÓÚ]{2,40}$/;
+		var comprobarPrimerApellido = primerApellidoBien.test(primerApellido);
+		if(comprobarPrimerApellido == false){
+			esValido = false;
+			document.getElementById("primerApellido").focus();
+			document.perfil.primerApellido.style.color="red";
+		}else{
+			esValido = true;
+			document.perfil.primerApellido.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarSegundoApellido(){
+		var esValido = true;
+		var segundoApellido = document.getElementById("segundoApellido").value;
+		var segundoApellidoBien = /^([a-záéíóúçA-ZÁÉÍÓÚ]{2,40})?$/;
+		var comprobarSegundoApellido = segundoApellidoBien.test(segundoApellido);
+		if(comprobarSegundoApellido == false){
+			esValido = false;
+			document.getElementById("segundoApellido").focus();
+			document.perfil.segundoApellido.style.color="red";
+		}else{
+			esValido = true;
+			document.perfil.segundoApellido.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarTelefono(){
+		var esValido = true;
+		var telefono = document.getElementById("telefono").value;
+		var telefonoBien = new RegExp (/^([0-9]{9})?$/);
+		var comprobarTelefono = telefonoBien.test(telefono);
+		if(comprobarTelefono == false){
+			esValido = false;
+			document.getElementById("telefono").focus();
+			document.perfil.telefono.style.color="red";
+		}else{
+			esValido = true;
+			document.perfil.telefono.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarEmail(){
+		var esValido = true;
+		var email = (document.getElementById("email").value).toLowerCase();
+		var emailBien = new RegExp ("^[a-z0-9]{1}[a-z0-9.-_]+@[a-z]+(\\.[a-z]{2,4})+$");
+		var comprobarEmail = emailBien.test(email);
+		if(comprobarEmail == false){
+			esValido = false;
+			document.getElementById("email").focus();
+			document.perfil.email.style.color="red";
+		}else{
+			esValido = true;
+			document.perfil.email.style.color="";
+		} 
+		return esValido;
+	}
+	
+	function validarPersona(){
+		var nombre = document.getElementById("nombre").value;
+		var primerApellido = document.getElementById("primerApellido").value;
+		var segundoApellido = document.getElementById("segundoApellido").value;
+		var telefono = document.getElementById("telefono").value;
+		var email = document.getElementById("email").value;
+		
+
+		
+		if(validarNombre() != true){
+			return false;
+		}else if(validarPrimerApellido() != true){
+				return false;
+		}else if(validarSegundoApellido() != true){
+				return false;
+		}else if(validarTelefono() != true){
+			return false;	
+		}else if(validarEmail() != true){
+				return false;
+		}
+		else{
+			return true;
+		}	        
+	}
 </script>
 
 <body>
@@ -89,13 +194,18 @@
               <td th:text="${session.userData.sexo}"></td>
             </div>
           </div>
-		  <input type="hidden" id="imgString" name="imgString" value="" />
+		  <div class="form-group">
+			<div class="col-md-8">
+				<a href="/usuario/cambiarContrasena">Cambiar contrasena</a>
+			</div>
+		  </div>
+		  <input th:if="${session.userData.foto}" type="hidden" id="imgString" name="imgString" th:value="${session.userData.foto}" />
+		  <input th:unless="${session.userData.foto}" type="hidden" id="imgString" name="imgString" value="" />
 
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="submit" class="btn btn-info" id="guardarCambios" value="Guardar cambios" />
-              <input type="reset" class="btn btn-default" value="Cancelar" />
+			  <button type="submit" class="btn btn-info" id="guardarCambios" value="Guardar Cambios" onclick="return validarPersona()">Guardar Cambios</button>
             </div>
           </div>
         </form>

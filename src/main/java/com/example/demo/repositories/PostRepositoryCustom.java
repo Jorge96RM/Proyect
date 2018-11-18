@@ -7,4 +7,6 @@ import com.example.demo.domain.Post;
 
 public interface PostRepositoryCustom {
 	public List<Post> listarPost(Categoria categoria);
+	public long contarPost(Categoria categoria);
+	public Post ultimoPost(Categoria categoria);
 }

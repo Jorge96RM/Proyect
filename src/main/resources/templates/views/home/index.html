@@ -22,26 +22,66 @@
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/redacciones">Redacciones</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['Redacciones']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Redacciones'].id}">
+						<div th:utext="${ultimasRespuestas['Redacciones'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['Redacciones']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['Redacciones']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/curriculums">Currículums</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['Curriculums']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Curriculums'].id}">
+						<div th:utext="${ultimasRespuestas['Curriculums'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['Curriculums']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['Curriculums']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/cartas">Cartas de presentación</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['Cartas']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Cartas'].id}">
+						<div th:utext="${ultimasRespuestas['Cartas'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['Cartas']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['Cartas']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/otrosC">Otros</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['OtrosC']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['OtrosC'].id}">
+						<div th:utext="${ultimasRespuestas['OtrosC'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['OtrosC']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['OtrosC']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 		</tbody>
@@ -60,26 +100,66 @@
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/expresiones">Expresiones</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['Expresiones']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Expresiones'].id}">
+						<div th:utext="${ultimasRespuestas['Expresiones'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['Expresiones']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['Expresiones']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/gramatica">Gramática</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['Gramatica']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Gramatica'].id}">
+						<div th:utext="${ultimasRespuestas['Gramatica'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['Gramatica']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['Gramatica']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/jerga">Jerga</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['Jerga']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Jerga'].id}">
+						<div th:utext="${ultimasRespuestas['Jerga'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['Jerga']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['Jerga']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/otrosD">Otros</a></th>
-				<th style="font-size: 15px;font-weight: 500;">mensaje</th>
-				<th style="font-size: 15px;font-weight: 500;">n tem</th>
+				<th th:if="${ultimasRespuestas['OtrosD']}" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['OtrosD'].id}">
+						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}">	
+						</div>
+					</a>
+				</th>
+				<th th:unless="${ultimasRespuestas['OtrosD']}" style="font-size: 15px;font-weight: 500;">No hay temas</th>
+				
+				<th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${numeroRespuestas['OtrosD']}">	
+					</div>
+				</th>
 				<th style="font-size: 15px;font-weight: 500;">n mens</th>
 			</tr>
 		</tbody>

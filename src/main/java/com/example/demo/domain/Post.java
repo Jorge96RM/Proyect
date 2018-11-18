@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -11,7 +12,7 @@ import com.example.demo.domain.Usuario;
 public class Post {
 		
 	@Id
-	@GeneratedValue
+	@GeneratedValue//(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	private String titulo;
 	private String contenido;
@@ -21,22 +22,6 @@ public class Post {
 	@ManyToOne
 	private Categoria nombre_categoria;
 	
-	public Long getnRespuestas() {
-		return nRespuestas;
-	}
-
-	public void setnRespuestas(Long nRespuestas) {
-		this.nRespuestas = nRespuestas;
-	}
-
-	public Long getnVisitas() {
-		return nVisitas;
-	}
-
-	public void setnVisitas(Long nVisitas) {
-		this.nVisitas = nVisitas;
-	}
-
 	@ManyToOne
 	private Usuario PostSuyo;
 	
@@ -52,6 +37,30 @@ public class Post {
 	
 	public Post() {
 		super();
+	}
+	
+	public Categoria getNombre_categoria() {
+		return nombre_categoria;
+	}
+
+	public void setNombre_categoria(Categoria nombre_categoria) {
+		this.nombre_categoria = nombre_categoria;
+	}
+
+	public Long getnRespuestas() {
+		return nRespuestas;
+	}
+
+	public void setnRespuestas(Long nRespuestas) {
+		this.nRespuestas = nRespuestas;
+	}
+
+	public Long getnVisitas() {
+		return nVisitas;
+	}
+
+	public void setnVisitas(Long nVisitas) {
+		this.nVisitas = nVisitas;
 	}
 
 	public Long getId() {
@@ -84,5 +93,9 @@ public class Post {
 
 	public void setContenido(String contenido) {
 		this.contenido = contenido;
+	}
+	
+	public void addRespuesta(){
+		this.nRespuestas++;
 	}
 }

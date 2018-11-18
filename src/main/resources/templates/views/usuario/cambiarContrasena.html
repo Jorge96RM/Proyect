@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- CSS para la página del perfil-->
+  <link rel="stylesheet" href="/css/perfil.css" />
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+</head>
+
+<script>
+	function hashearPassword(plainPassword){
+		return md5(plainPassword);
+	}
+	
+	function changePassword(){
+		document.getElementById("contrasena").value = hashearPassword(document.getElementById("contrasena").value);
+		document.getElementById("contrasenaNueva").value = hashearPassword(document.getElementById("contrasenaNueva").value);
+		document.getElementById("confirmarContrasena").value = hashearPassword(document.getElementById("confirmarContrasena").value);
+	}
+	
+	function validarContrasena(){
+		var esValido = true;
+		var contrasena = document.getElementById("contrasena").value;
+		var contrasenaBien = new RegExp (/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/);
+		var comprobarContrasena = contrasenaBien.test(contrasena);
+		if(comprobarContrasena == false){
+			esValido = false;
+			document.getElementById("contrasena").focus();
+			document.cambiarContrasena.contrasena.style.color="red";
+		}else{
+			esValido = true;
+			document.cambiarContrasena.contrasena.style.color="";
+		}
+		return esValido;
+	}
+	
+		function validarContrasenaNueva(){
+		var esValido = true;
+		var contrasenaNueva = document.getElementById("contrasenaNueva").value;
+		var contrasenaNuevaBien = new RegExp (/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/);
+		var comprobarContrasenaNueva = contrasenaNuevaBien.test(contrasenaNueva);
+		if(comprobarContrasenaNueva == false){
+			esValido = false;
+			document.getElementById("contrasenaNueva").focus();
+			document.cambiarContrasena.contrasenaNueva.style.color="red";
+		}else{
+			esValido = true;
+			document.cambiarContrasena.contrasenaNueva.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarComprobarContrasenas(){
+		var esValido = true;
+		contrasena1 = document.getElementById("contrasenaNueva").value;
+		contrasena2 = document.getElementById("confirmarContrasena").value;
+
+		if (contrasena1 != contrasena2){
+			esValido = false;
+			document.getElementById("confirmarContrasena").focus();
+			document.cambiarContrasena.confirmarContrasena.style.color="red";
+		}else{
+			esValido = true;
+			document.cambiarContrasena.confirmarContrasena.style.color="";
+		}
+		return esValido;
+	} 
+	
+	function validar(){
+		var contrasena = document.getElementById("contrasena").value;
+		var contrasenaNueva = document.getElementById("contrasenaNueva").value;
+		var confirmarContrasena = document.getElementById("confirmarContrasena").value;
+		
+
+		
+		if(validarContrasena() != true){
+			return false;
+		}else if(validarContrasenaNueva() != true){
+				return false;
+		}else if(validarComprobarContrasenas() != true){
+				return false;
+		}
+		else{
+			changePassword();
+			return true;
+		}	        
+	}
+</script>
+
+<body>
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-md-3">
+      </div>
+
+      <div class="col-md-9 personal-info">
+        <h3>Cambiar contraseña</h3>
+
+        <form action="/cambiarContrasena" method="POST" name="cambiarContrasena" id="cambiarContrasena" class="form-horizontal">
+		  <div class="form-group">
+            <label class="col-lg-3 control-label"><strong>Contraseña actual</strong></label>
+            <div class="col-lg-8">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label"><strong>Contraseña nueva</strong></label>
+            <div class="col-lg-8">
+                <input type="password" class="form-control" id="contrasenaNueva" name="contrasenaNueva" placeholder="Contraseña nueva"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label"><strong>Confirmar nueva contraseña</strong></label>
+            <div class="col-lg-8">
+                <input type="password" class="form-control" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña"/>
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+			  <button type="submit" class="btn btn-info" id="guardarCambios" value="Guardar Cambios" onclick="return validar()">Guardar Cambios</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

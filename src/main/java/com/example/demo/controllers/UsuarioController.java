@@ -126,4 +126,29 @@ public class UsuarioController {
 		m.put("view","usuario/perfil");
 		return "views/_t/main";
 	}
+	
+	@GetMapping("/usuario/cambiarContrasena")
+	public String cambiarContrasena(ModelMap m){
+		m.put("view","usuario/cambiarContrasena");
+		return("views/_t/main");
+	}
+	
+	@RequestMapping(value = "/cambiarContrasena", method = RequestMethod.POST)
+	public String cambiarContrasena(@RequestParam("contrasena") String contrasena,
+			@RequestParam("contrasenaNueva") String contrasenaNueva,
+			ModelMap m,
+			HttpSession s){
+		Usuario u = (Usuario) s.getAttribute("userData");
+		//boolean usuarioOK = repoUsuario.usuarioOK(alias,contrasena);
+		System.out.println(contrasena);
+		if (u.getContrasena().equals(contrasena)) {
+			u.setContrasena(contrasenaNueva);
+			repoUsuario.save(u);
+			return "redirect:/usuario/perfil";
+		}
+		else {
+			m.put("view", "usuario/contrasenaErronea");
+			return "views/_t/main";
+		}
+	}
 }
