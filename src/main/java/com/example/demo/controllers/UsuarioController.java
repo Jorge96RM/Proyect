@@ -122,7 +122,6 @@ public class UsuarioController {
 		u.setEmail(email);
 		u.setFoto(imgString);
 		repoUsuario.save(u);
-		System.out.println(imgString);
 		m.put("view","usuario/perfil");
 		return "views/_t/main";
 	}
@@ -139,8 +138,6 @@ public class UsuarioController {
 			ModelMap m,
 			HttpSession s){
 		Usuario u = (Usuario) s.getAttribute("userData");
-		//boolean usuarioOK = repoUsuario.usuarioOK(alias,contrasena);
-		System.out.println(contrasena);
 		if (u.getContrasena().equals(contrasena)) {
 			u.setContrasena(contrasenaNueva);
 			repoUsuario.save(u);

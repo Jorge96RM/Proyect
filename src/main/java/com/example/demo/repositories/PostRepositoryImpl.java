@@ -23,7 +23,7 @@ public class PostRepositoryImpl implements PostRepositoryCustom {
 
 	@Override
 	public List<Post> listarPost(Categoria categoria) {
-		TypedQuery<Post> query = entityManager.createQuery("SELECT p FROM Post p WHERE p.nombre_categoria = :idCategoria", Post.class);
+		TypedQuery<Post> query = entityManager.createQuery("SELECT p FROM Post p WHERE p.nombre_categoria = :idCategoria ORDER BY p.id DESC", Post.class);
 		query.setParameter("idCategoria", categoria);
 		List<Post> result = query.getResultList();
 		return result;

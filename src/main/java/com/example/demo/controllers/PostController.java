@@ -36,7 +36,7 @@ public class PostController {
 		return("views/_t/main");
 	}
 
-	@GetMapping("/post/crearRespuesta")
+	@GetMapping("/respuesta/crearRespuesta")
 	public String crearRespuesta(ModelMap m){
 		m.put("view","respuesta/respuestaPost");
 		return("views/_t/main");
@@ -146,6 +146,6 @@ public class PostController {
 		Categoria categoria = repoCategoria.getByName(categoriaName);
 		Post p = new Post(titulo, contenido, user, categoria);
 		repoPost.save(p);
-		return "redirect:/respuesta/respuesta";
+		return "redirect:/respuesta/respuesta/" + p.getId();
 	}
 }
