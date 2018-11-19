@@ -11,7 +11,7 @@
     </script>
 </head>
 <div class="col-md-9 personal-info">
-  <h3 style="margin-top:10px;">Crear Post</h3>
+  <h3 style="margin-top:10px;" class="col-lg-4">Crear Post</h3>
 
   <form action="/post/crea" method="POST" name="crea" id="crea" class="form-horizontal align-content-center" role="form">
     <div class="form-group">
@@ -28,9 +28,8 @@
         <div id="mensaje"></div>
       </div>
     </div>
-    <div class="form-group">
-      <label class="col-md-3 control-label"></label>
-      <div class="col-md-8">
+    <div class="form-group">   
+      <div class="col-md-12">
         <button type="submit" class="btn btn-info" value="Validar campos" onclick="return validarCampos()">Publicar nuevo tema</button>
         <input type="reset" class="btn btn-default" value="Cancelar" />
       </div>
@@ -41,7 +40,7 @@
 
 <script>
   function validarCampos(){
-    //console.log("OK");
+    var valido = true;
     var titulo = document.getElementById("titulo").value;
     var testTitulo = /^[\W\s\w]{1,50}$/i;
 
@@ -49,15 +48,23 @@
     var testMensaje = /^[\W\s\w]{1,200}$/i;
 
     if (testTitulo.test(titulo)) {
+      valido = true;
       document.getElementById("tituloPost").innerHTML = "Correcto";
-    } else {
-      document.getElementById("tituloPost").innerHTML = "No es correcto";
+      
+    } else{
+      valido = false;
+      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío";
+      
     }
 
      if (testMensaje.test(mensaje)) {
+       valido = true;
       document.getElementById("mensaje").innerHTML = "Correcto";
     } else {
-      document.getElementById("mensaje").innerHTML = "No es correcto";
+      valido = false;
+      document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío";
     }
+
+    return valido;
   }
 </script>

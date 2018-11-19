@@ -1,0 +1,49 @@
+<head>
+    <link rel="stylesheet" href="/css/trumbowyg.css">
+    </link>
+    <script src="/js/trumbowyg.js"></script>
+  
+    <script>
+      $(document).ready(function(){
+                $('textarea').trumbowyg();
+              });
+            
+            </script>
+  </head>
+  <div class="col-md-9 personal-info">
+    <h3 style="margin-top:10px;" class="col-lg-4">Respuesta</h3>
+  <!--Cambiar el action del formulario-->
+    <form action="/respuesta/respuesta" method="POST" name="respuesta" id="respuesta" class="form-horizontal align-content-center" role="form">
+      <div class="form-group">
+        <label class="col-lg-4 control-label">Mensaje de respuesta:</label>
+        <div class="col-lg-8" style="min-width: 110%;">
+          <textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu respuesta aquí"></textarea>
+          <div id="respuestaPost"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-info" value="Validar campos" onclick="return validar()">Responder</button>
+          <input type="reset" class="btn btn-default" value="Cancelar" />
+        </div>
+      </div>
+      <input type="hidden" id="categoria" name="categoria" th:value="${session.categoria}" />
+    </form>
+  </div>
+  
+  <script>
+    function validar() {
+      var valido = true;
+      var contenido = document.getElementById("contenido").value;
+      var testContenido = /^[\W\s\w]{1,200}$/i;
+  
+      if (testContenido.test(contenido)) {
+        valido = true;
+      } else {
+        valido = false;
+        document.getElementById("respuestaPost").innerHTML = "Este campo no debe de estar vacío";
+      }
+
+      return valido;
+    }
+  </script>

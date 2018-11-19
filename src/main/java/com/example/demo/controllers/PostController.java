@@ -35,8 +35,14 @@ public class PostController {
 		m.put("view","post/crearPost");
 		return("views/_t/main");
 	}
+
+	@GetMapping("/post/crearRespuesta")
+	public String crearRespuesta(ModelMap m){
+		m.put("view","respuesta/respuestaPost");
+		return("views/_t/main");
+	}
 	
-	@GetMapping("/respuesta/respuesta")
+	@RequestMapping(value="/respuesta/respuesta", method = RequestMethod.POST)
 	public String respuesta(ModelMap m){
 		m.put("view","respuesta/respuesta");
 		return("views/_t/main");
