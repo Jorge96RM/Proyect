@@ -33,7 +33,12 @@
 						</div>
 					</a>
 			  </th>
-			  <th style="font-size: 15px;font-weight: 500;" th:text="${post.postSuyo.alias}"></th>
+			  <th style="font-size: 15px;font-weight: 500;">
+				  <a th:href="${'/usuario/perfilAjeno/' + post.postSuyo.id}">
+						<div th:utext="${post.postSuyo.alias}">	
+						</div>
+				  </a>
+			  </th>
 			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
 			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
             </tr>

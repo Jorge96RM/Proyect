@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.domain.Categoria;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.Rol;
 import com.example.demo.domain.Usuario;
@@ -133,6 +135,14 @@ public class UsuarioController {
 		repoUsuario.save(u);
 		m.put("view","usuario/perfil");
 		return "views/_t/main";
+	}
+	
+	@GetMapping(value = "/usuario/perfilAjeno/{id}")
+	public String perfilAjeno(@PathVariable("id") long id, 
+		ModelMap m) {
+		m.put("ajeno", repoUsuario.usuarioPorId(id));
+		m.put("view","usuario/perfilAjeno");
+		return("views/_t/main");
 	}
 	
 	@GetMapping("/usuario/cambiarContrasena")

@@ -51,7 +51,6 @@ public class PostController {
 	@GetMapping(value = "/respuesta/respuesta/{id}")
 	public String respuesta(@PathVariable("id") long id, 
 		ModelMap m) {
-		System.out.println(id);
 		m.put("view","respuesta/respuesta");
 		return("views/_t/main");
 	}

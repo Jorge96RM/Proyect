@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.domain.Post;
 import com.example.demo.domain.Usuario;
 
 public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
@@ -39,5 +38,14 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
 		query.setParameter("userAlias", alias);
 		Usuario result = query.getResultList().get(0);
 		return result;
+	}
+	
+	@Override
+	public Usuario usuarioPorId(long id){ 
+		Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.id = :idUser", Usuario.class);
+		query.setParameter("idUser", id);
+		query.setMaxResults(1);
+		List<Usuario> result = query.getResultList();
+		return result.get(0);
 	}
 }
