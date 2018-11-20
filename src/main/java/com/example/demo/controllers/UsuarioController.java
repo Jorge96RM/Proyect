@@ -47,14 +47,23 @@ public class UsuarioController {
 			@RequestParam("telefono") String telefono,
 			@RequestParam("email") String email,
 			@RequestParam("sexo") String sexo,
-			ModelMap m){
+			ModelMap m)  {
+		
+		
 		Rol rolPorDefecto = (Rol) repoRol.getDefaultRol();
 		Usuario u = new Usuario(alias, contrasena, nombre, primerApellido, segundoApellido, telefono, email, sexo, rolPorDefecto);
-		repoUsuario.save(u);
-		m.put("alias", alias);
-		m.put("view","/usuario/crearPost");
+        try {    
+            if (repoUsuario.datosPerfil(alias) != null) {
+                m.put("view", "/_t/error");
+            }
+        } catch (Exception e) {
+        	m.put("alias", alias);
+			m.put("view", "/usuario/crearPost");
+	    	repoUsuario.save(u);
+        	System.out.println(e.getMessage());
+        }
 		return "views/_t/main";
-	}
+			}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(ModelMap m){ 
