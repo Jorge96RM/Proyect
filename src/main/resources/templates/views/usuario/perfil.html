@@ -132,6 +132,7 @@
 			return true;
 		}	        
 	}
+
 </script>
 
 <body>
@@ -197,6 +198,12 @@
 		  <div class="form-group">
 			<div class="col-md-8">
 				<a href="/usuario/cambiarContrasena">Cambiar contrasena</a>
+			</div>
+		  </div>
+		  <div class="form-group">
+  			 <div class="col-md-8">
+  			
+				<a th:href="@{'/borrarUsuario/' + ${session.userData.id}}" onclick="return confirm('¿Estas seguro?')">Borrar Usuario</a>
 			</div>
 		  </div>
 		  <input th:if="${session.userData.foto}" type="hidden" id="imgString" name="imgString" th:value="${session.userData.foto}" />

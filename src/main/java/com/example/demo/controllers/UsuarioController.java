@@ -167,4 +167,12 @@ public class UsuarioController {
 			return "views/_t/main";
 		}
 	}
+	
+	@RequestMapping(value="/borrarUsuario/{id}",method = RequestMethod.GET)  
+    public String borrarUsuario(@PathVariable("id") Long id,ModelMap m,HttpSession s) {
+        repoUsuario.delete(id);
+        s.invalidate();
+        m.put("view", "usuario/borrarUsuario");
+        return "views/_t/main";
+    } 
 }

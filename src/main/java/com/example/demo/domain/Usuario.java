@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import com.example.demo.domain.Post;
 
 @Entity
@@ -31,6 +34,7 @@ public class Usuario {
 	@Column(length=5000)
 	private String foto;
 	
+	@Cascade( CascadeType.DELETE)
 	@OneToMany(mappedBy="PostSuyo")
 	private Collection<Post> Post;
 	
