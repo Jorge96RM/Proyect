@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import static org.assertj.core.api.Assertions.useRepresentation;
+
 import java.sql.Blob;
 
 import javax.servlet.http.HttpSession;
@@ -16,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.Categoria;
+import com.example.demo.domain.Mensaje;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.Rol;
 import com.example.demo.domain.Usuario;
 import com.example.demo.repositories.RolRepository;
 import com.example.demo.repositories.UsuarioRepository;
+import com.example.demo.repositories.MensajeRepository;
 import com.example.demo.repositories.PostRepository;
 
 @Controller
@@ -31,7 +35,7 @@ public class UsuarioController {
 	@Autowired
 	private RolRepository repoRol;
 	@Autowired
-	private RolRepository repoPost;
+	private MensajeRepository repoMensaje;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public String registro(ModelMap m){ 
@@ -111,7 +115,12 @@ public class UsuarioController {
 
 
 	@GetMapping("/usuario/perfil")
-	public String perfil(ModelMap m){
+	public String perfil(ModelMap m,
+		HttpSession s){
+		Usuario u = (Usuario) s.getAttribute("userData");
+		if(u == null){
+			return "redirect:/";
+		}
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}
@@ -126,6 +135,9 @@ public class UsuarioController {
 			ModelMap m,
 			HttpSession s){
 		Usuario u = (Usuario) s.getAttribute("userData");
+		if(u == null){
+			return "redirect:/";
+		}
 		u.setNombre(nombre);
 		u.setPrimerApellido(primerApellido);
 		u.setSegundoApellido(segundoApellido);
@@ -143,6 +155,46 @@ public class UsuarioController {
 		m.put("ajeno", repoUsuario.usuarioPorId(id));
 		m.put("view","usuario/perfilAjeno");
 		return("views/_t/main");
+	}
+	
+	@GetMapping("/usuario/buzonMensajes")
+	public String buzon(ModelMap m,
+		HttpSession s){
+		Usuario u = (Usuario) s.getAttribute("userData");
+		if(u == null){
+			return "redirect:/";
+		}
+		m.addAttribute("mensajes", repoMensaje.listarMensajes(u));
+		m.put("view","usuario/buzonMensajes");
+		return("views/_t/main");
+	}
+	
+	@GetMapping("/usuario/verMensaje/{id}")
+	public String verMensaje(@PathVariable("id") long id, 
+		ModelMap m){
+		m.addAttribute("mensaje", repoMensaje.contenidoMensaje(id));
+		m.put("view","usuario/verMensaje");
+		return("views/_t/main");
+	}
+	
+	@GetMapping("/usuario/mensajePrivado/{id}")
+	public String mensajePrivado(@PathVariable("id") Long id,
+		ModelMap m){
+		m.put("ajeno", repoUsuario.usuarioPorId(id));
+		m.put("view","usuario/enviarMensaje");
+		return("views/_t/main");
+	}
+
+	@RequestMapping(value = "/usuario/mensajePrivado/{id}", method = RequestMethod.POST)
+	public String mensajePrivadoPost(@PathVariable("id") Usuario mensajeA, //Se recoge el usuario del perfil al que nos metemos
+			@RequestParam("titulo") String titulo,
+			@RequestParam("contenido") String contenido,
+			@RequestParam("mensajeDe") Usuario mensajeDe, //Se recoge el usuario logueado
+			ModelMap m,
+			HttpSession s){
+		Mensaje men = new Mensaje(titulo, contenido, mensajeDe, mensajeA);
+		repoMensaje.save(men);
+		return "redirect:/usuario/perfilAjeno/" + mensajeA.getId();
 	}
 	
 	@GetMapping("/usuario/cambiarContrasena")
@@ -169,7 +221,9 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="/borrarUsuario/{id}",method = RequestMethod.GET)  
-    public String borrarUsuario(@PathVariable("id") Long id,ModelMap m,HttpSession s) {
+    public String borrarUsuario(@PathVariable("id") Long id,
+    	ModelMap m,
+    	HttpSession s) {
         repoUsuario.delete(id);
         s.invalidate();
         m.put("view", "usuario/borrarUsuario");

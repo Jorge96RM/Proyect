@@ -1,0 +1,16 @@
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="/css/verMensaje.css"></link>	
+</head>
+<body> 
+        <div class="row" id="recuadro">
+            <div class="col-lg-2">
+                <img src="https://picsum.photos/200/300/?random" class="rounded-circle" width="100" height="100"/>
+            </div>
+            <div class="col-lg-10">
+                    <strong><div th:utext="${mensaje.titulo}" class="card-title"></div></strong>
+                    <div th:utext="${mensaje.contenido}" class="card-text text-justify "></div>
+            </div>
+        </div>
+</body>

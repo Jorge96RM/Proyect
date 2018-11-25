@@ -51,6 +51,11 @@ public class PostController {
 	@GetMapping(value = "/respuesta/respuesta/{id}")
 	public String respuesta(@PathVariable("id") long id, 
 		ModelMap m) {
+		Post p = repoPost.todosPost(id);
+		p.setnVisitas(p.getnVisitas()+1);
+		//m.addAttribute("visitas", p);
+		//System.out.println(p.getId());
+		repoPost.save(p);
 		m.put("view","respuesta/respuesta");
 		return("views/_t/main");
 	}

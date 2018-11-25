@@ -48,4 +48,13 @@ public class PostRepositoryImpl implements PostRepositoryCustom {
 			return result.get(0);
 		}
 	}
+	
+	@Override
+	public Post todosPost(long id) {
+		TypedQuery<Post> query = entityManager.createQuery("SELECT p FROM Post p WHERE p.id = :idPost", Post.class);
+		query.setParameter("idPost", id);
+		query.setMaxResults(1);
+		List<Post> result = query.getResultList();
+		return result.get(0);
+	}
 }

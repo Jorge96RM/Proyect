@@ -1,0 +1,57 @@
+<div class="col-md-9 personal-info">
+  <h3 style="margin-top:10px;" class="col-lg-4">Mensaje Privado</h3>
+
+  <form action="#" th:action="${'/usuario/mensajePrivado/' + ajeno.id}" th:object="${Usuario}" method="POST" name="mensajePrivado" id="mensajePrivado" class="form-horizontal align-content-center" role="form">
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Título:</label>
+      <div class="col-lg-8">
+        <input class="form-control" type="text" name="titulo" id="titulo" />
+        <div id="tituloMensaje"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Mensaje:</label>
+      <div class="col-lg-8" style="min-width: 110%;">
+        <textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+        <div id="mensaje"></div>
+      </div>
+    </div>
+    <div class="form-group">   
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-info" value="Validar campos" onclick="return validarCampos()">Enviar Mensaje</button>
+      </div>
+    </div>
+	<input type="hidden" id="mensajeDe" name="mensajeDe" th:value="${session.userData.id}" />
+  </form>
+</div>
+
+<script>
+  function validarCampos(){
+    var valido = true;
+    var titulo = document.getElementById("titulo").value;
+    var testTitulo = /^[\W\s\w]{1,50}$/i;
+
+    var mensaje = document.getElementById("contenido").value;
+    var testMensaje = /^[\W\s\w]{1,200}$/i;
+
+    if (testTitulo.test(titulo)) {
+      valido = true;
+      document.getElementById("tituloPost").innerHTML = "Correcto";
+      
+    } else{
+      valido = false;
+      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío";
+      
+    }
+
+     if (testMensaje.test(mensaje)) {
+       valido = true;
+      document.getElementById("mensaje").innerHTML = "Correcto";
+    } else {
+      valido = false;
+      document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío";
+    }
+
+    return valido;
+  }
+</script>

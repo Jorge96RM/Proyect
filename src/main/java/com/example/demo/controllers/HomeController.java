@@ -74,4 +74,9 @@ public class HomeController {
 		m.put("view","home/index");
 		return "views/_t/main";
 	}
+	
+	//@GetMapping("/error")
+	//public String error(ModelMap m){
+	//	return "redirect:/";
+	//}
 }

@@ -1,0 +1,41 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
+	<script th:src="@{/js/jquery.dataTables.js}"></script>
+</head>
+	<table id="mens" class="display" style="width:100%">
+		<thead>
+			<tr>
+			  <th class="apartado" colspan="4" style="font-size: 18px;font-weight: 700;background-color: #cbf1f5;">Mensajes</th>
+			</tr>
+			<tr>
+			  <th class="tema" style="font-size: 15px;font-weight: 650;">Título</th>
+			  <th style="font-size: 15px;font-weight: 650;">De</th>			  
+			</tr>
+		</thead>
+			<tr th:each = "mensaje: ${mensajes}">
+			  <th class="tema" style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/usuario/verMensaje/' + mensaje.id}">			  
+						<div th:utext="${mensaje.titulo}">	
+						</div>
+					</a>
+			  </th>
+			  <th style="font-size: 15px;font-weight: 500;">
+					<a th:href="${'/usuario/perfilAjeno/' + mensaje.mensajeDe.id}">
+						<div th:utext="${mensaje.mensajeDe.alias}">	
+						</div>
+					</a>
+			  </th>
+			</tr>
+	</table>
+	
+<script>
+$('#mens').DataTable( {
+    responsive: true,
+	ordering: false,
+	language : {
+		"url": "/js/spanish.json"
+	}
+} );
+
+</script>

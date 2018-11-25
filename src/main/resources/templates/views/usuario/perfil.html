@@ -37,9 +37,11 @@
 			esValido = false;
 			document.getElementById("nombre").focus();
 			document.perfil.nombre.style.color="red";
+			document.getElementById("errorNombre").innerHTML="El nombre debe contener de 2 a 20 letras";
 		}else{
 			esValido = true;
 			document.perfil.nombre.style.color="";
+			document.getElementById("errorNombre").innerHTML="";
 		}
 		return esValido;
 	}
@@ -53,9 +55,11 @@
 			esValido = false;
 			document.getElementById("primerApellido").focus();
 			document.perfil.primerApellido.style.color="red";
+			document.getElementById("errorPrimerApellido").innerHTML="El primer apellido no es válido";
 		}else{
 			esValido = true;
 			document.perfil.primerApellido.style.color="";
+			document.getElementById("errorPrimerApellido").innerHTML="";
 		}
 		return esValido;
 	}
@@ -69,9 +73,11 @@
 			esValido = false;
 			document.getElementById("segundoApellido").focus();
 			document.perfil.segundoApellido.style.color="red";
+			document.getElementById("errorSegundoApellido").innerHTML="El segundo apellido no es válido";
 		}else{
 			esValido = true;
 			document.perfil.segundoApellido.style.color="";
+			document.getElementById("errorSegundoApellido").innerHTML="";
 		}
 		return esValido;
 	}
@@ -85,9 +91,11 @@
 			esValido = false;
 			document.getElementById("telefono").focus();
 			document.perfil.telefono.style.color="red";
+			document.getElementById("errorTelefono").innerHTML="El telefono debe tener 9 números";
 		}else{
 			esValido = true;
 			document.perfil.telefono.style.color="";
+			document.getElementById("errorTelefono").innerHTML="";
 		}
 		return esValido;
 	}
@@ -101,9 +109,11 @@
 			esValido = false;
 			document.getElementById("email").focus();
 			document.perfil.email.style.color="red";
+			document.getElementById("errorEmail").innerHTML="El email no es válido";
 		}else{
 			esValido = true;
 			document.perfil.email.style.color="";
+			document.getElementById("errorEmail").innerHTML="";
 		} 
 		return esValido;
 	}
@@ -139,15 +149,19 @@
   <div class="card-body">
     <div class="row">
 
-      <div class="col-md-3">
-        <div class="text-center">
-          <!--<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" alt="avatar" /> -->
-          <!-- <input type="file" class="form-control" /> -->
-		  <img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" alt="Image preview..." />
-		  <img th:unless="${session.userData.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
-		  <input type="file" style="width: 175px;" onchange="previewFile()"></input>
-        </div>
-      </div>
+		<div class="col-md-3">
+			<div class="text-center">
+				<img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" alt="Image preview..." />
+				<img th:unless="${session.userData.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
+				<input type="file" style="width: 175px;" onchange="previewFile()"></input>
+			</div>				
+			<div class="text-center">
+				<label class="col-md-3 control-label"></label>
+				<div class="text-center">
+				  <a href="/usuario/buzonMensajes"><button type="button" class="btn btn-secondary" id="buzonMensajes" value="Buzon de mensajes">Buzón de mensajes</button></a>
+				</div>
+			</div>
+		</div>
 
       <div class="col-md-9 personal-info">
         <h3>Datos de usuario</h3>
@@ -162,31 +176,31 @@
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Nombre:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" id="nombre" name="nombre" type="text" th:value="${session.userData.nombre}" />
+              <input class="form-control" id="nombre" name="nombre" type="text" th:value="${session.userData.nombre}" /><span id="errorNombre"></span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Primer apellido:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" id="primerApellido" name="primerApellido" type="text" th:value="${session.userData.primerApellido}" />
+              <input class="form-control" id="primerApellido" name="primerApellido" type="text" th:value="${session.userData.primerApellido}" /><span id="errorPrimerApellido"></span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Segundo Apellido:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" id="segundoApellido" name="segundoApellido" type="text" th:value="${session.userData.segundoApellido}" />
+              <input class="form-control" id="segundoApellido" name="segundoApellido" type="text" th:value="${session.userData.segundoApellido}" /><span id="errorSegundoApellido"></span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label"><strong>Email:</strong></label>
             <div class="col-lg-8">
-              <input class="form-control" id="email" name="email" type="text" th:value="${session.userData.email}" />
+              <input class="form-control" id="email" name="email" type="text" th:value="${session.userData.email}" /><span id="errorEmail"></span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label"><strong>Telefono:</strong></label>
             <div class="col-md-8">
-              <input class="form-control" id="telefono" name="telefono" type="text" th:value="${session.userData.telefono}" />
+              <input class="form-control" id="telefono" name="telefono" type="text" th:value="${session.userData.telefono}" /><span id="errorTelefono"></span>
             </div>
           </div>
           <div class="form-group">
@@ -201,10 +215,6 @@
 			</div>
 		  </div>
 		  <div class="form-group">
-  			 <div class="col-md-8">
-  			
-				<a th:href="@{'/borrarUsuario/' + ${session.userData.id}}" onclick="return confirm('¿Estas seguro?')">Borrar Usuario</a>
-			</div>
 		  </div>
 		  <input th:if="${session.userData.foto}" type="hidden" id="imgString" name="imgString" th:value="${session.userData.foto}" />
 		  <input th:unless="${session.userData.foto}" type="hidden" id="imgString" name="imgString" value="" />
@@ -213,6 +223,7 @@
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
 			  <button type="submit" class="btn btn-info" id="guardarCambios" value="Guardar Cambios" onclick="return validarPersona()">Guardar Cambios</button>
+			  <a th:href="@{'/borrarUsuario/' + ${session.userData.id}}" onclick="return confirm('¿Estas seguro?')"><button type="button" class="btn btn-secondary">Borrar Usuario</button></a>
             </div>
           </div>
         </form>

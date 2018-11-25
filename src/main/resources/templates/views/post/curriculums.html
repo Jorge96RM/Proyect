@@ -39,8 +39,14 @@
 						</div>
 				  </a>
 			  </th>
-			  <th style="font-size: 15px;font-weight: 500;">n resp</th>
-			  <th style="font-size: 15px;font-weight: 500;">n visit</th>
+			  <th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${post.nRespuestas}">	
+					</div>
+			  </th>
+			  <th style="font-size: 15px;font-weight: 500;">
+					<div th:utext="${post.nVisitas}">	
+					</div>
+			  </th>
             </tr>
     </table>
 	<hr/>

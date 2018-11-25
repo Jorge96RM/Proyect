@@ -9,4 +9,5 @@ public interface PostRepositoryCustom {
 	public List<Post> listarPost(Categoria categoria);
 	public long contarPost(Categoria categoria);
 	public Post ultimoPost(Categoria categoria);
+	public Post todosPost(long id);
 }

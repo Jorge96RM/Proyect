@@ -9,3 +9,7 @@ body {
 .bold {
     font-weight: bold;
 }
+
+#errorNombre, #errorPrimerApellido, #errorSegundoApellido, #errorEmail, #errorTelefono{
+	color: red;
+}
