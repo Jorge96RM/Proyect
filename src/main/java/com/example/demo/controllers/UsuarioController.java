@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.Categoria;
+import com.example.demo.domain.Mail;
 import com.example.demo.domain.Mensaje;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.Rol;
@@ -36,6 +37,9 @@ public class UsuarioController {
 	private RolRepository repoRol;
 	@Autowired
 	private MensajeRepository repoMensaje;
+	
+	@Autowired
+	Mail mail;
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public String registro(ModelMap m){ 
@@ -65,6 +69,7 @@ public class UsuarioController {
         } catch (Exception e) {
         	m.put("alias", alias);
 			m.put("view", "/usuario/crearPost");
+			mail.sendEmail(email, "Bienvenido", "<h3>Bienvenido a Correct English.</h3> \n<p> Porfavor confima tu dirrecion: http://localhost:8080</p>");
 	    	repoUsuario.save(u);
         	System.out.println(e.getMessage());
         }
