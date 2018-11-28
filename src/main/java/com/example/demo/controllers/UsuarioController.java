@@ -162,6 +162,13 @@ public class UsuarioController {
 		return("views/_t/main");
 	}
 	
+	@RequestMapping(value="/usuario/borrarMensaje/{id}",method = RequestMethod.GET)  
+    public String borrarMensaje(@PathVariable("id") Long id,
+    	ModelMap m) {
+        repoMensaje.delete(id);
+        return "redirect:/usuario/buzonMensajes";
+    } 
+	
 	@GetMapping("/usuario/buzonMensajes")
 	public String buzon(ModelMap m,
 		HttpSession s){
@@ -180,7 +187,7 @@ public class UsuarioController {
 		Mensaje men = repoMensaje.contenidoMensaje(id);
 		men.setLeido(true);
 		repoMensaje.save(men);
-		m.addAttribute("mensaje", repoMensaje.contenidoMensaje(id));
+		m.addAttribute("mensaje", men);
 		m.put("view","usuario/verMensaje");
 		return("views/_t/main");
 	}
