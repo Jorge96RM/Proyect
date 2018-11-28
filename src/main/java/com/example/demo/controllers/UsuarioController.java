@@ -235,12 +235,22 @@ public class UsuarioController {
 		}
 	}
 	
-	@RequestMapping(value="/borrarUsuario/{id}",method = RequestMethod.GET)  
+	@RequestMapping(value="/borrarUsuario/{id}",method = RequestMethod.POST)  
     public String borrarUsuario(@PathVariable("id") Long id,
+    	@RequestParam("contrasena") String contrasena,
     	ModelMap m,
     	HttpSession s) {
+		System.out.println(contrasena);
+		
+		Usuario u = (Usuario) s.getAttribute("userData");System.out.println(u.getContrasena());
+		if (u.getContrasena().equals(contrasena)) {
         repoUsuario.delete(id);
         s.invalidate();
+		}
+		else {
+			m.put("view", "usuario/contrasenaErronea");
+			return "views/_t/main";
+		}
         m.put("view", "usuario/borrarUsuario");
         return "views/_t/main";
     } 
