@@ -177,6 +177,9 @@ public class UsuarioController {
 	@GetMapping("/usuario/verMensaje/{id}")
 	public String verMensaje(@PathVariable("id") long id, 
 		ModelMap m){
+		Mensaje men = repoMensaje.contenidoMensaje(id);
+		men.setLeido(true);
+		repoMensaje.save(men);
 		m.addAttribute("mensaje", repoMensaje.contenidoMensaje(id));
 		m.put("view","usuario/verMensaje");
 		return("views/_t/main");

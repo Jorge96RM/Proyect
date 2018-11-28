@@ -13,20 +13,38 @@
 			  <th style="font-size: 15px;font-weight: 650;">De</th>			  
 			</tr>
 		</thead>
+
 			<tr th:each = "mensaje: ${mensajes}">
-			  <th class="tema" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/usuario/verMensaje/' + mensaje.id}">			  
-						<div th:utext="${mensaje.titulo}">	
-						</div>
-					</a>
-			  </th>
-			  <th style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/usuario/perfilAjeno/' + mensaje.mensajeDe.id}">
-						<div th:utext="${mensaje.mensajeDe.alias}">	
-						</div>
-					</a>
-			  </th>
+				<div th:switch="${mensaje.leido}">
+					<div th:case="false">
+						  <th class="tema" style="font-size: 15px;font-weight: 500;background: #CEF2F2;">
+								<a th:href="${'/usuario/verMensaje/' + mensaje.id}">			  
+									<strong><div th:utext="${mensaje.titulo}"></div></strong>
+								</a>
+						  </th>
+						  <th style="font-size: 15px;font-weight: 500;background: #CEF2F2;">
+								<a th:href="${'/usuario/perfilAjeno/' + mensaje.mensajeDe.id}">
+									<strong><div th:utext="${mensaje.mensajeDe.alias}"></div></strong>
+								</a>
+						  </th>
+					</div>
+					<div th:case="true">
+						  <th class="tema" style="font-size: 15px;font-weight: 500;">
+								<a th:href="${'/usuario/verMensaje/' + mensaje.id}">			  
+									<div th:utext="${mensaje.titulo}">	
+									</div>
+								</a>
+						  </th>
+						  <th style="font-size: 15px;font-weight: 500;">
+								<a th:href="${'/usuario/perfilAjeno/' + mensaje.mensajeDe.id}">
+									<div th:utext="${mensaje.mensajeDe.alias}">
+									</div>
+								</a>
+						  </th>
+					</div>
+				</div>
 			</tr>
+			
 	</table>
 	
 <script>

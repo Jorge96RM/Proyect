@@ -5,12 +5,82 @@
 </head>
 <body> 
         <div class="row" id="recuadro">
-            <div class="col-lg-2">
-                <img src="https://picsum.photos/200/300/?random" class="rounded-circle" width="100" height="100"/>
+            <div class="text-center col-lg-2" style="border-right: 1px solid #F2F4F4;">
+                <img th:src="${mensaje.mensajeDe.foto}" class="rounded-circle" width="130" height="130"/><br/>
+				<a th:href="${'/usuario/perfilAjeno/' + mensaje.mensajeDe.id}">
+					<div th:utext="${mensaje.mensajeDe.alias}"></div>
+				</a>
             </div>
             <div class="col-lg-10">
                     <strong><div th:utext="${mensaje.titulo}" class="card-title"></div></strong>
                     <div th:utext="${mensaje.contenido}" class="card-text text-justify "></div>
+					<div class="icono">
+                        <i class="fas fa-reply fa-lg" id="responder"></i>
+                    </div>     
             </div>
         </div>
+		<div id="oculto">
+			<hr/>
+			<form action="#" th:action="${'/usuario/mensajePrivado/' + mensaje.mensajeDe.id}" th:object="${Usuario}" method="POST" name="mensajePrivado" id="mensajePrivado" class="form-horizontal align-content-center" role="form">
+				<div class="form-group">
+				  <label class="col-lg-3 control-label">Título:</label>
+				  <div class="col-lg-8">
+					<input class="form-control" type="text" name="titulo" id="titulo" />
+					<div id="tituloPost"></div>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-lg-3 control-label">Mensaje:</label>
+				  <div class="col-lg-8" style="min-width: 110%;">
+					<textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+					<div id="mensaje"></div>
+				  </div>
+				</div>
+				<div class="form-group">   
+				  <div class="col-md-12">
+					<button type="submit" class="btn btn-info" value="Validar campos" onclick="return validarCampos()">Responder</button>
+					<input type="reset" class="btn btn-default" value="Cancelar" />
+				  </div>
+				</div>
+				<input type="hidden" id="mensajeDe" name="mensajeDe" th:value="${session.userData.id}" />
+			</form>
+		</div>
 </body>
+
+<script>
+$(document).ready(function(){
+	$("#oculto").hide();
+	$("#responder").click(function(){
+		$("#oculto").show();
+	});
+});
+
+  function validarCampos(){
+    var valido = true;
+    var titulo = document.getElementById("titulo").value;
+    var testTitulo = /^[\W\s\w]{1,50}$/i;
+
+    var mensaje = document.getElementById("contenido").value;
+    var testMensaje = /^[\W\s\w]{1,200}$/i;
+
+    if (testTitulo.test(titulo)) {
+      valido = true;
+      document.getElementById("tituloPost").innerHTML = "";
+      
+    } else{
+      valido = false;
+      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío";
+      
+    }
+
+     if (testMensaje.test(mensaje)) {
+       valido = true;
+      document.getElementById("mensaje").innerHTML = "";
+    } else {
+      valido = false;
+      document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío";
+    }
+
+    return valido;
+  }
+</script>
