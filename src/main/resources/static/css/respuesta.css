@@ -6,6 +6,7 @@
 
 .iconos {
     float: right;
+    display: inline;
 }
 
 img {

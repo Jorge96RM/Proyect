@@ -1,0 +1,60 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<form action="/post/modificarPost" method="POST" name="modificar" id="modificar" class="form-horizontal">
+<h3 style="margin-top:10px;" class="col-lg-4">Modificar Post</h3>
+          <div class="form-group">
+            <label class="col-lg-4 control-label"><strong>Titulo:</strong></label>
+            <div class="col-lg-8">
+              <input class="form-control" id="titulo" name="titulo" type="text"  />
+              <div id="tituloPost"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-4 control-label"><strong>Contenido:</strong></label>
+            <div class="col-lg-8">
+              <input class="form-control" id="contenido" name="contenido" type="text"  />
+              <div id="contenidoPost"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-8">
+            <input type="hidden" id="categoria" name="categoria" th:value="${session.categoria}" />
+			  <button type="submit" class="btn btn-info" id="guardarCambios" value="Guardar Cambios" onclick="return validarCampos()">Guardar Cambios</button>
+            </div>
+          </div>
+        </form>
+        
+        <script>
+        function validarCampos(){
+            var valido = true;
+            var titulo = document.getElementById("titulo").value;
+            var testTitulo = /^[\W\s\w]{1,50}$/i;
+
+            var mensaje = document.getElementById("contenido").value;
+            var testMensaje = /^[\W\s\w]{1,200}$/i;
+
+            if (testTitulo.test(titulo)) {
+              valido = true;
+              document.getElementById("tituloPost").innerHTML = "Correcto";
+              
+            } else{
+              valido = false;
+              document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío";
+              
+            }
+
+             if (testMensaje.test(mensaje)) {
+               valido = true;
+              document.getElementById("contenidoPost").innerHTML = "Correcto";
+            } else {
+              valido = false;
+              document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío";
+            }
+
+            return valido;
+          }
+        
+        </script>

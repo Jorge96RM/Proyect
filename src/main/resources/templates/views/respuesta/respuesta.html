@@ -17,16 +17,21 @@
             <div class="col-lg-2">
                 <img src="https://picsum.photos/200/300/?random" class="rounded-circle" width="100" height="100"/>
             </div>
-            <div class="col-lg-10">
-                    <div class="card-title"><strong>Nombre de usuario</strong></div>
-                    <div class="card-text text-justify ">Mensaje de respuesta.</div>
-                    <div class="iconos">
-                            <a href=""><i class="far fa-thumbs-up fa-lg"></i></a>
+            	<div class="col-lg-10">
+                    <strong><div th:text="${post.titulo}" name="titulo" id="titulo" class="card-title"></div></strong>
+                    <div th:text="${post.contenido}" name="contenido" id="contenido" class="card-text text-justify"></div>
+                     
+                    <div th:switch="${session.user}" class="iconos">
+						<div th:case="null"></div>
+						<div th:case="${post.postSuyo.alias}">
+							<a href="/post/modificarPost"><i class="fas fa-edit fa-lg"></i></a>
+						</div>
+							<a href=""><i class="far fa-thumbs-up fa-lg"></i></a>
                             <a href=""><i class="far fa-thumbs-down fa-lg"></i></a>
                             <a href=""><i class="fas fa-reply fa-lg"></i></a>
-                    </div>     
+                        </div>
+				</div>
             </div>
-        </div>
         <span id="spanner"></span>
 
 <div th:switch="${session.user}">

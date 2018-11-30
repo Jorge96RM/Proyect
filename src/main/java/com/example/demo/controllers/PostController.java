@@ -53,9 +53,8 @@ public class PostController {
 		ModelMap m) {
 		Post p = repoPost.todosPost(id);
 		p.setnVisitas(p.getnVisitas()+1);
-		//m.addAttribute("visitas", p);
-		//System.out.println(p.getId());
 		repoPost.save(p);
+		m.addAttribute("post", repoPost.todosPost(id));
 		m.put("view","respuesta/respuesta");
 		return("views/_t/main");
 	}
@@ -151,5 +150,24 @@ public class PostController {
 		Post p = new Post(titulo, contenido, user, categoria);
 		repoPost.save(p);
 		return "redirect:/respuesta/respuesta/" + p.getId();
+	}
+	
+	@GetMapping("/post/modificarPost")
+	public String actualizarPost(ModelMap m){
+		m.put("view","post/modificarPost");
+		return("views/_t/main");
+	}
+	
+	@RequestMapping(value = "/post/modificarPost", method = RequestMethod.POST)
+	public String actualizarPost(@RequestParam("titulo") String titulo,
+			@RequestParam("contenido") String contenido,@RequestParam("categoria")String categoria,
+			ModelMap m,
+			HttpSession s){
+		//s.setAttribute("post", repoPost.listarPost(categoria));
+		Post p = (Post) s.getAttribute("post");
+		p.setTitulo(titulo);
+		p.setContenido(contenido);
+		repoPost.save(p);
+		return "views/_t/main";
 	}
 }
