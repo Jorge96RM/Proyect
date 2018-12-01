@@ -2,26 +2,24 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
-<form action="/post/modificarPost" method="POST" name="modificar" id="modificar" class="form-horizontal">
+<form action="#" th:action="${'/post/modificarPost/' + pos.id}" method="POST" name="modificar" id="modificar" class="form-horizontal">
 <h3 style="margin-top:10px;" class="col-lg-4">Modificar Post</h3>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><strong>Titulo:</strong></label>
-            <div class="col-lg-8">
-              <input class="form-control" id="titulo" name="titulo" type="text"  />
-              <div id="tituloPost"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><strong>Contenido:</strong></label>
-            <div class="col-lg-8">
-              <input class="form-control" id="contenido" name="contenido" type="text"  />
-              <div id="contenidoPost"></div>
-            </div>
-          </div>
+			<div class="form-group">
+			  <label class="col-lg-3 control-label">Título:</label>
+			  <div class="col-lg-8">
+				<input class="form-control" type="text" name="titulo" id="titulo" />
+				<div id="tituloPost"></div>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <div class="col-lg-8" style="min-width: 110%;">
+				<textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+				<div id="contenidoPost"></div>
+			  </div>
+			</div>
           <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-8">
-            <input type="hidden" id="categoria" name="categoria" th:value="${session.categoria}" />
 			  <button type="submit" class="btn btn-info" id="guardarCambios" value="Guardar Cambios" onclick="return validarCampos()">Guardar Cambios</button>
             </div>
           </div>

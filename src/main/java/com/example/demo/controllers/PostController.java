@@ -152,22 +152,27 @@ public class PostController {
 		return "redirect:/respuesta/respuesta/" + p.getId();
 	}
 	
-	@GetMapping("/post/modificarPost")
-	public String actualizarPost(ModelMap m){
+	@GetMapping("/post/modificarPost/{id}")
+	public String actualizar(@PathVariable("id") Long id,
+		ModelMap m){
+		m.addAttribute("pos", repoPost.todosPost(id));
 		m.put("view","post/modificarPost");
 		return("views/_t/main");
 	}
 	
-	@RequestMapping(value = "/post/modificarPost", method = RequestMethod.POST)
-	public String actualizarPost(@RequestParam("titulo") String titulo,
-			@RequestParam("contenido") String contenido,@RequestParam("categoria")String categoria,
+	@RequestMapping(value = "/post/modificarPost/{id}", method = RequestMethod.POST)
+	public String actualizarPost(@PathVariable("id") Long id,
+			@RequestParam("titulo") String titulo,
+			@RequestParam("contenido") String contenido,
 			ModelMap m,
 			HttpSession s){
-		//s.setAttribute("post", repoPost.listarPost(categoria));
-		Post p = (Post) s.getAttribute("post");
+		Post p = repoPost.todosPost(id);
+		if(p == null){
+			return "redirect:/";
+		}
 		p.setTitulo(titulo);
 		p.setContenido(contenido);
 		repoPost.save(p);
-		return "views/_t/main";
+		return "redirect:/respuesta/respuesta/" + p.getId();
 	}
 }

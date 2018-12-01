@@ -54,3 +54,10 @@ tr{
 .barra-busqueda{
 	margin-top: 20px;
 }
+
+.ulti{
+	width: 180px;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	overflow: hidden;
+}

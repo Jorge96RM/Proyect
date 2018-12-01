@@ -126,6 +126,7 @@ public class UsuarioController {
 		if(u == null){
 			return "redirect:/";
 		}
+		s.setAttribute("nmensajes", repoMensaje.contarMensajesNoLeidos(u));
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}
@@ -142,7 +143,7 @@ public class UsuarioController {
 		Usuario u = (Usuario) s.getAttribute("userData");
 		if(u == null){
 			return "redirect:/";
-		}
+		}		
 		u.setNombre(nombre);
 		u.setPrimerApellido(primerApellido);
 		u.setSegundoApellido(segundoApellido);
@@ -240,9 +241,7 @@ public class UsuarioController {
     	@RequestParam("contrasena") String contrasena,
     	ModelMap m,
     	HttpSession s) {
-		System.out.println(contrasena);
-		
-		Usuario u = (Usuario) s.getAttribute("userData");System.out.println(u.getContrasena());
+		Usuario u = (Usuario) s.getAttribute("userData");
 		if (u.getContrasena().equals(contrasena)) {
         repoUsuario.delete(id);
         s.invalidate();

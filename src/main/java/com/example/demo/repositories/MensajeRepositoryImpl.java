@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.demo.domain.Categoria;
 import com.example.demo.domain.Mensaje;
 import com.example.demo.domain.Usuario;
 
@@ -35,5 +36,11 @@ public class MensajeRepositoryImpl implements MensajeRepositoryCustom {
 		query.setParameter("idMensaje", id);
 		List<Mensaje> result = query.getResultList();
 		return result.get(0);
+	}
+	
+	public long contarMensajesNoLeidos(Usuario id){ 
+		Query query = entityManager.createQuery("SELECT count(m) FROM Mensaje m WHERE m.MensajeA = :idUsuario AND m.leido = false");
+		query.setParameter("idUsuario", id);
+		return (long) query.getSingleResult();
 	}
 }
