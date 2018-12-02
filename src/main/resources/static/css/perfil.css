@@ -13,3 +13,6 @@ body {
 #errorNombre, #errorPrimerApellido, #errorSegundoApellido, #errorEmail, #errorTelefono{
 	color: red;
 }
+#guardarCambios,#borrarUsuario{
+	margin-bottom:5px;
+}

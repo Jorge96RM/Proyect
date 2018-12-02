@@ -23,4 +23,10 @@ public class NavController {
 		m.put("view","nav/normas");
 		return("views/_t/main");
 	}
+	
+	@GetMapping("/nav/ayuda")
+	public String ayuda(ModelMap m){
+		m.put("view","nav/ayuda");
+		return("views/_t/main");
+	}
 }

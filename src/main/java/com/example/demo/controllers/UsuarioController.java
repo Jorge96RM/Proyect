@@ -67,9 +67,11 @@ public class UsuarioController {
                 m.put("view", "/_t/error");
             }
         } catch (Exception e) {
+        	String asuntoCorreo = "Bienvenido al foro Correct English";
+        	String contenidoCorreo = "<h3>Bienvenido a Correct English.</h3> \n<p> Este es un mensaje de bienvenida al foro.Por favor no lo conteste. Un saludo y que te diviertas.</p>";
         	m.put("alias", alias);
 			m.put("view", "/usuario/crearPost");
-			mail.sendEmail(email, "Bienvenido", "<h3>Bienvenido a Correct English.</h3> \n<p> Porfavor confima tu dirrecion: http://localhost:8080</p>");
+			mail.sendEmail(email, asuntoCorreo, contenidoCorreo);
 	    	repoUsuario.save(u);
         	System.out.println(e.getMessage());
         }
