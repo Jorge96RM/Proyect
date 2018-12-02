@@ -1,9 +1,10 @@
 package com.example.demo.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.Categoria;
 import com.example.demo.domain.Post;
+import com.example.demo.domain.Respuesta;
 import com.example.demo.domain.Usuario;
 import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.PostRepository;
+import com.example.demo.repositories.RespuestaRepository;
 
 
 @Controller
@@ -26,6 +28,8 @@ public class PostController {
 	@Autowired
 	private PostRepository repoPost;
 	
+	@Autowired
+	private RespuestaRepository repoRespuesta;
 	
 	@Autowired
 	private CategoriaRepository repoCategoria;
@@ -36,25 +40,41 @@ public class PostController {
 		return("views/_t/main");
 	}
 
-	@GetMapping("/respuesta/crearRespuesta")
-	public String crearRespuesta(ModelMap m){
+	@GetMapping("/respuesta/crearRespuesta/{id}")
+	public String crearRespuesta(@PathVariable("id") Long id,
+		ModelMap m){
+		m.addAttribute("post", repoPost.todosPost(id));
 		m.put("view","respuesta/respuestaPost");
 		return("views/_t/main");
 	}
 	
-	@RequestMapping(value="/respuesta/respuesta", method = RequestMethod.POST)
-	public String respuesta(ModelMap m){
-		m.put("view","respuesta/respuesta");
-		return("views/_t/main");
+	@RequestMapping(value = "/respuesta/crearRespuesta/{id}", method = RequestMethod.POST)
+	public String crearRespuestaPost(@PathVariable("id") Post postRespuesta,
+			@RequestParam("contenido") String contenido,
+			@RequestParam("respuestaSuya") Usuario respuestaSuya,
+			ModelMap m,
+			HttpSession s){
+		Respuesta resp = new Respuesta(postRespuesta, contenido, respuestaSuya);
+		repoRespuesta.save(resp);
+		return "redirect:/respuesta/respuesta/" + postRespuesta.getId();
 	}
+	
+	//@RequestMapping(value="/respuesta/respuesta", method = RequestMethod.POST)
+	//public String respuesta(ModelMap m){
+	//	m.put("view","respuesta/respuesta");
+	//	return("views/_t/main");
+	//}
 	
 	@GetMapping(value = "/respuesta/respuesta/{id}")
 	public String respuesta(@PathVariable("id") long id, 
+		@PathVariable("id") Post pid, 
 		ModelMap m) {
 		Post p = repoPost.todosPost(id);
 		p.setnVisitas(p.getnVisitas()+1);
-		repoPost.save(p);
-		m.addAttribute("post", repoPost.todosPost(id));
+		repoPost.save(p);		
+		m.addAttribute("post", p);
+		m.addAttribute("respuestas", repoRespuesta.listarRespuestasDeCadaPost(pid));
+		//System.out.println(repoRespuesta.listarRespuestasDeCadaPost(id));
 		m.put("view","respuesta/respuesta");
 		return("views/_t/main");
 	}
@@ -174,5 +194,27 @@ public class PostController {
 		p.setContenido(contenido);
 		repoPost.save(p);
 		return "redirect:/respuesta/respuesta/" + p.getId();
+	}
+	
+	@GetMapping("/respuesta/modificarRespuesta/{id}")
+	public String actualizarRespuesta(@PathVariable("id") Long id,
+		ModelMap m){
+		m.addAttribute("respuesta", repoRespuesta.respuestaPorId(id));
+		m.put("view","respuesta/modificarRespuesta");
+		return("views/_t/main");
+	}
+	
+	@RequestMapping(value = "/respuesta/modificarRespuesta/{id}", method = RequestMethod.POST)
+	public String actualizarRespuestaPost(@PathVariable("id") Long id,
+			@RequestParam("contenido") String contenido,
+			ModelMap m,
+			HttpSession s){
+		Respuesta r = repoRespuesta.respuestaPorId(id);
+		if(r == null){
+			return "redirect:/";
+		}
+		r.setContenido(contenido);
+		repoRespuesta.save(r);
+		return "redirect:/respuesta/respuesta/" + r.getPostRespuesta().getId();
 	}
 }

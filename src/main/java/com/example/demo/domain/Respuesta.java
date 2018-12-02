@@ -23,6 +23,41 @@ public class Respuesta {
 	
 	@ManyToOne
 	private Post postRespuesta;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Usuario getRespuestaSuya() {
+		return respuestaSuya;
+	}
+
+	public void setRespuestaSuya(Usuario respuestaSuya) {
+		this.respuestaSuya = respuestaSuya;
+	}
+
+	public Post getPostRespuesta() {
+		return postRespuesta;
+	}
+
+	public void setPostRespuesta(Post postRespuesta) {
+		this.postRespuesta = postRespuesta;
+	}
+
+	public Respuesta(){
+		super();
+	}
+	
+	public Respuesta(Post postRespuesta, String contenido, Usuario respuestaSuya) {
+		super();
+		this.postRespuesta = postRespuesta;
+		this.contenido = contenido;
+		this.respuestaSuya = respuestaSuya;
+	}
 
 	public String getContenido() {
 		return contenido;

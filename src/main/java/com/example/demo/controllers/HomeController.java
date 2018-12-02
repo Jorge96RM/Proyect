@@ -6,9 +6,11 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.domain.Categoria;
 import com.example.demo.domain.Post;
@@ -16,7 +18,7 @@ import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.PostRepository;
 
 @Controller
-public class HomeController {
+public class HomeController { //implements ErrorController{
 	@Autowired
 	private PostRepository repoPost;
 	
@@ -75,8 +77,15 @@ public class HomeController {
 		return "views/_t/main";
 	}
 	
-	//@GetMapping("/error")
-	//public String error(ModelMap m){
-	//	return "redirect:/";
-	//}
+	
+	//Cuando se produce un error de cualquier tipo en la página, redirige a la raíz
+	//Comentado hasta terminar el proyecto para poder ver los errores
+    /*@RequestMapping("/error")
+    public String handleError() {
+    	return "redirect:/";
+    }
+ 
+    public String getErrorPath() {
+        return "/error";
+    }*/
 }
