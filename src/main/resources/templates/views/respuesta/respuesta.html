@@ -16,7 +16,9 @@
 
         <div class="row" id="recuadro" style="width:100%">
             <div class="col-lg-2">
-				<img th:src="${post.postSuyo.foto}" class="rounded-circle" width="130" height="130"/><br/>
+
+				<img th:if="${post.postSuyo.foto}" th:src="${post.postSuyo.foto}" class="rounded-circle" width="130" height="130" />
+				<img th:unless="${post.postSuyo.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" width="130" height="130" /><br/>
             </div>
             	<div class="col-lg-10">
                     <strong><div th:text="${post.titulo + ' - ' + post.postSuyo.alias}" name="titulo" id="titulo" class="card-title"></div></strong>
@@ -41,7 +43,8 @@
 				<div>					
 					<div class="row" id="recuadro" style="width:100%">
 						<div class="col-lg-2">
-							<img th:src="${respuesta.respuestaSuya.foto}" class="rounded-circle" width="130" height="130"/><br/>
+							<img th:if="${respuesta.respuestaSuya.foto}" th:src="${respuesta.respuestaSuya.foto}" class="rounded-circle" width="130" height="130" />
+							<img th:unless="${respuesta.respuestaSuya.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" width="130" height="130" /><br/>
 						</div>
 							<div class="col-lg-10">
 							    <strong><div th:text="${respuesta.respuestaSuya.alias}"></div></strong>

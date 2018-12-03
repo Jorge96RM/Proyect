@@ -158,13 +158,19 @@ public class UsuarioController {
 	}
 	
 	@GetMapping(value = "/usuario/perfilAjeno/{id}")
-	public String perfilAjeno(@PathVariable("id") long id, 
-		ModelMap m) {
+	public String perfilAjeno(@PathVariable("id") long id,
+		ModelMap m,
+		HttpSession s) {
+		Usuario u = (Usuario) s.getAttribute("userData");
 		m.put("ajeno", repoUsuario.usuarioPorId(id));
-		m.put("view","usuario/perfilAjeno");
+		if((u == null) || (u.getId() != repoUsuario.usuarioPorId(id).getId())){
+			m.put("view","usuario/perfilAjeno");
+		}else{
+			return "redirect:/usuario/perfil";
+		}
 		return("views/_t/main");
 	}
-	
+
 	@RequestMapping(value="/usuario/borrarMensaje/{id}",method = RequestMethod.GET)  
     public String borrarMensaje(@PathVariable("id") Long id,
     	ModelMap m) {

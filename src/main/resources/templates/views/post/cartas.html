@@ -29,13 +29,13 @@
             <tr th:each = "post: ${session.posts}">
 			  <th class="tema" style="font-size: 15px;font-weight: 500;">					
 					<a th:href="${'/respuesta/respuesta/' + post.id}">
-						<div th:utext="${post.titulo}">	
+						<div th:utext="${post.titulo}" class="titulo">	
 						</div>
 					</a>
 			  </th>
 			  <th style="font-size: 15px;font-weight: 500;">
 				  <a th:href="${'/usuario/perfilAjeno/' + post.postSuyo.id}">
-						<div th:utext="${post.postSuyo.alias}">	
+						<div th:utext="${post.postSuyo.alias}" class="escrito">	
 						</div>
 				  </a>
 			  </th>

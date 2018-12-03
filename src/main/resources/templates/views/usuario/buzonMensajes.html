@@ -1,5 +1,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/buzonMensajes.css"></link>
 	<link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
 	<script th:src="@{/js/jquery.dataTables.js}"></script>
 </head>
@@ -18,9 +19,9 @@
 			<tr th:each = "mensaje: ${mensajes}">
 				<div th:switch="${mensaje.leido}">
 					<div th:case="false">
-						  <th class="tema" style="font-size: 15px;font-weight: 500;background: #CEF2F2;width: 50%;">
+						  <th style="font-size: 15px;font-weight: 500;background: #CEF2F2;width: 50%;">
 								<a th:href="${'/usuario/verMensaje/' + mensaje.id}" style="text-decoration: none">			  
-									<strong><div th:utext="${mensaje.titulo}" style="color: black;"></div></strong>
+									<strong><div th:utext="${mensaje.titulo}" style="color: black;" class="longitud"></div></strong>
 								</a>
 						  </th>
 						  <th style="font-size: 15px;font-weight: 500;background: #CEF2F2;width: 40%;">
@@ -35,9 +36,9 @@
 						  </th>
 					</div>
 					<div th:case="true">
-						  <th class="tema" style="font-size: 15px;font-weight: 500;width: 50%;">
+						  <th style="font-size: 15px;font-weight: 500;width: 50%;">
 								<a th:href="${'/usuario/verMensaje/' + mensaje.id}" style="text-decoration: none">			  
-									<div th:utext="${mensaje.titulo}" style="color: black;">	
+									<div th:utext="${mensaje.titulo}" style="color: black;" class="longitud">	
 									</div>
 								</a>
 						  </th>

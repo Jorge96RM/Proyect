@@ -2,12 +2,12 @@ th{
 	text-align: center;
 }
 
-.tema {
-	width: 70%;
+.redacciones {
 	text-align: left;
 }
 
-.redacciones {
+.tema{
+	width: 20%;
 	text-align: left;
 }
 
@@ -24,3 +24,18 @@ th{
 	background-color: #cbf1f5;
 	text-align: left;
 }
+
+.escrito{
+	width: 150px;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	overflow: hidden;
+}
+
+.titulo{
+	width: 750px;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	overflow: hidden;
+}
+
