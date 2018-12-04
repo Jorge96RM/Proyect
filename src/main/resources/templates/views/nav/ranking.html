@@ -2,8 +2,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="/css/nav.css" />
     <link rel="stylesheet" href="/css/ranking.css" />
+    <link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
+	<script th:src="@{/js/jquery.dataTables.js}"></script>
 </head>
-<table class="table table-hover">
+<table id="ranking" class="table table-hover">
     <thead class="table-info">
         <tr >
             <th>Posición</th>
@@ -13,53 +15,25 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>1</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>432452</th>
-        </tr>
-        <tr>
-            <th>2</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>6765765</th>
-        </tr>
-        <tr>
-            <th>3</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>2346</th>
-        </tr>
-        <tr>
-            <th>4</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>65413</th>
-        </tr>
-        <tr>
-            <th>5</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>65413</th>
-        </tr>
-        <tr>
-            <th>6</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>65413</th>
-        </tr>
-        <tr>
-            <th>7</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>65413</th>
-        </tr>
-        <tr>
-            <th>8</th>
-            <th>Juan123</th>
-            <th>Juan</th>
-            <th>65413</th>
+        <tr th:each="u,pos: ${usuarios}">
+            <th th:text="${pos.count}"></th>
+            <th th:text="${u.alias}"></th>
+            <th th:text="${u.nombre}"></th>
+            <th th:text="${u.puntos}"></th>
         </tr>
     </tbody>
 </table>
+
+<script>
+$('#ranking').DataTable( {
+	searching : false,
+    responsive: true,
+    lengthChange : false,
+    paging : false,
+    info :false,
+	language : {
+		"url": "/js/spanish.json"
+	}
+} );
+
+</script>

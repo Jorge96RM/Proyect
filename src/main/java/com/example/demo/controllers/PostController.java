@@ -20,6 +20,7 @@ import com.example.demo.domain.Usuario;
 import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.PostRepository;
 import com.example.demo.repositories.RespuestaRepository;
+import com.example.demo.repositories.UsuarioRepository;
 
 
 @Controller
@@ -33,6 +34,9 @@ public class PostController {
 	
 	@Autowired
 	private CategoriaRepository repoCategoria;
+	
+	@Autowired
+	private UsuarioRepository repoUsuario;
 	
 	@GetMapping("/post/crearPost")
 	public String crearPost(ModelMap m){
@@ -166,6 +170,8 @@ public class PostController {
 			ModelMap m,
 			HttpSession s){
 		Usuario user = (Usuario) s.getAttribute("userData");
+		user.setPuntos(user.getPuntos() + 5);
+		repoUsuario.save(user);
 		Categoria categoria = repoCategoria.getByName(categoriaName);
 		Post p = new Post(titulo, contenido, user, categoria);
 		repoPost.save(p);
@@ -216,5 +222,29 @@ public class PostController {
 		r.setContenido(contenido);
 		repoRespuesta.save(r);
 		return "redirect:/respuesta/respuesta/" + r.getPostRespuesta().getId();
+	}
+	
+	@GetMapping(value = "/respuesta/like/{id}/{idRes}")
+	public String darLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes,ModelMap m){
+		Usuario user  = repoUsuario.usuarioPorId(id);
+		Respuesta res = repoRespuesta.respuestaPorId(idRes);
+		user.setPuntos(user.getPuntos() + 1);
+		res.setPuntos(res.getPuntos() + 1);
+		res.setLikes(res.getLikes() + 1);
+		repoUsuario.save(user);
+		repoRespuesta.save(res);
+		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+		}
+	
+	@GetMapping(value = "/respuesta/dislike/{id}/{idRes}")
+	public String darDisLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes,ModelMap m){
+		Usuario user  = repoUsuario.usuarioPorId(id);
+		Respuesta res = repoRespuesta.respuestaPorId(idRes);
+		user.setPuntos(user.getPuntos() - 1);
+		res.setPuntos(res.getPuntos() - 1);
+		res.setDislikes(res.getDislikes() + 1);
+		repoUsuario.save(user);
+		repoRespuesta.save(res);
+		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
 	}
 }

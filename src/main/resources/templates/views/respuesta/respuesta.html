@@ -30,9 +30,9 @@
 						<span th:case="${post.postSuyo.alias}">
 							<a class="colorIcono" th:href="${'/post/modificarPost/' + post.id}"><i class="fas fa-edit fa-lg"></i></a>
 						</span>
-						<a class="colorIcono" href=""><i class="far fa-thumbs-up fa-lg"></i></a>
+						<!-- <a class="colorIcono" href=""><i class="far fa-thumbs-up fa-lg"></i></a>
 						<a class="colorIcono" href=""><i class="far fa-thumbs-down fa-lg"></i></a>
-						<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>
+						<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>-->
                     </div>
 				</div>
 		</div>
@@ -55,9 +55,11 @@
 									</div>
 									<span th:case="${respuesta.respuestaSuya.alias}">
 										<a class="colorIcono" th:href="${'/respuesta/modificarRespuesta/' + respuesta.id}"><i class="fas fa-edit fa-lg"></i></a>
-									</span>
-									<a class="colorIcono" href=""><i class="far fa-thumbs-up fa-lg"></i></a>
-									<a class="colorIcono" href=""><i class="far fa-thumbs-down fa-lg"></i></a>
+									</span>	
+									<span th:text="${respuesta.likes}"></span>
+									<a id="like" class="colorIcono" th:href="${'/respuesta/like/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"><i class="far fa-thumbs-up fa-lg"></i></a>
+									<span th:text="${respuesta.dislikes}"></span>
+									<a id="dislike" class="colorIcono" th:href="${'/respuesta/dislike/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"><i class="far fa-thumbs-down fa-lg"></i></a>
 									<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>
 								</div>
 							</div>

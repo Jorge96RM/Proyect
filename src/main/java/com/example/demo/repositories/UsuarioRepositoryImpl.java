@@ -48,4 +48,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
 		List<Usuario> result = query.getResultList();
 		return result.get(0);
 	}
+	
+	@Override
+	public List<Usuario> todosUsuarios(){
+		Query query = entityManager.createQuery("SELECT u FROM Usuario u ORDER BY puntos DESC", Usuario.class);
+		List<Usuario> result = query.getResultList();
+		return result;
+	}
 }

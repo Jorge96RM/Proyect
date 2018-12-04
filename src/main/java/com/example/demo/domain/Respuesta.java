@@ -18,11 +18,39 @@ public class Respuesta {
 	private Long id;
 	private String contenido;
 	
+	private int puntos = 0;	
+	private int likes = 0;
+	private int dislikes = 0;
+	
 	@ManyToOne
 	private Usuario respuestaSuya;
 	
 	@ManyToOne
 	private Post postRespuesta;
+	
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public int getDislikes() {
+		return dislikes;
+	}
+
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
+	}
 	
 	public Long getId() {
 		return id;

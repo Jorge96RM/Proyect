@@ -34,9 +34,29 @@ public class Usuario {
 	@Column(length=5000)
 	private String foto;
 	
+	private int puntos = 0;
+	private int nMejorRespuesta = 0;
+	
 	@Cascade( CascadeType.DELETE)
 	@OneToMany(mappedBy="PostSuyo")
 	private Collection<Post> Post;
+	
+	public int getnMejorRespuesta() {
+		return nMejorRespuesta;
+	}
+
+	public void setnMejorRespuesta(int nMejorRespuesta) {
+		this.nMejorRespuesta = nMejorRespuesta;
+	}
+	
+	public int getPuntos() {
+		return puntos;
+	}
+	
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
+	}
+	
 	
 	public String getPrimerApellido() {
 		return primerApellido;
