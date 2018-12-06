@@ -335,16 +335,16 @@
   <div class="card-body">
     <h3 class="text-center">Estadísticas</h3>
     <div class="row">
-          <div class="col-md-6 form-group text-center">
+    <div class="col-md-6 form-group text-center">
         <label><strong>Puntos</strong></label>
         <div>
           <td th:text="${session.userData.puntos}"></td>
         </div>
       </div>
       <div class="col-md-6 form-group text-center">
-        <label><strong>Mejor respuesta</strong></label>
+        <label><strong>Nº publicaciones</strong></label>
         <div>
-          <td></td>
+          <td th:text="${session.todosPost}"></td>
         </div>
       </div>
     </div>

@@ -37,6 +37,8 @@ public class UsuarioController {
 	private RolRepository repoRol;
 	@Autowired
 	private MensajeRepository repoMensaje;
+	@Autowired
+	private PostRepository repoPost;
 	
 	@Autowired
 	Mail mail;
@@ -129,6 +131,7 @@ public class UsuarioController {
 			return "redirect:/";
 		}
 		s.setAttribute("nmensajes", repoMensaje.contarMensajesNoLeidos(u));
+		s.setAttribute("todosPost", repoPost.todosPostUsuario(u.getId()));
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}
@@ -163,6 +166,7 @@ public class UsuarioController {
 		HttpSession s) {
 		Usuario u = (Usuario) s.getAttribute("userData");
 		m.put("ajeno", repoUsuario.usuarioPorId(id));
+		m.put("todosPost", repoPost.todosPostUsuario(id));
 		if((u == null) || (u.getId() != repoUsuario.usuarioPorId(id).getId())){
 			m.put("view","usuario/perfilAjeno");
 		}else{

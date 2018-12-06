@@ -57,4 +57,11 @@ public class PostRepositoryImpl implements PostRepositoryCustom {
 		List<Post> result = query.getResultList();
 		return result.get(0);
 	}
+	
+	@Override
+	public long todosPostUsuario(long id){ 
+		Query query = entityManager.createQuery("SELECT count(post_suyo_id) FROM Post p WHERE post_suyo_id = :idUsuario");
+		query.setParameter("idUsuario", id);
+		return (long) query.getSingleResult();
+	}
 }

@@ -24,16 +24,16 @@
 			<hr/>
 			<form action="#" th:action="${'/usuario/mensajePrivado/' + mensaje.mensajeDe.id}" th:object="${Usuario}" method="POST" name="mensajePrivado" id="mensajePrivado" class="form-horizontal align-content-center" role="form">
 				<div class="form-group">
-				  <label class="col-lg-3 control-label">Título:</label>
+				  <label class="col-lg-4 control-label">Título:</label>
 				  <div class="col-lg-8">
 					<input class="form-control" type="text" name="titulo" id="titulo" />
 					<div id="tituloPost"></div>
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="col-lg-3 control-label">Mensaje:</label>
-				  <div class="col-lg-8" style="min-width: 110%;">
-					<textarea name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+				  <label class="col-lg-4 control-label">Mensaje:</label>
+				  <div class="col-lg-8">
+					<textarea class="form-control" name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
 					<div id="mensaje"></div>
 				  </div>
 				</div>

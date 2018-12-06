@@ -5,6 +5,7 @@
     <link rel="stylesheet" th:href="@{/css/jquery.dataTables.css}" />
 	<script th:src="@{/js/jquery.dataTables.js}"></script>
 </head>
+<div class="table-responsive">
 <table id="ranking" class="table table-hover">
     <thead class="table-info">
         <tr >
@@ -23,6 +24,7 @@
         </tr>
     </tbody>
 </table>
+</div>
 
 <script>
 $('#ranking').DataTable( {
