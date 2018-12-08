@@ -52,21 +52,25 @@
 								 
 								<div th:switch="${session.user}" class="iconos">
 									<div th:case="null">
+										<span th:text="${respuesta.likes}" style="margin-right: 5px;"></span><i class="far fa-thumbs-up fa-lg coloIcono"></i>
+										<span th:text="${respuesta.dislikes}" style="margin-right: 5px;"></span><i class="far fa-thumbs-down fa-lg colorIcono"></i>
 									</div>
-									<span th:case="${respuesta.respuestaSuya.alias}">
+									<div th:case="${respuesta.respuestaSuya.alias}">
 										<a class="colorIcono" th:href="${'/respuesta/modificarRespuesta/' + respuesta.id}"><i class="fas fa-edit fa-lg"></i></a>
-									</span>	
-									<span th:text="${respuesta.likes}"></span>
-									<a id="like" class="colorIcono" th:href="${'/respuesta/like/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"><i class="far fa-thumbs-up fa-lg"></i></a>
-									<span th:text="${respuesta.dislikes}"></span>
-									<a id="dislike" class="colorIcono" th:href="${'/respuesta/dislike/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"><i class="far fa-thumbs-down fa-lg"></i></a>
-									<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>
+									</div>
+									<div th:case="*">
+										<span th:text="${respuesta.likes}"></span>
+										<a id="like" class="far fa-thumbs-up fa-lg colorIcono" th:href="${'/respuesta/like/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"></a>
+										<span th:text="${respuesta.dislikes}"></span>
+										<a id="dislike" class="far fa-thumbs-down fa-lg colorIcono" th:href="${'/respuesta/dislike/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"></a>
+										<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>
+									</div>
+									
 								</div>
 							</div>
 					</div>
 				</div>
 			</div>
-
 
 <div th:switch="${session.user}">
 		<li th:case="null"></li>
@@ -78,3 +82,42 @@
 		</li>
 </div>
 </body>
+
+ <!-- 
+ <script>
+$(document).ready(function() {       
+    $("#like").click(function(event) {
+        $.ajax({
+            url: $(event.target).attr("href"),
+            type: "GET",
+              beforeSend: function(xhr) {
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Content-Type", "application/json");
+              },
+              success: function(data) {                
+            	  console.log(data);
+              }
+        });
+
+        event.preventDefault();
+    });
+    
+    $("#dislike").click(function(event) {
+        $.ajax({
+            url: $(event.target).attr("href"),
+            type: "GET",          
+              beforeSend: function(xhr) {
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Content-Type", "application/json");
+              },
+              success: function(data) {                
+                   console.log("ok");
+              }
+        });
+   
+        event.preventDefault();
+    });
+        
+});
+
+</script>-->

@@ -225,7 +225,7 @@ public class PostController {
 	}
 	
 	@GetMapping(value = "/respuesta/like/{id}/{idRes}")
-	public String darLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes,ModelMap m){
+	public String darLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes){
 		Usuario user  = repoUsuario.usuarioPorId(id);
 		Respuesta res = repoRespuesta.respuestaPorId(idRes);
 		user.setPuntos(user.getPuntos() + 1);
@@ -237,7 +237,7 @@ public class PostController {
 		}
 	
 	@GetMapping(value = "/respuesta/dislike/{id}/{idRes}")
-	public String darDisLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes,ModelMap m){
+	public String darDisLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes){
 		Usuario user  = repoUsuario.usuarioPorId(id);
 		Respuesta res = repoRespuesta.respuestaPorId(idRes);
 		user.setPuntos(user.getPuntos() - 1);
