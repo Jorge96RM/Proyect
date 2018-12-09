@@ -11,5 +11,5 @@ public interface PostRepositoryCustom {
 	public Post ultimoPost(Categoria categoria);
 	public Post todosPost(long id);
 	public long todosPostUsuario(long id);
-
+	public List<Post> buscadorPost(String filtro);
 }

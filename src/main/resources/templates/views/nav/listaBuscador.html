@@ -6,19 +6,11 @@
 	
 </head>
 
-<div th:switch="${session.user}">
-		<li th:case="null"></li>
-		<li th:case="*">
-			<div class="temaypagina">
-			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
-			</div>
-		</li>
-</div>
-<div class="table-responsive-sm table-responsive-lg table-responsive-xl">
-<table id="gram" class="display" style="width:100%">
+<div class="table-responsive-sm table-responsive-lg table-responsive-xlm">
+<table id="fil" class="display" style="width:100%">
 		<thead>
 			<tr>
-			  <th class="apartado" colspan="4" style="font-size: 18px;font-weight: 700;background-color: #cbf1f5;">Gramática</th>
+			  <th class="apartado" colspan="4" style="font-size: 18px;font-weight: 700;background-color: #cbf1f5;" th:text="${' Búsqueda por &quot;' + filt + '&quot;'}"></th>
 			</tr>
             <tr>
               <th class="tema" style="font-size: 15px;font-weight: 650;">Tema</th>
@@ -27,7 +19,7 @@
 			  <th style="font-size: 15px;font-weight: 650;">Visitas</th>
             </tr>
         </thead>
-            <tr th:each = "post: ${posts}">
+            <tr th:each = "post: ${postsBuscador}">
 			  <th class="tema" style="font-size: 15px;font-weight: 500;">					
 					<a th:href="${'/respuesta/respuesta/' + post.id}">
 						<div th:utext="${post.titulo}" class="titulo">	
@@ -53,16 +45,8 @@
     </div>
 	<hr/>
 	
-<div th:switch="${session.user}">
-		<li th:case="null"></li>
-		<li th:case="*">
-			<div class="temaypagina">
-			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
-			</div>
-		</li>
-</div>
 <script>
-$('#gram').DataTable( {
+$('#fil').DataTable( {
     responsive: true,
 	ordering: false,
 	language : {

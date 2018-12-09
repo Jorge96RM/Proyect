@@ -3,6 +3,8 @@ package com.example.demo.controllers;
 import static org.assertj.core.api.Assertions.useRepresentation;
 
 import java.sql.Blob;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -98,19 +100,9 @@ public class UsuarioController {
 		else {
 			s.setAttribute("user", alias);
 			s.setAttribute("userData", repoUsuario.datosPerfil(alias));
-			// inicializar sesión. Añadir nombre usuario o rl id a alguna variable de sesion
-			//m.put("view", "/home/index");
+			s.setAttribute("votado", new HashMap<Long, List<Long>>());
 			return "redirect:/";
-			//System.out.println(repoUsuario.datosPerfil(alias).getNombre());
 		}
-		/*
-		Usuario u = new Usuario(alias, contrasena, login);
-		repoUsuario.save(u);
-		//m.put("alias", alias);
-		m.put("view","/usuario/loginOK");
-		
-		*/
-		//return "";
 		return "views/_t/main";
 	}
 	

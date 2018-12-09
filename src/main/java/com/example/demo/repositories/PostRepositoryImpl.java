@@ -64,4 +64,12 @@ public class PostRepositoryImpl implements PostRepositoryCustom {
 		query.setParameter("idUsuario", id);
 		return (long) query.getSingleResult();
 	}
+	
+	@Override
+	public List<Post> buscadorPost(String filtro) {
+		TypedQuery<Post> query = entityManager.createQuery("SELECT p FROM Post p WHERE p.titulo LIKE :palabra ORDER BY p.id DESC", Post.class);
+		query.setParameter("palabra", ("%"+filtro+"%"));
+		List<Post> result = query.getResultList();
+		return result;
+	}
 }

@@ -27,7 +27,7 @@
 			  <th style="font-size: 15px;font-weight: 650;">Visitas</th>
             </tr>
         </thead>
-            <tr th:each = "post: ${session.posts}">
+            <tr th:each = "post: ${posts}">
 			  <th class="tema" style="font-size: 15px;font-weight: 500;">					
 					<a th:href="${'/respuesta/respuesta/' + post.id}">
 						<div th:utext="${post.titulo}" class="titulo">	
@@ -41,7 +41,7 @@
 				  </a>
 			  </th>
 			  <th style="font-size: 15px;font-weight: 500;">
-					<div th:utext="${post.nRespuestas}">	
+					<div th:utext="${nRespuestas[post.id]}">	
 					</div>
 			  </th>
 			  <th style="font-size: 15px;font-weight: 500;">

@@ -1,6 +1,9 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -86,8 +89,13 @@ public class PostController {
 	@GetMapping("/post/redacciones")
 	public String redacciones(ModelMap m,
 		HttpSession s){
-		//Una manera de listar los post de una sola categoria
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.getByName(Categoria.REDACCIONES)));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.REDACCIONES));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.REDACCIONES);
 		m.put("view","post/redacciones");
 		return("views/_t/main");
@@ -96,63 +104,105 @@ public class PostController {
 	@GetMapping("/post/curriculums")
 	public String curriculums(ModelMap m,
 		HttpSession s){
-		//Otra manera de listar los post de una sola categoria
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postCurriculums()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.CURRICULUMS));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.CURRICULUMS);
-		m.put("view","post/curriculums");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
 	
 	@GetMapping("/post/cartas")
 	public String cartas(ModelMap m,
 		HttpSession s){
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postCartas()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.CARTAS));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.CARTAS);
-		m.put("view","post/cartas");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
+	
 	@GetMapping("/post/otrosC")
 	public String otrosC(ModelMap m,
 		HttpSession s){
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postOtrosC()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.OTROSC));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.OTROSC);
-		m.put("view","post/otrosC");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
 	
 	@GetMapping("/post/expresiones")
 	public String expresiones(ModelMap m,
 		HttpSession s){
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postExpresiones()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.EXPRESIONES));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.EXPRESIONES);
-		m.put("view","post/expresiones");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
 	
 	@GetMapping("/post/gramatica")
 	public String gramatica(ModelMap m,
 		HttpSession s){
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postGramatica()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.GRAMATICA));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.GRAMATICA);
-		m.put("view","post/gramatica");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
 	
 	@GetMapping("/post/jerga")
 	public String jerga(ModelMap m,
 		HttpSession s){
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postJerga()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.JERGA));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.JERGA);
-		m.put("view","post/jerga");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
 	
 	@GetMapping("/post/otrosD")
 	public String otrosD(ModelMap m,
 		HttpSession s){
-		s.setAttribute("posts", repoPost.listarPost(repoCategoria.postOtrosD()));
+		List<Post> posts = repoPost.listarPost(repoCategoria.getByName(Categoria.OTROSD));
+		Map<Long, Long> nRespuestas = new HashMap<>();
+		for(Post p : posts){
+			nRespuestas.put(p.getId(), repoRespuesta.contarRespuestasDeCadaPost(p));
+		}
+		m.addAttribute("nRespuestas", nRespuestas);
+		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.OTROSD);
-		m.put("view","post/otrosD");
+		m.put("view","post/redacciones");
 		return("views/_t/main");
 	}
 	
@@ -225,6 +275,68 @@ public class PostController {
 	}
 	
 	@GetMapping(value = "/respuesta/like/{id}/{idRes}")
+	public String darLike(@PathVariable("id")Long id,
+		@PathVariable("idRes")Long idRes,
+		HttpSession s){
+		Usuario user  = repoUsuario.usuarioPorId(id);
+		Respuesta res = repoRespuesta.respuestaPorId(idRes);
+		
+		@SuppressWarnings("unchecked")
+		Map<Long, List<Long>> postsVotados = (Map<Long, List<Long>>) s.getAttribute("votado");
+		if(postsVotados == null){
+			System.out.println("No se puede votar sin estar logueado"); //En principio no debería usarse
+			return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+		}
+		
+		List<Long> respuestasVotadas = postsVotados.get(id);
+		if(respuestasVotadas == null){
+			respuestasVotadas = new ArrayList<Long>();
+			postsVotados.put(id, respuestasVotadas);
+		}else if(respuestasVotadas.contains(idRes)){
+			return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+		}
+		respuestasVotadas.add(idRes);		
+		
+		user.setPuntos(user.getPuntos() + 1);
+		res.setPuntos(res.getPuntos() + 1);
+		res.setLikes(res.getLikes() + 1);
+		repoUsuario.save(user);
+		repoRespuesta.save(res);
+		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+		}
+	
+	@GetMapping(value = "/respuesta/dislike/{id}/{idRes}")
+	public String darDisLike(@PathVariable("id")Long id,
+		@PathVariable("idRes")Long idRes,
+		HttpSession s){
+		Usuario user  = repoUsuario.usuarioPorId(id);
+		Respuesta res = repoRespuesta.respuestaPorId(idRes);
+		
+		@SuppressWarnings("unchecked")
+		Map<Long, List<Long>> postsVotados = (Map<Long, List<Long>>) s.getAttribute("votado");
+		if(postsVotados == null){
+			System.out.println("No se puede votar sin estar logueado"); //En principio no debería usarse
+			return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+		}
+		
+		List<Long> respuestasVotadas = postsVotados.get(id);
+		if(respuestasVotadas == null){
+			respuestasVotadas = new ArrayList<Long>();
+			postsVotados.put(id, respuestasVotadas);
+		}else if(respuestasVotadas.contains(idRes)){
+			return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+		}
+		respuestasVotadas.add(idRes);
+		
+		user.setPuntos(user.getPuntos() - 1);
+		res.setPuntos(res.getPuntos() - 1);
+		res.setDislikes(res.getDislikes() + 1);
+		repoUsuario.save(user);
+		repoRespuesta.save(res);
+		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
+	}
+	
+	/*@GetMapping(value = "/respuesta/like/{id}/{idRes}")
 	public String darLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes){
 		Usuario user  = repoUsuario.usuarioPorId(id);
 		Respuesta res = repoRespuesta.respuestaPorId(idRes);
@@ -246,5 +358,5 @@ public class PostController {
 		repoUsuario.save(user);
 		repoRespuesta.save(res);
 		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
-	}
+	}*/
 }

@@ -18,7 +18,21 @@
 	  reader.onloadend = function () {
 		preview.src = reader.result;
 		document.getElementById("imgString").value = reader.result;
-		console.log(document.getElementById("imgString").value);
+	  }
+	  
+	  var validFormat = false;
+	  
+	  if(file.name.toLowerCase().endsWith(".png")){
+		validFormat = true;
+	  }else if(file.name.toLowerCase().endsWith(".jpg")){
+		validFormat = true;
+	  }else if(file.name.toLowerCase().endsWith(".jpeg")){
+		validFormat = true;
+	  }
+	  
+	  if(!validFormat){
+		alert("El archivo no es válido, solo están permitidos los formatos .png, .jpg y .jpeg");
+		return;
 	  }
 
 	  if (file) {
@@ -214,7 +228,7 @@
 
 		<div class="col-md-3">
 			<div class="text-center">
-				<img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" alt="Image preview..." />
+				<img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" width="166" alt="Image preview..." />
 				<img th:unless="${session.userData.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
 				<input type="file" style="width: 175px;" onchange="previewFile()"></input>
 			</div>				

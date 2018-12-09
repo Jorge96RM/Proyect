@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.demo.domain.Categoria;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.Respuesta;
 
@@ -35,5 +37,19 @@ public class RespuestaRepositoryImpl implements RespuestaRepositoryCustom {
 		query.setMaxResults(1);
 		List<Respuesta> result = query.getResultList();
 		return result.get(0);
+	}
+	
+	@Override
+	public long contarRespuestasDeCadaPost(Post id){ 
+		Query query = entityManager.createQuery("SELECT count(r) FROM Respuesta r WHERE r.postRespuesta = :idPost");
+		query.setParameter("idPost", id);
+		return (long) query.getSingleResult();
+	}
+	
+	@Override
+	public long contarRespuestasDeCadaCategoria(Categoria categoria){ 
+		Query query = entityManager.createQuery("SELECT count(*) FROM Post p, Respuesta r WHERE r.postRespuesta = p AND p.nombre_categoria = :idCategoria");
+		query.setParameter("idCategoria", categoria);
+		return (long) query.getSingleResult();
 	}
 }
