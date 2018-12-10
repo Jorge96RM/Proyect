@@ -37,4 +37,11 @@ i {
 	color: black;
 }
 
+.estiloBarra {
+	float:right;
+	margin-top:-41px;
+	margin-right:-20px;
+	background:none;
+}
+
 /*# sourceMappingURL=estilos.css.map */
