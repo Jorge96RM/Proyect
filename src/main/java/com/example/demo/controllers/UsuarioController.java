@@ -29,6 +29,7 @@ import com.example.demo.repositories.RolRepository;
 import com.example.demo.repositories.UsuarioRepository;
 import com.example.demo.repositories.MensajeRepository;
 import com.example.demo.repositories.PostRepository;
+import com.example.demo.repositories.RespuestaRepository;
 
 @Controller
 public class UsuarioController {
@@ -41,6 +42,8 @@ public class UsuarioController {
 	private MensajeRepository repoMensaje;
 	@Autowired
 	private PostRepository repoPost;
+	@Autowired
+	private RespuestaRepository repoRespuesta;
 	
 	@Autowired
 	Mail mail;
@@ -124,6 +127,7 @@ public class UsuarioController {
 		}
 		s.setAttribute("nmensajes", repoMensaje.contarMensajesNoLeidos(u));
 		s.setAttribute("todosPost", repoPost.todosPostUsuario(u.getId()));
+		s.setAttribute("todasRespuestas", repoRespuesta.todasRespuestas(u.getId()));
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}
@@ -159,6 +163,7 @@ public class UsuarioController {
 		Usuario u = (Usuario) s.getAttribute("userData");
 		m.put("ajeno", repoUsuario.usuarioPorId(id));
 		m.put("todosPost", repoPost.todosPostUsuario(id));
+		m.put("todasRespuestas", repoRespuesta.todasRespuestas(id));
 		if((u == null) || (u.getId() != repoUsuario.usuarioPorId(id).getId())){
 			m.put("view","usuario/perfilAjeno");
 		}else{

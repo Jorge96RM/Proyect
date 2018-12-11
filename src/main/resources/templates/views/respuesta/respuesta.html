@@ -26,12 +26,17 @@
                     <div th:switch="${session.user}" class="iconos">
 						<div th:case="null">
 						</div>
+						<div th:case="admin">
+						<a th:href="${'/admin/borrarPost/' + post.id}" onclick="return confirm('¿Estás seguro de que quieres borrar este post?')">
+							<i class="fas fa-trash-alt" style="font-size: 22px;"></i>
+						</a>
+						<a href="">
+							<i class="fas fa-arrows-alt" style="font-size: 22px;"></i>
+						</a>
+						</div>
 						<span th:case="${post.postSuyo.alias}">
 							<a class="colorIcono" th:href="${'/post/modificarPost/' + post.id}"><i class="fas fa-edit fa-lg"></i></a>
 						</span>
-						<!-- <a class="colorIcono" href=""><i class="far fa-thumbs-up fa-lg"></i></a>
-						<a class="colorIcono" href=""><i class="far fa-thumbs-down fa-lg"></i></a>
-						<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>-->
                     </div>
 				</div>
 		</div>

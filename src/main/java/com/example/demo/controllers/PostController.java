@@ -338,18 +338,12 @@ public class PostController {
 	
 	
 	/*************************** PARTE DE ADMINISTRACION ***************************/
-	@RequestMapping("/admin/listaPost")
-	public String listaPost(ModelMap m){
-		m.put("listaPost", repoPost.findAll());
-		m.put("view","admin/listaPost");
-		return("views/_t/main");
-	}
-	
 	@RequestMapping(value="/admin/borrarPost/{id}",method = RequestMethod.GET)  
     public String borrarMensaje(@PathVariable("id") Long id,
     	ModelMap m) {
+		repoRespuesta.borrarRespuestaPorId(id);
 		repoPost.delete(id);
-        return "redirect:/admin/listaPost";
+        return "redirect:/";
     }
 	
 	/*@GetMapping(value = "/respuesta/like/{id}/{idRes}")

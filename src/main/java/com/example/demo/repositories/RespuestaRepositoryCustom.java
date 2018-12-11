@@ -11,4 +11,6 @@ public interface RespuestaRepositoryCustom {
 	public Respuesta respuestaPorId(long id);
 	public long contarRespuestasDeCadaPost(Post id);
 	public long contarRespuestasDeCadaCategoria(Categoria categoria);
+	public long todasRespuestas(long id);
+	public void borrarRespuestaPorId(long id);
 }

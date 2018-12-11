@@ -2,29 +2,32 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
-<form action="#" th:action="${'/post/modificarPost/' + pos.id}" method="POST" name="modificar" id="modificar" class="form-horizontal">
+<div class="col-md-9 personal-info">
 <h3 style="margin-top:10px;" class="col-lg-4">Modificar Post</h3>
+
+<form action="#" th:action="${'/post/modificarPost/' + pos.id}" method="POST" name="modificar" id="modificar" class="form-horizontal">
 			<div class="form-group">
-			  <label class="col-lg-3 control-label">Título:</label>
+			  <label class="col-lg-4 control-label">Título:</label>
 			  <div class="col-lg-8">
 				<input class="form-control" type="text" name="titulo" id="titulo" />
 				<div id="tituloPost"></div>
 			  </div>
 			</div>
 			<div class="form-group">
+			      <label class="col-lg-4 control-label">Mensaje:</label>
 			  <div class="col-lg-8">
 				<textarea class="form-control" name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí" ></textarea>
 				<div id="contenidoPost"></div>
 			  </div>
 			</div>
           <div class="form-group">
-            <label class="col-md-4 control-label"></label>
-            <div class="col-md-8">
+            <div class="col-md-12">
 			  <button type="submit" class="btn btn-info" id="guardarCambios" value="Guardar Cambios" onclick="return validarCampos()">Guardar Cambios</button>
+			  <input type="reset" class="btn btn-default" value="Cancelar" style="margin-bottom: 5px;"/>
             </div>
           </div>
         </form>
-        
+        </div>
         <script>
         function validarCampos(){
             var valido = true;

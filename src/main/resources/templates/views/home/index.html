@@ -9,13 +9,6 @@
 </head>
 <body>
 	<!--<section class="bienvenidos">-->
-	<div th:switch="${session.user}">
-	<li th:case="admin">
-		<div class="temaypagina">
-			<a href="/admin/listaPost"><button type="button" class="btn btn-primary" style="margin-top: 5px;margin-bottom: 5px;">Lista publicaciones</button></a>
-		</div>
-	</li>
-</div>
 	<div class="table-responsive">
 	<table class="table table-sm-responsive">
 		<tr class="color">
