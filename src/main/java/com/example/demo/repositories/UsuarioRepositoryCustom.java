@@ -9,4 +9,5 @@ public interface UsuarioRepositoryCustom {
 	public Usuario datosPerfil(String alias);
 	public Usuario usuarioPorId(long id);
 	public List<Usuario> todosUsuarios();
+	public int esActivo(String alias);
 }

@@ -37,9 +37,20 @@ public class Usuario {
 	private int puntos = 0;
 	private int nMejorRespuesta = 0;
 	
+	private int activo = 1;
+
+	
 	@Cascade( CascadeType.DELETE)
 	@OneToMany(mappedBy="PostSuyo")
 	private Collection<Post> Post;
+	
+	public int getActivo() {
+		return activo;
+	}
+
+	public void setActivo(int activo) {
+		this.activo = activo;
+	}
 	
 	public int getnMejorRespuesta() {
 		return nMejorRespuesta;

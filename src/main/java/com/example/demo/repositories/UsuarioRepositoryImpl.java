@@ -55,4 +55,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
 		List<Usuario> result = query.getResultList();
 		return result;
 	}
+	
+	/*Seleccionar la fila activo de la tabla usuario para poder hacer el baneo de usuario*/
+	@Override
+	public int esActivo(String alias){ 
+		Query query = entityManager.createQuery("SELECT activo FROM Usuario r WHERE alias = :usuarioAlias");
+		query.setParameter("usuarioAlias", alias);
+		return (int) query.getSingleResult();
+	}
 }

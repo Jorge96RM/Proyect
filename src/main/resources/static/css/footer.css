@@ -1,3 +1,7 @@
 .margen {
 	margin-top:30px;
 }
+
+.bordesRedondos{
+	border-radius: 5px;
+}

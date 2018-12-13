@@ -97,7 +97,9 @@ public class UsuarioController {
 			ModelMap m,
 			HttpSession s){
 		boolean usuarioOK = repoUsuario.usuarioOK(alias,contrasena);
-		if (!usuarioOK) {
+		int esActivo = repoUsuario.esActivo(alias);
+
+		if (!usuarioOK || esActivo == 0) {
 			m.put("view", "usuario/loginError");
 		}
 		else {
@@ -262,4 +264,16 @@ public class UsuarioController {
         m.put("view", "usuario/borrarUsuario");
         return "views/_t/main";
     } 
+	
+	@RequestMapping(value="/suspenderCuenta/{id}/{activo}")
+	public String suspenderCuenta(@PathVariable("id")Long id,@PathVariable("activo") int activo) {
+		Usuario u = repoUsuario.usuarioPorId(id);
+		if (activo == 0) {
+			u.setActivo(1);
+		} else {
+			u.setActivo(0);
+		}
+		repoUsuario.save(u);
+		return "redirect:/";
+	}
 }

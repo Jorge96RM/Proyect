@@ -3,9 +3,11 @@ body {
 }
 
 .card-body {
-    background-color: #a6e3e9;
+    background-color: #fdfdfd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
-
 .bold {
     font-weight: bold;
 }

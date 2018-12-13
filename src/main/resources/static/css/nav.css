@@ -43,3 +43,7 @@ i{
 #redes ul li a{
 	display: block;
 }
+
+.bordesRedondos{
+	border-radius: 5px;
+}
