@@ -1,14 +1,14 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" href="/css/verMensaje.css"></link>	
+	<link rel="stylesheet" th:href="@{/css/verMensaje.css}"></link>	
 </head>
 <body> 
         <div class="row" id="recuadro">
             <div class="text-center col-lg-2" style="border-right: 1px solid #F2F4F4;">
 				<img th:if="${mensaje.mensajeDe.foto}" th:src="${mensaje.mensajeDe.foto}" class="rounded-circle" width="130" height="130" />
-				<img th:unless="${mensaje.mensajeDe.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" width="130" height="130" /><br/>
-				<a th:href="${'/usuario/perfilAjeno/' + mensaje.mensajeDe.id}">
+				<img th:unless="${mensaje.mensajeDe.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" class="rounded-circle" width="130" height="130" /><br/>
+				<a th:href="@{'/usuario/perfilAjeno/' + ${mensaje.mensajeDe.id}}">
 					<div th:utext="${mensaje.mensajeDe.alias}"></div>
 				</a>
             </div>
@@ -22,7 +22,7 @@
         </div>
 		<div id="oculto">
 			<hr/>
-			<form action="#" th:action="${'/usuario/mensajePrivado/' + mensaje.mensajeDe.id}" th:object="${Usuario}" method="POST" name="mensajePrivado" id="mensajePrivado" class="form-horizontal align-content-center" role="form">
+			<form th:action="@{'/usuario/mensajePrivado/' + ${mensaje.mensajeDe.id}}" method="POST" name="mensajePrivado" id="mensajePrivado" class="form-horizontal align-content-center" role="form">
 				<div class="form-group">
 				  <label class="col-lg-4 control-label">Título:</label>
 				  <div class="col-lg-8">

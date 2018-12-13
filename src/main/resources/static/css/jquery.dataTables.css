@@ -335,8 +335,8 @@ table.dataTable td {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   color: white !important;
-  border: 1px solid #111;
-  background-color: #585858;
+  border: 1px solid #337ab7;
+  background-color: #337ab7;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));
   /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #585858 0%, #111 100%);
@@ -347,7 +347,7 @@ table.dataTable td {
   /* IE10+ */
   background: -o-linear-gradient(top, #585858 0%, #111 100%);
   /* Opera 11.10+ */
-  background: linear-gradient(to bottom, #585858 0%, #111 100%);
+  background: #337ab7;
   /* W3C */
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {

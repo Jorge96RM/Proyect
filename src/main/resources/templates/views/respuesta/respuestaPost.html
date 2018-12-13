@@ -1,12 +1,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="/css/post.css"></link>
+  <link rel="stylesheet" th:href="${/css/post.css}"></link>
 </head>
 
   <div class="col-md-12 personal-info post">
     <h3 style="padding-top:10px;" class="col-lg-4">Respuesta</h3>
   <!--Cambiar el action del formulario-->
-    <form action="#" th:action="${'/respuesta/crearRespuesta/' + post.id}" method="POST" name="respuesta" id="respuesta" class="form-horizontal align-content-center" role="form">
+    <form th:action="@{'/respuesta/crearRespuesta/' + ${post.id}}" method="POST" name="respuesta" id="respuesta" class="form-horizontal align-content-center" role="form">
       <div class="form-group">
         <label class="col-lg-4 control-label">Mensaje de respuesta:</label>
         <div class="col-lg-8">

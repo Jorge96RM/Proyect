@@ -10,7 +10,7 @@
 		<li th:case="null"></li>
 		<li th:case="*">
 			<div class="temaypagina">
-			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
+			<a th:href="@{/post/crearPost}"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
 			</div>
 		</li>
 </div>
@@ -29,13 +29,13 @@
         </thead>
             <tr th:each = "post: ${posts}">
 			  <th class="tema" style="font-size: 15px;font-weight: 500;">					
-					<a th:href="${'/respuesta/respuesta/' + post.id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${post.id}}">
 						<div th:utext="${post.titulo}" class="titulo">	
 						</div>
 					</a>
 			  </th>
 			  <th style="font-size: 15px;font-weight: 500;">
-				  <a th:href="${'/usuario/perfilAjeno/' + post.postSuyo.id}">
+				  <a th:href="@{'/usuario/perfilAjeno/' + ${post.postSuyo.id}}">
 						<div th:utext="${post.postSuyo.alias}" class="escrito">	
 						</div>
 				  </a>
@@ -57,7 +57,7 @@
 		<li th:case="null"></li>
 		<li th:case="*">
 			<div class="temaypagina">
-			<a href="/post/crearPost"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
+			<a th:href="@{/post/crearPost}"><button type="button" class="btn btn-primary nuevotema" onclick="crearTema()">Nuevo tema</button></a>
 			</div>
 		</li>
 </div>

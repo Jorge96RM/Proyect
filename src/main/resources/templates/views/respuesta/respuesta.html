@@ -1,13 +1,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" href="/css/respuesta.css"></link>	
+	<link rel="stylesheet" th:href="@{/css/respuesta.css}"></link>	
 </head>
 <body> 
         <div th:switch="${session.user}">
                 <li th:case="null"></li>
                 <li th:case="*">
                     <div class="temaypagina">
-						<a th:href="${'/respuesta/crearRespuesta/' + post.id}"><button type="button" class="btn btn-primary nueva-respuesta">Responder</button></a><hr/>
+						<a th:href="@{'/respuesta/crearRespuesta/' + ${post.id}}"><button type="button" class="btn btn-primary nueva-respuesta">Responder</button></a><hr/>
                     </div>
                 </li>
 				
@@ -17,7 +17,7 @@
             <div class="col-lg-2">
 
 				<img th:if="${post.postSuyo.foto}" th:src="${post.postSuyo.foto}" class="rounded-circle" width="130" height="130" />
-				<img th:unless="${post.postSuyo.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" width="130" height="130" /><br/>
+				<img th:unless="${post.postSuyo.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" class="rounded-circle" width="130" height="130" /><br/>
             </div>
             	<div class="col-lg-10">
                     <strong><div th:text="${post.titulo + ' - ' + post.postSuyo.alias}" name="titulo" id="titulo" class="card-title"></div></strong>
@@ -27,7 +27,7 @@
 						<div th:case="null">
 						</div>
 						<div th:case="admin">
-						<a th:href="${'/admin/borrarPost/' + post.id}" onclick="return confirm('¿Estás seguro de que quieres borrar este post?')">
+						<a th:href="@{'/admin/borrarPost/' + post.id}" onclick="return confirm('¿Estás seguro de que quieres borrar este post?')">
 							<i class="fas fa-trash-alt" style="font-size: 22px;"></i>
 						</a>
 						<a href="">
@@ -35,7 +35,7 @@
 						</a>
 						</div>
 						<span th:case="${post.postSuyo.alias}">
-							<a class="colorIcono" th:href="${'/post/modificarPost/' + post.id}"><i class="fas fa-edit fa-lg"></i></a>
+							<a class="colorIcono" th:href="@{'/post/modificarPost/' + ${post.id}}"><i class="fas fa-edit fa-lg"></i></a>
 						</span>
                     </div>
 				</div>
@@ -60,13 +60,13 @@
 										<span th:text="${respuesta.dislikes}" style="margin-right: 5px;"></span><i class="far fa-thumbs-down fa-lg colorIcono"></i>
 									</div>
 									<div th:case="${respuesta.respuestaSuya.alias}">
-										<a class="colorIcono" th:href="${'/respuesta/modificarRespuesta/' + respuesta.id}"><i class="fas fa-edit fa-lg"></i></a>
+										<a class="colorIcono" th:href="@{'/respuesta/modificarRespuesta/' + ${respuesta.id}}"><i class="fas fa-edit fa-lg"></i></a>
 									</div>
 									<div th:case="*">
 										<span th:text="${respuesta.likes}"></span>
-										<a id="like" class="far fa-thumbs-up fa-lg colorIcono" th:href="${'/respuesta/like/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"></a>
+										<a id="like" class="far fa-thumbs-up fa-lg colorIcono" th:href="@{'/respuesta/like/' + ${respuesta.respuestaSuya.id} + '/' + ${respuesta.id}}"></a>
 										<span th:text="${respuesta.dislikes}"></span>
-										<a id="dislike" class="far fa-thumbs-down fa-lg colorIcono" th:href="${'/respuesta/dislike/' + respuesta.respuestaSuya.id + '/' + respuesta.id}"></a>
+										<a id="dislike" class="far fa-thumbs-down fa-lg colorIcono" th:href="@{'/respuesta/dislike/' + ${respuesta.respuestaSuya.id} + '/' + ${respuesta.id}}"></a>
 										<a class="colorIcono" href=""><i class="fas fa-reply fa-lg"></i></a>
 									</div>
 									
@@ -81,7 +81,7 @@
 		<li th:case="*">
 		<hr/>
 			<div class="temaypagina">
-                    <a th:href="${'/respuesta/crearRespuesta/' + post.id}"><button type="button" class="btn btn-primary nueva-respuesta">Responder</button></a>
+                    <a th:href="@{'/respuesta/crearRespuesta/' + ${post.id}}"><button type="button" class="btn btn-primary nueva-respuesta">Responder</button></a>
 			</div>
 		</li>
 </div>

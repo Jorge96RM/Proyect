@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="/css/index.css" />
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
 
 </head>
@@ -22,9 +22,9 @@
 				<th style="font-size: 15px;font-weight: 650">Mensajes</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/redacciones">Redacciones</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/redacciones}">Redacciones</a></th>
 				<th th:if="${ultimasRespuestas['Redacciones']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Redacciones'].id}" class="ulti">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Redacciones'].id}}" class="ulti">
 						<div th:utext="${ultimasRespuestas['Redacciones'].titulo}">	
 						</div>
 					</a>
@@ -41,9 +41,9 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/curriculums">Currículums</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/curriculums}">Currículums</a></th>
 				<th th:if="${ultimasRespuestas['Curriculums']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Curriculums'].id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Curriculums'].id}}">
 						<div th:utext="${ultimasRespuestas['Curriculums'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -60,9 +60,9 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/cartas">Cartas de presentación</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/cartas}">Cartas de presentación</a></th>
 				<th th:if="${ultimasRespuestas['Cartas']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Cartas'].id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Cartas'].id}}">
 						<div th:utext="${ultimasRespuestas['Cartas'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -79,9 +79,9 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/otrosC">Otros</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/otrosC}">Otros</a></th>
 				<th th:if="${ultimasRespuestas['OtrosC']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['OtrosC'].id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosC'].id}}">
 						<div th:utext="${ultimasRespuestas['OtrosC'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -115,9 +115,9 @@
 				<th style="font-size: 15px;font-weight: 650">Mensajes</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/expresiones">Expresiones</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/expresiones}">Expresiones</a></th>
 				<th th:if="${ultimasRespuestas['Expresiones']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Expresiones'].id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Expresiones'].id}}">
 						<div th:utext="${ultimasRespuestas['Expresiones'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -134,9 +134,9 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/gramatica">Gramática</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/gramatica}">Gramática</a></th>
 				<th th:if="${ultimasRespuestas['Gramatica']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Gramatica'].id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Gramatica'].id}}">
 						<div th:utext="${ultimasRespuestas['Gramatica'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -153,9 +153,9 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/jerga">Jerga</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/jerga}">Jerga</a></th>
 				<th th:if="${ultimasRespuestas['Jerga']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['Jerga'].id}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Jerga'].id}}">
 						<div th:utext="${ultimasRespuestas['Jerga'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -172,10 +172,10 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tema" style="font-size: 15px;font-weight: 500;"><a href="/post/otrosD">Otros</a></th>
+				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/otrosD}">Otros</a></th>
 				<th th:if="${ultimasRespuestas['OtrosD']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="${'/respuesta/respuesta/' + ultimasRespuestas['OtrosD'].id}">
-						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}" class="ulti">	
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosD'].id}}">
+						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}" class="ulti">
 						</div>
 					</a>
 				</th>

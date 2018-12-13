@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <!-- CSS para la página del perfil-->
-  <link rel="stylesheet" href="/css/perfil.css" />
+  <link rel="stylesheet" th:href="@{/css/perfil.css}" />
   <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
 </head>
@@ -229,19 +229,19 @@
 		<div class="col-md-3">
 			<div class="text-center">
 				<img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" width="166" alt="Image preview..." />
-				<img th:unless="${session.userData.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" alt="Image preview..." /><br/>
-				<input type="file" style="width: 175px;margin-top:15px; margin-bottom:-5px;" onchange="previewFile()"></input>
+				<img th:unless="${session.userData.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" height="166" alt="Image preview..." /><br/>
+				<input type="file" style="width: 175px;" onchange="previewFile()"></input>
 			</div>				
 			<div class="text-center">
 				<label class="col-md-3 control-label"></label>
 				<div th:if="${session.nmensajes == 0}">
 					<div class="text-center">
-						<a href="/usuario/buzonMensajes"><button type="button" class="btn btn-secondary" id="buzonMensajes" value="Buzon de mensajes">Buzón de mensajes</button></a>
+						<a th:href="@{/usuario/buzonMensajes}"><button type="button" class="btn btn-secondary" id="buzonMensajes" value="Buzon de mensajes">Buzón de mensajes</button></a>
 					</div>
 				</div>
 				<div th:unless="${session.nmensajes == 0}">
 					<div class="text-center">
-						<a href="/usuario/buzonMensajes"><button type="button" class="btn btn-secondary" id="buzonMensajes" value="Buzon de mensajes">Buzón de mensajes (<td th:text="${session.nmensajes}"></td>)</button></a>
+						<a th:href="@{/usuario/buzonMensajes}"><button type="button" class="btn btn-secondary" id="buzonMensajes" value="Buzon de mensajes">Buzón de mensajes (<td th:text="${session.nmensajes}"></td>)</button></a>
 					</div>
 				</div>
 			</div>
@@ -250,7 +250,7 @@
       <div class="col-md-9 personal-info">
         <h3 style="margin-top:10px;" class="col-lg-12">Datos de usuario</h3>
 
-        <form action="/perfil" method="POST" name="perfil" id="perfil" class="form-horizontal">
+        <form th:action="@{'/perfil'}" method="POST" name="perfil" id="perfil" class="form-horizontal">
           <div class="form-group">
             <label class="col-lg-4 control-label"><strong>Alias:</strong></label>
             <div class="col-lg-8">
@@ -295,7 +295,7 @@
           </div>
 		  <div class="form-group">
 			<div class="col-md-8">
-				<a href="/usuario/cambiarContrasena">Cambiar contrasena</a>
+				<a th:href="@{/usuario/cambiarContrasena}">Cambiar contrasena</a>
 			</div>
 		  </div>
 		  <div class="form-group">
@@ -319,7 +319,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>
 					<div class="modal-body">
-						<form action="#" th:action="${'/borrarUsuario/' + session.userData.id}" method="POST" name="formBorrarUsuario" id="formBorrarUsuario" class="form-horizontal">
+						<form action="#" th:action="@{'/borrarUsuario/' + ${session.userData.id}}" method="POST" name="formBorrarUsuario" id="formBorrarUsuario" class="form-horizontal">
 							  <div class="form-group">
 								<label class="col-lg-4 control-label"><strong>Contraseña</strong></label>
 								<div class="col-lg-8">

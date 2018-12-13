@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <!-- CSS para la página del perfil-->
-  <link rel="stylesheet" href="/css/perfil.css" />
+  <link rel="stylesheet" th:href="@{/css/perfil.css}" />
   <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
 </head>
@@ -16,21 +16,21 @@
       <div class="col-md-3">
         <div class="text-center">
 		  <img th:if="${ajeno.foto}" th:src="${ajeno.foto}" height="166" />
-		  <img th:unless="${ajeno.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="166" /><br/>
+		  <img th:unless="${ajeno.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" height="166" /><br/>
         </div>
 		
 		<div th:switch="${session.user}">
 			<li th:case="null"></li>
 			<li th:case="admin">	
-				<a th:if="${ajeno.activo == 0}" th:href="${'/suspenderCuenta/' + ajeno.id + '/' + ajeno.activo}" onclick="alert('Se ha activado la cuenta correctamente')"><input type="button" class="btn btn-success" id="suspenderUsuario" value="Activar cuenta" style="margin:5px 0px 0px 50px;"/></a>
-				<a th:unless="${ajeno.activo == 0}" th:href="${'/suspenderCuenta/' + ajeno.id + '/' + ajeno.activo}" onclick="alert('Se ha deshabilitado la cuenta correctamente')"><input type="button" class="btn btn-danger" id="suspenderUsuario" value="Suspender cuenta" style="margin:5px 0px 0px 35px;"/></a>
+				<a th:if="${ajeno.activo == 0}" th:href="@{'/suspenderCuenta/' + ${ajeno.id} + '/' + ${ajeno.activo}}" onclick="alert('Se ha activado la cuenta correctamente')"><input type="button" class="btn btn-success" id="suspenderUsuario" value="Activar cuenta" style="margin:5px 0px 0px 50px;"/></a>
+				<a th:unless="${ajeno.activo == 0}" th:href="@{'/suspenderCuenta/' + ${ajeno.id} + '/' + ${ajeno.activo}}" onclick="alert('Se ha deshabilitado la cuenta correctamente')"><input type="button" class="btn btn-danger" id="suspenderUsuario" value="Suspender cuenta" style="margin:5px 0px 0px 35px;"/></a>
 			</li>
 			
 			<li th:case="*">
 				<div class="text-center">
 					<label class="col-md-3 control-label"></label>
 					<div class="text-center">
-					  <a th:if="${ajeno.activo == 1}" th:href="${'/usuario/mensajePrivado/' + ajeno.id}"><button type="button" class="btn btn-secondary" id="enviarMensaje" value="Enviar mensaje">Enviar mensaje</button></a>
+					  <a th:if="${ajeno.activo == 1}" th:href="@{'/usuario/mensajePrivado/' + ${ajeno.id}}"><button type="button" class="btn btn-secondary" id="enviarMensaje" value="Enviar mensaje">Enviar mensaje</button></a>
 					</div>
 				</div>
 			</li>

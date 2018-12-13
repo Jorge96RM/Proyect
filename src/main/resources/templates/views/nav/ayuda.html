@@ -1,6 +1,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="/css/normas.css" />
+	<link rel="stylesheet" th:href="@{/css/normas.css}" />
 </head>
 <h2 class="col-lg-12" id="tituloAyuda">Cuenta</h2>
 <hr/>
@@ -37,5 +37,5 @@ Se borrarán todos los datos que facilitastes al registrarte en el foro.También
 <h4 class="col-lg-12">¿Quién es el administrador del sitio?</h4>
 <p class="col-lg-12">
 
-En Correct English la administración la llevan los propios creadores de la página.Son ellos los encargados de que se cumplan las <a href="/nav/normas">normas</a> y se respete a los demás usuarios.
+En Correct English la administración la llevan los propios creadores de la página.Son ellos los encargados de que se cumplan las <a th:href="@{/nav/normas}">normas</a> y se respete a los demás usuarios.
 </p>
