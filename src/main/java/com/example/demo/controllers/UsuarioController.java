@@ -90,16 +90,22 @@ public class UsuarioController {
 			ModelMap m,
 			HttpSession s){
 		boolean usuarioOK = repoUsuario.usuarioOK(alias,contrasena);
-		int esActivo = repoUsuario.esActivo(alias);
-
-		if (!usuarioOK || esActivo == 0) {
+		try {
+			int esActivo = repoUsuario.esActivo(alias);
+			
+			if (!usuarioOK) {
+				m.put("view", "usuario/loginError");
+			} else if(esActivo == 0) {
+				m.put("view", "usuario/usuarioSuspendido");
+			}
+			else {
+				s.setAttribute("user", alias);
+				s.setAttribute("userData", repoUsuario.datosPerfil(alias));
+				s.setAttribute("votado", new HashMap<Long, List<Long>>());
+				return "redirect:/";
+			}
+		} catch (Exception e){
 			m.put("view", "usuario/loginError");
-		}
-		else {
-			s.setAttribute("user", alias);
-			s.setAttribute("userData", repoUsuario.datosPerfil(alias));
-			s.setAttribute("votado", new HashMap<Long, List<Long>>());
-			return "redirect:/";
 		}
 		return "views/_t/main";
 	}
@@ -123,6 +129,7 @@ public class UsuarioController {
 		s.setAttribute("nmensajes", repoMensaje.contarMensajesNoLeidos(u));
 		s.setAttribute("todosPost", repoPost.todosPostUsuario(u.getId()));
 		s.setAttribute("todasRespuestas", repoRespuesta.todasRespuestas(u.getId()));
+		//s.setAttribute("mejorRespuesta", repoRespuesta.mejorRespuesta(u.getId()));
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}

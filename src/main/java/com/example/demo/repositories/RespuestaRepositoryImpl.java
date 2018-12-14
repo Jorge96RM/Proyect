@@ -69,4 +69,12 @@ public class RespuestaRepositoryImpl implements RespuestaRepositoryCustom {
 		Query query = entityManager.createQuery("DELETE FROM Respuesta r WHERE post_respuesta_id = :idRespuesta");
 		query.setParameter("idRespuesta", id).executeUpdate();
 	}
+	
+	/*@Override
+	public String mejorRespuesta(long id){ 
+		Query query = entityManager.createQuery("SELECT contenido FROM Respuesta WHERE puntos = (SELECT MAX(puntos) FROM Respuesta) AND respuesta_suya_id = :idUsuario");
+		query.setParameter("idUsuario", id);
+		return query.getSingleResult().toString();
+
+	}*/
 }

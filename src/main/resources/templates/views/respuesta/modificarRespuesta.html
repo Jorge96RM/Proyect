@@ -1,9 +1,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" th:href="@{/css/post.css}"></link>
 </head>
 
+<div class="col-md-12 personal-info post">
+<h3 style="padding-top:10px;" class="col-lg-4">Modificar respuesta</h3>
 <form th:action="@{'/respuesta/modificarRespuesta/' + ${respuesta.id}}" method="POST" name="modificar" id="modificar" class="form-horizontal">
-<h3 style="margin-top:10px;" class="col-lg-4">Modificar Respuesta</h3>
 			<div class="form-group">
 			  <div class="col-lg-8">
 				<textarea class="form-control" name="contenido" id="contenido" rows="4" cols="50" placeholder="Escribe tu mensaje aquí" ></textarea>
@@ -18,7 +20,7 @@
             </div>
           </div>
         </form>
-        
+        </div>
         <script>
         function validarCampos(){
             var valido = true;
