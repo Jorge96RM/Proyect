@@ -5,7 +5,9 @@
 }
 
 .iconos {
-    float: right;
+	position: absolute; 
+	bottom: 0;
+    right: 0;
     display: inline;
 }
 
@@ -14,6 +16,8 @@ img {
 }
 
 .colorIcono{
+	bottom: 0;
+    right: 0;
     color: black;
 }
 

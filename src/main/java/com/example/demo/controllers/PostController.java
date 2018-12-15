@@ -274,6 +274,20 @@ public class PostController {
 		return "redirect:/respuesta/respuesta/" + r.getPostRespuesta().getId();
 	}
 	
+	@RequestMapping(value = "/post/modificarCategoria/{id}", method = RequestMethod.POST)
+	public String modificarCategoria(@PathVariable("id") Long id,
+			@RequestParam("selectCambiarCategoria") Categoria categoria,
+			ModelMap m,
+			HttpSession s){
+		Post p = repoPost.todosPost(id);
+		if(p == null){
+			return "redirect:/";
+		}
+		p.setNombre_categoria(categoria);
+		repoPost.save(p);
+		return "redirect:/";
+	}
+	
 	@GetMapping(value = "/respuesta/like/{id}/{idRes}")
 	public String darLike(@PathVariable("id")Long id,
 		@PathVariable("idRes")Long idRes,
@@ -345,28 +359,4 @@ public class PostController {
 		repoPost.delete(id);
         return "redirect:/";
     }
-	
-	/*@GetMapping(value = "/respuesta/like/{id}/{idRes}")
-	public String darLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes){
-		Usuario user  = repoUsuario.usuarioPorId(id);
-		Respuesta res = repoRespuesta.respuestaPorId(idRes);
-		user.setPuntos(user.getPuntos() + 1);
-		res.setPuntos(res.getPuntos() + 1);
-		res.setLikes(res.getLikes() + 1);
-		repoUsuario.save(user);
-		repoRespuesta.save(res);
-		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
-		}
-	
-	@GetMapping(value = "/respuesta/dislike/{id}/{idRes}")
-	public String darDisLike(@PathVariable("id")Long id,@PathVariable("idRes")Long idRes){
-		Usuario user  = repoUsuario.usuarioPorId(id);
-		Respuesta res = repoRespuesta.respuestaPorId(idRes);
-		user.setPuntos(user.getPuntos() - 1);
-		res.setPuntos(res.getPuntos() - 1);
-		res.setDislikes(res.getDislikes() + 1);
-		repoUsuario.save(user);
-		repoRespuesta.save(res);
-		return "redirect:/respuesta/respuesta/" + res.getPostRespuesta().getId();
-	}*/
 }
