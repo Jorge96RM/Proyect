@@ -8,7 +8,6 @@
 
 </head>
 <body>
-	<!--<section class="bienvenidos">-->
 	<div class="table-responsive">
 	<table class="table table-sm-responsive table-striped" style="margin-top: 10px;background-color:white;">
 		<tr class="color">
@@ -24,8 +23,8 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/redacciones}">Redacciones</a></th>
 				<th th:if="${ultimasRespuestas['Redacciones']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Redacciones'].id}}" class="ulti">
-						<div th:utext="${ultimasRespuestas['Redacciones'].titulo}">	
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Redacciones'].id}}" style="text-decoration:none;" >
+						<div th:utext="${ultimasRespuestas['Redacciones'].titulo}" class="ulti">	
 						</div>
 					</a>
 				</th>
@@ -43,7 +42,7 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/curriculums}">Currículums</a></th>
 				<th th:if="${ultimasRespuestas['Curriculums']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Curriculums'].id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Curriculums'].id}}" style="text-decoration:none;">
 						<div th:utext="${ultimasRespuestas['Curriculums'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -62,7 +61,7 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/cartas}">Cartas de presentación</a></th>
 				<th th:if="${ultimasRespuestas['Cartas']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Cartas'].id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Cartas'].id}}" style="text-decoration:none;">
 						<div th:utext="${ultimasRespuestas['Cartas'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -81,7 +80,7 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/otrosC}">Otros</a></th>
 				<th th:if="${ultimasRespuestas['OtrosC']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosC'].id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosC'].id}}" style="text-decoration:none;">
 						<div th:utext="${ultimasRespuestas['OtrosC'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -101,7 +100,6 @@
 		
 	</table>
 	</div>
-	<hr/>
 	<div class="table-responsive">
 	<table class="table table-sm-responsive table-striped" style="margin-top:20px;background-color:white;">
 		<tr class="color">
@@ -117,7 +115,7 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/expresiones}">Expresiones</a></th>
 				<th th:if="${ultimasRespuestas['Expresiones']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Expresiones'].id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Expresiones'].id}}" style="text-decoration:none;">
 						<div th:utext="${ultimasRespuestas['Expresiones'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -136,7 +134,7 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/gramatica}">Gramática</a></th>
 				<th th:if="${ultimasRespuestas['Gramatica']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Gramatica'].id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Gramatica'].id}}" style="text-decoration:none;">
 						<div th:utext="${ultimasRespuestas['Gramatica'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -155,7 +153,7 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/jerga}">Jerga</a></th>
 				<th th:if="${ultimasRespuestas['Jerga']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Jerga'].id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['Jerga'].id}}" style="text-decoration:none;">
 						<div th:utext="${ultimasRespuestas['Jerga'].titulo}" class="ulti">	
 						</div>
 					</a>
@@ -174,8 +172,8 @@
 			<tr>
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/otrosD}">Otros</a></th>
 				<th th:if="${ultimasRespuestas['OtrosD']}" style="font-size: 15px;font-weight: 500;">
-					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosD'].id}}">
-						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}" class="ulti">
+					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosD'].id}}" style="text-decoration:none;">
+						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}1" class="ulti">
 						</div>
 					</a>
 				</th>
@@ -193,11 +191,6 @@
 		</tbody>
 	</table>
 	</div>
-	<!--</section>-->
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

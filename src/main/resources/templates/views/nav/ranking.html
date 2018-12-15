@@ -18,7 +18,12 @@
     <tbody>
         <tr th:each="u,pos: ${usuarios}">
             <th th:text="${pos.count}"></th>
-            <th th:text="${u.alias}"></th>
+			<th>
+				<a th:href="@{'/usuario/perfilAjeno/' + ${u.id}}" style="text-decoration:none;color:black;">
+					<div th:text="${u.alias}">	
+					</div>
+				</a>
+			</th>
             <th th:text="${u.nombre}"></th>
             <th th:text="${u.puntos}"></th>
         </tr>

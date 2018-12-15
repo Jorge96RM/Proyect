@@ -68,7 +68,7 @@ public class UsuarioController {
             }
         } catch (Exception e) {
         	String asuntoCorreo = "Bienvenido al foro Correct English";
-        	String contenidoCorreo = "<h3>Bienvenido a Correct English.</h3> \n<p> Este es un mensaje de bienvenida al foro.Por favor no lo conteste. Un saludo y que te diviertas.</p>";
+        	String contenidoCorreo = "<h3>Bienvenido a Correct English.</h3> \n<p> Este es un mensaje de bienvenida al foro, por favor no lo conteste. Un saludo y que disfrute de la página.</p>";
         	m.put("alias", alias);
 			m.put("view", "/usuario/crearPost");
 			mail.sendEmail(email, asuntoCorreo, contenidoCorreo);

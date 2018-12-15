@@ -66,12 +66,6 @@ public class PostController {
 		return "redirect:/respuesta/respuesta/" + postRespuesta.getId();
 	}
 	
-	//@RequestMapping(value="/respuesta/respuesta", method = RequestMethod.POST)
-	//public String respuesta(ModelMap m){
-	//	m.put("view","respuesta/respuesta");
-	//	return("views/_t/main");
-	//}
-	
 	@GetMapping(value = "/respuesta/respuesta/{id}")
 	public String respuesta(@PathVariable("id") long id, 
 		@PathVariable("id") Post pid, 
@@ -112,7 +106,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.CURRICULUMS);
-		m.put("view","post/redacciones");
+		m.put("view","post/curriculums");
 		return("views/_t/main");
 	}
 	
@@ -127,7 +121,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.CARTAS);
-		m.put("view","post/redacciones");
+		m.put("view","post/cartas");
 		return("views/_t/main");
 	}
 	
@@ -142,7 +136,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.OTROSC);
-		m.put("view","post/redacciones");
+		m.put("view","post/otrosC");
 		return("views/_t/main");
 	}
 	
@@ -157,7 +151,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.EXPRESIONES);
-		m.put("view","post/redacciones");
+		m.put("view","post/expresioness");
 		return("views/_t/main");
 	}
 	
@@ -172,7 +166,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.GRAMATICA);
-		m.put("view","post/redacciones");
+		m.put("view","post/gramatica");
 		return("views/_t/main");
 	}
 	
@@ -187,7 +181,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.JERGA);
-		m.put("view","post/redacciones");
+		m.put("view","post/jerga");
 		return("views/_t/main");
 	}
 	
@@ -202,7 +196,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.OTROSD);
-		m.put("view","post/redacciones");
+		m.put("view","post/otrosD");
 		return("views/_t/main");
 	}
 	

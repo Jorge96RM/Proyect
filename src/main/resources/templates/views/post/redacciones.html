@@ -15,7 +15,7 @@
 		</li>
 </div>
 <div class="table-responsive-sm table-responsive-lg table-responsive-xl">
-<table id="reda" class="table stripe">
+<table id="reda" class="table stripe" style="width:100%">
 		<thead>
 			<tr>
 			  <th class="apartado" colspan="4" style="font-size: 18px;font-weight: 700;background-color: #cbf1f5;">Redacciones</th>
@@ -29,13 +29,13 @@
         </thead>
             <tr th:each = "post: ${posts}">
 			  <th class="tema" style="font-size: 15px;font-weight: 500;">					
-					<a th:href="@{'/respuesta/respuesta/' + ${post.id}}">
+					<a th:href="@{'/respuesta/respuesta/' + ${post.id}}" style="text-decoration:none;color:black;">
 						<div th:utext="${post.titulo}" class="titulo">	
 						</div>
 					</a>
 			  </th>
 			  <th style="font-size: 15px;font-weight: 500;">
-				  <a th:href="@{'/usuario/perfilAjeno/' + ${post.postSuyo.id}}">
+				  <a th:href="@{'/usuario/perfilAjeno/' + ${post.postSuyo.id}}" style="text-decoration:none;color:black;">
 						<div th:utext="${post.postSuyo.alias}" class="escrito">	
 						</div>
 				  </a>
@@ -51,7 +51,6 @@
             </tr>
     </table>
     </div>
-	<hr/>
 	
 <div th:switch="${session.user}">
 		<li th:case="null"></li>

@@ -20,17 +20,17 @@
 			<tr th:each = "mensaje: ${mensajes}">
 				<div th:switch="${mensaje.leido}">
 					<div th:case="false">
-						  <th style="font-size: 15px;font-weight: 500;background: #CEF2F2;width: 50%;">
+						  <th style="font-size: 15px;font-weight: 500;background: #EFF2F4;width: 50%;">
 								<a th:href="@{'/usuario/verMensaje/' + ${mensaje.id}}" style="text-decoration: none">			  
 									<strong><div th:utext="${mensaje.titulo}" style="color: black;" class="longitud"></div></strong>
 								</a>
 						  </th>
-						  <th style="font-size: 15px;font-weight: 500;background: #CEF2F2;width: 40%;">
+						  <th style="font-size: 15px;font-weight: 500;background: #EFF2F4;width: 40%;">
 								<a th:href="@{'/usuario/perfilAjeno/' + ${mensaje.mensajeDe.id}}" style="text-decoration: none">
 									<strong><div th:utext="${mensaje.mensajeDe.alias}" style="color: black;"></div></strong>
 								</a>
 						  </th>
-						  <th style="font-size: 15px;font-weight: 500;background: #CEF2F2;width: 10%;text-align: center;">
+						  <th style="font-size: 15px;font-weight: 500;background: #EFF2F4;width: 10%;text-align: center;">
 								<a th:href="@{'/usuario/borrarMensaje/' + ${mensaje.id}}">
 									<i class="fas fa-trash-alt" style="font-size: 22px;"></i>
 								</a>
