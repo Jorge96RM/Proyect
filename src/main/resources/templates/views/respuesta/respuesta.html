@@ -14,13 +14,15 @@
         </div>
 		<div style="width:100%; background: #dee2e6; border: 1px solid #909497; border-radius: 10px;">
 			<div class="row" id="recuadro" style="width:100%">
-				<div class="col-lg-2">
-
-					<img th:if="${post.postSuyo.foto}" th:src="${post.postSuyo.foto}" class="rounded-circle" width="130" height="130" />
-					<img th:unless="${post.postSuyo.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" class="rounded-circle" width="130" height="130" /><br/>
+				<div class="text-center col-lg-2">
+					<a th:href="@{'/usuario/perfilAjeno/' + ${post.postSuyo.id}}" style="text-decoration:none;color:black;">
+						<img th:if="${post.postSuyo.foto}" th:src="${post.postSuyo.foto}" class="rounded-circle" width="130" height="130" />
+						<img th:unless="${post.postSuyo.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" class="rounded-circle" width="130" height="130" /><br/>
+						<strong><div th:utext="${post.postSuyo.alias}"></div></strong>
+					</a>
 				</div>
 					<div class="col-lg-10">
-						<strong><div th:text="${post.titulo + ' - ' + post.postSuyo.alias}" name="titulo" id="titulo" class="card-title"></div></strong>
+						<strong><div th:text="${post.titulo}" name="titulo" id="titulo" class="card-title"></div></strong>
 						<div th:text="${post.contenido}" name="contenido" id="contenido" class="card-text text-justify"></div>
 						 
 						<div th:switch="${session.user}" class="iconos">
@@ -75,12 +77,14 @@
             <div th:each = "respuesta: ${respuestas}">
 				<div style="width:100%; background: #dee2e6; border: 1px solid #909497; border-radius: 10px;">				
 					<div class="row" id="recuadro" style="width:100%">
-						<div class="col-lg-2">
-							<img th:if="${respuesta.respuestaSuya.foto}" th:src="${respuesta.respuestaSuya.foto}" class="rounded-circle" width="130" height="130" />
-							<img th:unless="${respuesta.respuestaSuya.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" width="130" height="130" /><br/>
+						<div class="text-center col-lg-2">
+							<a th:href="@{'/usuario/perfilAjeno/' + ${respuesta.respuestaSuya.id}}" style="text-decoration:none;color:black;">
+								<img th:if="${respuesta.respuestaSuya.foto}" th:src="${respuesta.respuestaSuya.foto}" class="rounded-circle" width="130" height="130" />
+								<img th:unless="${respuesta.respuestaSuya.foto}" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" width="130" height="130" /><br/>
+								<strong><div th:utext="${respuesta.respuestaSuya.alias}"></div></strong>
+							</a>
 						</div>
 							<div class="col-lg-10">
-							    <strong><div th:text="${respuesta.respuestaSuya.alias}"></div></strong>
 								<div th:text="${respuesta.contenido}" name="contenido" id="contenido" class="card-text text-justify"></div>
 								 
 								<div th:switch="${session.user}" class="iconos">

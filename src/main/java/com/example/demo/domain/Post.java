@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Post {
 	@GeneratedValue//(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	private String titulo;
+	@Column(length=2000)
 	private String contenido;
 	private Long nRespuestas;
 	private Long nVisitas;

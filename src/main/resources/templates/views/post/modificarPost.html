@@ -36,24 +36,24 @@
             var testTitulo = /^[\W\s\w]{1,50}$/i;
 
             var mensaje = document.getElementById("contenido").value;
-            var testMensaje = /^[\W\s\w]{1,200}$/i;
+            var testMensaje = /^[\W\s\w]{1,500}$/i;
 
             if (testTitulo.test(titulo)) {
               valido = true;
-              document.getElementById("tituloPost").innerHTML = "Correcto";
+              document.getElementById("tituloPost").innerHTML = "";
               
             } else{
               valido = false;
-              document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío";
+              document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 50 caracteres";
               
             }
 
              if (testMensaje.test(mensaje)) {
                valido = true;
-              document.getElementById("contenidoPost").innerHTML = "Correcto";
+              document.getElementById("contenidoPost").innerHTML = "";
             } else {
               valido = false;
-              document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío";
+              document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío ni superar los 500 caracteres";
             }
 
             return valido;

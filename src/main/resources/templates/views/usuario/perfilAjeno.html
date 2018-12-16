@@ -9,6 +9,73 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
 </head>
 
+<script>
+	$(document).ready(function(){
+		$("#borrarUsuario").on("click", function(){
+			$("#mi-modal").modal('show');
+		});
+
+		$("#modal-btn-cancelar").on("click", function(){
+			$("#mi-modal").modal('hide');
+		});
+	});
+	
+	function validarContrasena(){
+		var esValido = true;
+		var contrasena = document.getElementById("contrasena").value;
+		var contrasenaBien = new RegExp (/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/);
+		var comprobarContrasena = contrasenaBien.test(contrasena);
+		if(comprobarContrasena == false){
+			esValido = false;
+			document.getElementById("contrasena").focus();
+			document.formBorrarUsuario.contrasena.style.color="red";
+		}else{
+			esValido = true;
+			document.formBorrarUsuario.contrasena.style.color="";
+		}
+		return esValido;
+	}
+	
+	function validarComprobarContrasenas(){
+		var esValido = true;
+		contrasena1 = document.getElementById("contrasena").value;
+		contrasena2 = document.getElementById("confirmarContrasena").value;
+
+		if (contrasena1 != contrasena2){
+			esValido = false;
+			document.getElementById("confirmarContrasena").focus();
+			document.formBorrarUsuario.confirmarContrasena.style.color="red";
+		}else{
+			esValido = true;
+			document.formBorrarUsuario.confirmarContrasena.style.color="";
+		}
+		return esValido;
+	} 
+	
+	function validarContrasenas(){
+		var contrasena = document.getElementById("contrasena").value;
+		var confirmarContrasena = document.getElementById("confirmarContrasena").value;
+		
+		if(validarContrasena() != true){
+			return false;
+		}else if(validarComprobarContrasenas() != true){
+			return false;
+		}
+		else{
+			changePassword();
+			return true;
+		}
+	}
+	
+	function hashearPassword(plainPassword){
+		return md5(plainPassword);
+	}
+	
+	function changePassword(){
+		document.getElementById("contrasena").value = hashearPassword(document.getElementById("contrasena").value);
+	}
+</script>
+
 <body>
   <div class="card-body">
     <div class="row">
@@ -21,11 +88,14 @@
 		
 		<div th:switch="${session.user}">
 			<li th:case="null"></li>
-			<li th:case="admin">	
-				<a th:if="${ajeno.activo == 0}" th:href="@{'/suspenderCuenta/' + ${ajeno.id} + '/' + ${ajeno.activo}}" onclick="alert('Se ha activado la cuenta correctamente')"><input type="button" class="btn btn-success" id="suspenderUsuario" value="Activar cuenta" style="margin:5px 0px 0px 50px;"/></a>
-				<a th:unless="${ajeno.activo == 0}" th:href="@{'/suspenderCuenta/' + ${ajeno.id} + '/' + ${ajeno.activo}}" onclick="alert('Se ha deshabilitado la cuenta correctamente')"><input type="button" class="btn btn-danger" id="suspenderUsuario" value="Suspender cuenta" style="margin:5px 0px 0px 35px;"/></a>
+			<li th:case="admin">
+				<div class="text-center">
+					<label class="col-md-3 control-label"></label>
+					<div class="text-center">
+					  <a th:if="${ajeno.activo == 1}" th:href="@{'/usuario/mensajePrivado/' + ${ajeno.id}}"><button type="button" class="btn btn-secondary" id="enviarMensaje" value="Enviar mensaje">Enviar mensaje</button></a>
+					</div>
+				</div>
 			</li>
-			
 			<li th:case="*">
 				<div class="text-center">
 					<label class="col-md-3 control-label"></label>
@@ -80,9 +150,53 @@
           <div class="form-group">
             <label class="col-md-3 control-label"><strong>Estado de cuenta:</strong></label>
             <div class="col-md-8">
-              <td th:text="${ajeno.activo == 1} ? 'Activado' : 'Desactivado' "></td>
+              <td th:text="${ajeno.activo == 1} ? 'Activada' : 'Suspendida' "></td>
             </div>
           </div>
+			<div th:switch="${session.user}">
+				<li th:case="null"></li>
+				<li th:case="admin">
+					<div class="form-group">
+						<div class="col-md-12">
+							<a th:if="${ajeno.activo == 0}" th:href="@{'/suspenderCuenta/' + ${ajeno.id} + '/' + ${ajeno.activo}}" onclick="alert('Se ha activado la cuenta correctamente')"><input type="button" class="btn btn-success" id="suspenderUsuario" value="Activar cuenta"/></a>
+							<a th:unless="${ajeno.activo == 0}" th:href="@{'/suspenderCuenta/' + ${ajeno.id} + '/' + ${ajeno.activo}}" onclick="alert('Se ha deshabilitado la cuenta correctamente')"><input type="button" class="btn btn-danger" id="suspenderUsuario" value="Suspender cuenta"/></a>
+							<button type="button" id="borrarUsuario" class="btn btn-secondary" style="margin-top: 5px;">Borrar Usuario</button>
+						</div>
+					</div>
+					<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="mi-modal">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel">¿Estás seguro de que quieres borrar esta cuenta?</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<form action="#" th:action="@{'/borrarUsuario/' + ${ajeno.id}}" method="POST" name="formBorrarUsuario" id="formBorrarUsuario" class="form-horizontal">
+										  <div class="form-group">
+											<label class="col-lg-4 control-label"><strong>Contraseña</strong></label>
+											<div class="col-lg-8">
+												<input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña"/>
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label class="col-lg-4 control-label"><strong>Confirmar contraseña</strong></label>
+											<div class="col-lg-8">
+												<input type="password" class="form-control" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña"/>
+											</div>
+										  </div>
+										  <div class="modal-footer">
+											<button type="submit" class="btn btn-info" id="confirmarBorrarUsuario" onclick="return validarContrasenas()">Confirmar</button>
+											<button type="button" class="btn btn-secondary" id="modal-btn-cancelar">Cancelar</button>
+										  </div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li th:case="*">
+				</li>
+			</div>
       </div>
     </div>
   </div>

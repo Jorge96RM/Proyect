@@ -151,7 +151,7 @@ public class PostController {
 		m.addAttribute("nRespuestas", nRespuestas);
 		m.addAttribute("posts", posts);
 		s.setAttribute("categoria", Categoria.EXPRESIONES);
-		m.put("view","post/expresioness");
+		m.put("view","post/expresiones");
 		return("views/_t/main");
 	}
 	

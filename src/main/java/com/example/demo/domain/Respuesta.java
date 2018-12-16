@@ -16,6 +16,7 @@ public class Respuesta {
 	@GeneratedValue
 	@Column(name = "id")
 	private Long id;
+	@Column(length=2000)
 	private String contenido;
 	
 	private int puntos = 0;	

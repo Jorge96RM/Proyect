@@ -28,13 +28,13 @@
     function validar() {
       var valido = true;
       var contenido = document.getElementById("contenido").value;
-      var testContenido = /^[\W\s\w]{1,200}$/i;
+      var testContenido = /^[\W\s\w]{1,2000}$/i;
   
       if (testContenido.test(contenido)) {
         valido = true;
       } else {
         valido = false;
-        document.getElementById("respuestaPost").innerHTML = "Este campo no debe de estar vacÃ­o";
+        document.getElementById("respuestaPost").innerHTML = "Este campo no debe de estar vacío ni superar los 2000 caracteres";
       }
 
       return valido;

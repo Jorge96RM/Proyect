@@ -26,14 +26,14 @@
             var valido = true;
 
             var mensaje = document.getElementById("contenido").value;
-            var testMensaje = /^[\W\s\w]{1,200}$/i;
+            var testMensaje = /^[\W\s\w]{1,2000}$/i;
 
              if (testMensaje.test(mensaje)) {
                valido = true;
               document.getElementById("contenidoPost").innerHTML = "";
             } else {
               valido = false;
-              document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío";
+              document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío ni superar los 2000 caracteres";
             }
 
             return valido;
