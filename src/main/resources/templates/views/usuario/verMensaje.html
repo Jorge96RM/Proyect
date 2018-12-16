@@ -8,7 +8,7 @@
             <div class="text-center col-lg-2" style="border-right: 1px solid #F2F4F4;">
 				<img th:if="${mensaje.mensajeDe.foto}" th:src="${mensaje.mensajeDe.foto}" class="rounded-circle" width="130" height="130" />
 				<img th:unless="${mensaje.mensajeDe.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" class="rounded-circle" width="130" height="130" /><br/>
-				<a th:href="@{'/usuario/perfilAjeno/' + ${mensaje.mensajeDe.id}}">
+				<a th:href="@{'/usuario/perfilAjeno/' + ${mensaje.mensajeDe.id}}" style="text-decoration:none;color:black;">
 					<div th:utext="${mensaje.mensajeDe.alias}"></div>
 				</a>
             </div>

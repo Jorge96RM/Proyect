@@ -35,14 +35,48 @@ public class Usuario {
 	private String foto;
 	
 	private int puntos = 0;
-	private int nMejorRespuesta = 0;
 	
 	private int activo = 1;
-
 	
-	@Cascade( CascadeType.DELETE)
+	@Cascade(CascadeType.DELETE)
+	@OneToMany(mappedBy="respuestaSuya")
+	private Collection<Respuesta> respuestasuya;
+
+	@Cascade(CascadeType.DELETE)
+	@OneToMany(mappedBy="MensajeDe")
+	private Collection<Mensaje> mensajeDe;
+	
+	@Cascade(CascadeType.DELETE)
+	@OneToMany(mappedBy="MensajeA")
+	private Collection<Mensaje> mensajeA;
+	
+	@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy="PostSuyo")
 	private Collection<Post> Post;
+	
+	public Collection<Respuesta> getRespuestasuya() {
+		return respuestasuya;
+	}
+
+	public void setRespuestasuya(Collection<Respuesta> respuestasuya) {
+		this.respuestasuya = respuestasuya;
+	}
+	
+	public Collection<Mensaje> getMensajeDe() {
+		return mensajeDe;
+	}
+
+	public void setMensajeDe(Collection<Mensaje> mensajeDe) {
+		this.mensajeDe = mensajeDe;
+	}
+
+	public Collection<Mensaje> getMensajeA() {
+		return mensajeA;
+	}
+
+	public void setMensajeA(Collection<Mensaje> mensajeA) {
+		this.mensajeA = mensajeA;
+	}
 	
 	public int getActivo() {
 		return activo;
@@ -50,14 +84,6 @@ public class Usuario {
 
 	public void setActivo(int activo) {
 		this.activo = activo;
-	}
-	
-	public int getnMejorRespuesta() {
-		return nMejorRespuesta;
-	}
-
-	public void setnMejorRespuesta(int nMejorRespuesta) {
-		this.nMejorRespuesta = nMejorRespuesta;
 	}
 	
 	public int getPuntos() {

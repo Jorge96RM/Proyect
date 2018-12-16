@@ -34,7 +34,7 @@
   function validarCampos(){
     var valido = true;
     var titulo = document.getElementById("titulo").value;
-    var testTitulo = /^[\W\s\w]{1,50}$/i;
+    var testTitulo = /^[\W\s\w]{1,100}$/i;
 
     var mensaje = document.getElementById("contenido").value;
     var testMensaje = /^[\W\s\w]{1,2000}$/i;
@@ -45,7 +45,7 @@
       
     } else{
       valido = false;
-      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 50 caracteres";
+      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 100 caracteres";
       
     }
 

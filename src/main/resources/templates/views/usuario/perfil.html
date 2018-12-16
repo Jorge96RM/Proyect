@@ -11,9 +11,10 @@
 
 <script>
 	function previewFile() {
-	  var preview = document.querySelector('img');
+	  var preview = document.getElementById("imagenPerfil");
 	  var file    = document.querySelector('input[type=file]').files[0];
 	  var reader  = new FileReader();
+	  
 
 	  reader.onloadend = function () {
 		preview.src = reader.result;
@@ -228,8 +229,8 @@
 
 		<div class="col-md-3">
 			<div class="text-center">
-				<img th:if="${session.userData.foto}" th:src="${session.userData.foto}" height="166" width="166" alt="Image preview..." />
-				<img th:unless="${session.userData.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" height="166" alt="Image preview..." /><br/>
+				<img th:if="${session.userData.foto}" th:src="${session.userData.foto}" id="imagenPerfil" height="166" width="166" alt="Image preview..." />
+				<img th:unless="${session.userData.foto}" th:src="@{http://ssl.gstatic.com/accounts/ui/avatar_2x.png}" id="imagenPerfil" height="166" alt="Image preview..." /><br/>
 				<input type="file" style="width: 175px;" onchange="previewFile()"></input>
 			</div>				
 			<div class="text-center">
@@ -356,7 +357,7 @@
         </div>
       </div>
       <div class="col-md-6 form-group text-center">
-        <label><strong>Nº publicaciones</strong></label>
+        <label><strong>Nº posts</strong></label>
         <div>
           <td th:text="${session.todosPost}"></td>
         </div>

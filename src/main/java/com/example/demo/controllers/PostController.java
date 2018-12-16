@@ -214,7 +214,7 @@ public class PostController {
 			ModelMap m,
 			HttpSession s){
 		Usuario user = (Usuario) s.getAttribute("userData");
-		user.setPuntos(user.getPuntos() + 5);
+		user.setPuntos(user.getPuntos() + 3);
 		repoUsuario.save(user);
 		Categoria categoria = repoCategoria.getByName(categoriaName);
 		Post p = new Post(titulo, contenido, user, categoria);

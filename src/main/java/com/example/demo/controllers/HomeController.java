@@ -19,7 +19,7 @@ import com.example.demo.repositories.PostRepository;
 import com.example.demo.repositories.RespuestaRepository;
 
 @Controller
-public class HomeController { //implements ErrorController{
+public class HomeController {//implements ErrorController{
 	@Autowired
 	private PostRepository repoPost;
 	
@@ -95,8 +95,9 @@ public class HomeController { //implements ErrorController{
 	//Cuando se produce un error de cualquier tipo en la página, redirige a la raíz
 	//Comentado hasta terminar el proyecto para poder ver los errores
     /*@RequestMapping("/error")
-    public String handleError() {
-    	return "redirect:/";
+    public String handleError(ModelMap m) {
+		m.put("view","_t/erroresPagina");
+		return "views/_t/main";
     }
  
     public String getErrorPath() {
