@@ -1,4 +1,5 @@
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" th:href="@{/css/post.css}"></link>
 </head>
 
@@ -31,31 +32,26 @@
 
 <script>
   function validarCampos(){
-    var valido = true;
     var titulo = document.getElementById("titulo").value;
     var testTitulo = /^[\W\s\w]{1,50}$/i;
 
     var mensaje = document.getElementById("contenido").value;
     var testMensaje = /^[\W\s\w]{1,200}$/i;
 
-    if (testTitulo.test(titulo)) {
-      valido = true;
-      document.getElementById("tituloPost").innerHTML = "Correcto";
-      
-    } else{
-      valido = false;
-      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío";
-      
-    }
-
-     if (testMensaje.test(mensaje)) {
-       valido = true;
-      document.getElementById("mensaje").innerHTML = "Correcto";
+    if (!testTitulo.test(titulo)) {
+      document.getElementById("tituloMensaje").innerHTML = "Este campo no debe de estar vacío";
+      return false;
     } else {
-      valido = false;
-      document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío";
+        document.getElementById("tituloMensaje").innerHTML ="";
+
+    }
+     if (!testMensaje.test(mensaje)) {
+       document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío";
+       return false;
+    } else {
+        document.getElementById("mensaje").innerHTML ="";
     }
 
-    return valido;
+    return true;
   }
 </script>

@@ -38,25 +38,23 @@
             var mensaje = document.getElementById("contenido").value;
             var testMensaje = /^[\W\s\w]{1,2000}$/i;
 
-            if (testTitulo.test(titulo)) {
-              valido = true;
-              document.getElementById("tituloPost").innerHTML = "";
-              
-            } else{
-              valido = false;
-              document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 100 caracteres";
-              
-            }
+            if (!testTitulo.test(titulo)) {           
+                document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 100 caracteres";
+				return false;
+            
+            }else {
+                document.getElementById("tituloPost").innerHTML ="";
 
-             if (testMensaje.test(mensaje)) {
-               valido = true;
-              document.getElementById("contenidoPost").innerHTML = "";
+            } 
+            
+             if (!testMensaje.test(mensaje)) {
+                document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío ni superar los 2000 caracteres";
+				return false;
             } else {
-              valido = false;
-              document.getElementById("contenidoPost").innerHTML = "Este campo no debe de estar vacío ni superar los 2000 caracteres";
-            }
+                document.getElementById("contenidoPost").innerHTML ="";
 
-            return valido;
+            }
+            return true;
           }
         
         </script>

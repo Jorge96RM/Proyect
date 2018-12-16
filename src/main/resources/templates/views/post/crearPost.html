@@ -1,4 +1,5 @@
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" th:href="@{/css/post.css}"></link>
 </head>
 
@@ -32,31 +33,27 @@
 
 <script>
   function validarCampos(){
-    var valido = true;
     var titulo = document.getElementById("titulo").value;
     var testTitulo = /^[\W\s\w]{1,100}$/i;
 
     var mensaje = document.getElementById("contenido").value;
     var testMensaje = /^[\W\s\w]{1,2000}$/i;
 
-    if (testTitulo.test(titulo)) {
-      valido = true;
-      document.getElementById("tituloPost").innerHTML = "";
-      
-    } else{
-      valido = false;
-      document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 100 caracteres";
-      
-    }
-
-     if (testMensaje.test(mensaje)) {
-       valido = true;
-      document.getElementById("mensaje").innerHTML = "";
+    if (!testTitulo.test(titulo)) {
+        document.getElementById("tituloPost").innerHTML = "Este campo no debe de estar vacío ni superar los 100 caracteres";
+		return false;
     } else {
-      valido = false;
-      document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío ni superar los 2000 caracteres";
+        document.getElementById("tituloPost").innerHTML ="";
+
     }
 
-    return valido;
-  }
+     if (!testMensaje.test(mensaje)) {
+         document.getElementById("mensaje").innerHTML = "Este campo no debe de estar vacío ni superar los 2000 caracteres";
+         return false;
+    } else {
+     document.getElementById("mensaje").innerHTML ="";
+    }
+     return true;
+    }
+  
 </script>
