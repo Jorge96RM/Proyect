@@ -13,5 +13,5 @@ public interface RespuestaRepositoryCustom {
 	public long contarRespuestasDeCadaCategoria(Categoria categoria);
 	public long todasRespuestas(long id);
 	public void borrarRespuestaPorId(long id);
-	//public String mejorRespuesta(long id);
+	public int mejorRespuesta(long id);
 }

@@ -129,7 +129,11 @@ public class UsuarioController {
 		s.setAttribute("nmensajes", repoMensaje.contarMensajesNoLeidos(u));
 		s.setAttribute("todosPost", repoPost.todosPostUsuario(u.getId()));
 		s.setAttribute("todasRespuestas", repoRespuesta.todasRespuestas(u.getId()));
-		//s.setAttribute("mejorRespuesta", repoRespuesta.mejorRespuesta(u.getId()));
+		try {
+		s.setAttribute("mejorRespuesta", repoRespuesta.mejorRespuesta(u.getId()));
+		} catch(NullPointerException e){
+			e.getMessage();
+		}
 		m.put("view","usuario/perfil");
 		return("views/_t/main");
 	}
@@ -166,6 +170,11 @@ public class UsuarioController {
 		m.put("ajeno", repoUsuario.usuarioPorId(id));
 		m.put("todosPost", repoPost.todosPostUsuario(id));
 		m.put("todasRespuestas", repoRespuesta.todasRespuestas(id));
+		try {
+			m.put("mejorRespuesta", repoRespuesta.mejorRespuesta(id));
+		} catch (NullPointerException e){
+			e.getMessage();
+		}
 		if((u == null) || (u.getId() != repoUsuario.usuarioPorId(id).getId())){
 			m.put("view","usuario/perfilAjeno");
 		}else{

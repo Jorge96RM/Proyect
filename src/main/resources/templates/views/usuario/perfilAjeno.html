@@ -223,6 +223,15 @@
           <td th:text="${todasRespuestas}"></td>
         </div>
       </div>
+      <div class="col-md-6 form-group text-center">
+        <label><strong>Mejor respuesta</strong></label>
+       <div th:if="${mejorRespuesta == null}">
+          <td th:text="0"></td>
+        </div>
+        <div th:unless="${mejorRespuesta == null}">
+          <td th:text="${mejorRespuesta}"></td>
+        </div>
+      </div>
     </div>
   </div>
 </body>

@@ -367,12 +367,15 @@
           <td th:text="${session.todasRespuestas}"></td>
         </div>
       </div>
-      <!--<div class="col-md-6 form-group text-center">
-        <label><strong>Respuesta con más puntos</strong></label>
-       <div>
+      <div class="col-md-6 form-group text-center">
+        <label><strong>Mejor respuesta</strong></label>
+       <div th:if="${session.mejorRespuesta == null}">
+          <td th:text="0"></td>
+        </div>
+        <div th:unless="${session.mejorRespuesta == null}">
           <td th:text="${session.mejorRespuesta}"></td>
         </div>
-      </div>-->
+      </div>
     </div>
   </div>
 </body>

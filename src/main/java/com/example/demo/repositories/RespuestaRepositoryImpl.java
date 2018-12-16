@@ -70,11 +70,10 @@ public class RespuestaRepositoryImpl implements RespuestaRepositoryCustom {
 		query.setParameter("idRespuesta", id).executeUpdate();
 	}
 	
-	/*@Override
-	public String mejorRespuesta(long id){ 
-		Query query = entityManager.createQuery("SELECT contenido FROM Respuesta WHERE puntos = (SELECT MAX(puntos) FROM Respuesta) AND respuesta_suya_id = :idUsuario");
+	@Override
+	public int mejorRespuesta(long id){ 
+		Query query = entityManager.createQuery("SELECT MAX(puntos) from Respuesta WHERE respuesta_suya_id = :idUsuario");
 		query.setParameter("idUsuario", id);
-		return query.getSingleResult().toString();
-
-	}*/
+		return (int) query.getSingleResult();
+	}
 }
