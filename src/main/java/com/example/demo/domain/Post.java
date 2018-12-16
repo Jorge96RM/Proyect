@@ -1,11 +1,17 @@
 package com.example.demo.domain;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import com.example.demo.domain.Usuario;
 
@@ -21,6 +27,10 @@ public class Post {
 	private Long nRespuestas;
 	private Long nVisitas;
 	
+	@Cascade(CascadeType.DELETE)
+	@OneToMany(mappedBy="postRespuesta")
+	private Collection<Respuesta> postrespuesta;
+
 	@ManyToOne
 	private Categoria nombre_categoria;
 	
@@ -39,6 +49,14 @@ public class Post {
 	
 	public Post() {
 		super();
+	}
+	
+	public Collection<Respuesta> getPostrespuesta() {
+		return postrespuesta;
+	}
+
+	public void setPostrespuesta(Collection<Respuesta> postrespuesta) {
+		this.postrespuesta = postrespuesta;
 	}
 	
 	public Categoria getNombre_categoria() {
