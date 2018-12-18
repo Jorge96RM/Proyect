@@ -173,7 +173,7 @@
 				<th class="tema" style="font-size: 15px;font-weight: 500;"><a th:href="@{/post/otrosD}">Otros</a></th>
 				<th th:if="${ultimasRespuestas['OtrosD']}" style="font-size: 15px;font-weight: 500;">
 					<a th:href="@{'/respuesta/respuesta/' + ${ultimasRespuestas['OtrosD'].id}}" style="text-decoration:none;">
-						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}1" class="ulti">
+						<div th:utext="${ultimasRespuestas['OtrosD'].titulo}" class="ulti">
 						</div>
 					</a>
 				</th>
